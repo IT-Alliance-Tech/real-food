@@ -1,14 +1,16 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Bitter, Merriweather_Sans } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const bitter = Bitter({
+  variable: "--font-bitter",
   subsets: ["latin"],
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const merriweatherSans = Merriweather_Sans({
+  variable: "--font-merriweather-sans",
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata = {
@@ -20,7 +22,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${bitter.variable} ${merriweatherSans.variable} antialiased`}
       >
         {children}
       </body>

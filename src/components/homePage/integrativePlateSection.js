@@ -27,9 +27,9 @@ export default function IntegrativePlateSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative py-24 md:py-32 overflow-hidden"
+      className="relative py-16 md:py-24 overflow-hidden"
       style={{
-        background: "linear-gradient(135deg, #F9F7F6 0%, #F3F0EE 50%, #F6F4F3 100%)"
+        backgroundColor: "#F6F4F3"
       }}
     >
       {/* Enhanced decorative background elements */}
@@ -64,7 +64,6 @@ export default function IntegrativePlateSection() {
               className="text-sm md:text-base font-medium tracking-wide"
               style={{
                 color: "#10295F",
-                fontFamily: "'Merriweather Sans', sans-serif"
               }}
             >
               Dual Perspective Approach
@@ -75,7 +74,7 @@ export default function IntegrativePlateSection() {
         {/* Heading */}
         <h2
           className="hero-reveal text-center text-[48px] md:text-[72px] lg:text-[84px] font-extrabold leading-[1.05] mb-6"
-          style={{ color: "#10295F", fontFamily: "'Bitter', serif" }}
+          style={{ color: "#10295F" }}
         >
           The Integrative Plate
         </h2>
@@ -93,7 +92,6 @@ export default function IntegrativePlateSection() {
           className="hero-reveal delay-1 text-center max-w-3xl mx-auto text-lg md:text-xl mb-16 md:mb-20"
           style={{
             color: "rgba(16,41,95,0.7)",
-            fontFamily: "'Merriweather Sans', sans-serif",
           }}
         >
           Same plate. Two ways of understanding food.
@@ -114,14 +112,13 @@ export default function IntegrativePlateSection() {
               {/* Header */}
               <div className="p-6 flex items-center gap-4" style={{ backgroundColor: "rgba(16, 41, 95, 0.05)" }}>
                 <div
-                  className="w-12 h-12 rounded-xl flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6"
-                  style={{ backgroundColor: "rgba(16, 41, 95, 0.1)" }}
+                  className="flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6"
                 >
-                  <FaFlask className="text-xl" style={{ color: "#10295F" }} />
+                  <FaFlask className="text-4xl" style={{ color: "#10295F" }} />
                 </div>
                 <h3
                   className="text-2xl md:text-3xl font-bold"
-                  style={{ color: "#10295F", fontFamily: "'Bitter', serif" }}
+                  style={{ color: "#10295F" }}
                 >
                   Nutrient View
                 </h3>
@@ -131,7 +128,7 @@ export default function IntegrativePlateSection() {
               <div
                 className="relative h-72 flex items-center justify-center overflow-hidden group-hover:scale-105 transition-transform duration-500"
                 style={{
-                  background: "linear-gradient(135deg, #E8F0FE 0%, #D6E4FC 100%)"
+                  backgroundColor: "#F6F4F3"
                 }}
               >
                 {/* Replace src with your actual image */}
@@ -155,7 +152,6 @@ export default function IntegrativePlateSection() {
                     className="text-sm font-medium block mb-1"
                     style={{
                       color: "rgba(16, 41, 95, 0.5)",
-                      fontFamily: "'Merriweather Sans', sans-serif"
                     }}
                   >
                     Image Placeholder
@@ -164,7 +160,6 @@ export default function IntegrativePlateSection() {
                     className="text-xs"
                     style={{
                       color: "rgba(16, 41, 95, 0.3)",
-                      fontFamily: "'Merriweather Sans', sans-serif"
                     }}
                   >
                     Macros & Micronutrients
@@ -189,14 +184,13 @@ export default function IntegrativePlateSection() {
               {/* Header */}
               <div className="p-6 flex items-center gap-4" style={{ backgroundColor: "rgba(45, 105, 51, 0.05)" }}>
                 <div
-                  className="w-12 h-12 rounded-xl flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6"
-                  style={{ backgroundColor: "rgba(45, 105, 51, 0.1)" }}
+                  className="flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6"
                 >
-                  <FaLeaf className="text-xl" style={{ color: "#2D6933" }} />
+                  <FaLeaf className="text-4xl" style={{ color: "#2D6933" }} />
                 </div>
                 <h3
                   className="text-2xl md:text-3xl font-bold"
-                  style={{ color: "#2D6933", fontFamily: "'Bitter', serif" }}
+                  style={{ color: "#2D6933" }}
                 >
                   Ayurvedic View
                 </h3>
@@ -206,7 +200,7 @@ export default function IntegrativePlateSection() {
               <div
                 className="relative h-72 flex items-center justify-center overflow-hidden group-hover:scale-105 transition-transform duration-500"
                 style={{
-                  background: "linear-gradient(135deg, #F0F8F1 0%, #E3F2E5 100%)"
+                  backgroundColor: "#F6F4F3"
                 }}
               >
                 {/* Replace src with your actual image */}
@@ -230,7 +224,6 @@ export default function IntegrativePlateSection() {
                     className="text-sm font-medium block mb-1"
                     style={{
                       color: "rgba(45, 105, 51, 0.5)",
-                      fontFamily: "'Merriweather Sans', sans-serif"
                     }}
                   >
                     Image Placeholder
@@ -239,7 +232,6 @@ export default function IntegrativePlateSection() {
                     className="text-xs"
                     style={{
                       color: "rgba(45, 105, 51, 0.3)",
-                      fontFamily: "'Merriweather Sans', sans-serif"
                     }}
                   >
                     Doshas & Properties
@@ -265,7 +257,7 @@ export default function IntegrativePlateSection() {
           >
             <p
               className="text-xl md:text-2xl leading-relaxed font-medium"
-              style={{ color: "#10295F", fontFamily: "'Merriweather Sans', sans-serif" }}
+              style={{ color: "#10295F" }}
             >
               Ayurveda Dietetics trains health professionals to interpret the same
               meal through multiple scientific lenses.
@@ -277,10 +269,9 @@ export default function IntegrativePlateSection() {
         <div className="hero-reveal delay-3 text-center">
           <a
             href="#"
-            className="group relative inline-block px-10 py-4 text-base font-semibold uppercase tracking-wide text-white transition-all duration-300 hover:shadow-xl rounded-lg overflow-hidden"
+            className="group relative inline-block px-10 py-4 text-base font-semibold tracking-wide text-white transition-all duration-300 hover:shadow-xl rounded-lg overflow-hidden"
             style={{
               backgroundColor: "#2D6933",
-              fontFamily: "'Merriweather Sans', sans-serif",
             }}
           >
             <span className="relative z-10 flex items-center gap-3">
