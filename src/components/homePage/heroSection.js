@@ -60,8 +60,8 @@ export default function HeroSection() {
           <div
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full"
             style={{
-              backgroundColor: "rgba(45, 105, 51, 0.08)",
-              border: "1px solid rgba(45, 105, 51, 0.2)"
+              backgroundColor: "#F6F4F3",
+              border: "1px solid #2D6933"
             }}
           >
             <div className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: "#2D6933" }} />
@@ -69,7 +69,6 @@ export default function HeroSection() {
               className="text-sm md:text-base font-medium tracking-wide"
               style={{
                 color: "#2D6933",
-                fontFamily: "'Merriweather Sans', sans-serif"
               }}
             >
               Ayurveda Dietetics
@@ -79,8 +78,7 @@ export default function HeroSection() {
 
         {/* Heading */}
         <h1
-          className="text-[56px] md:text-[88px] lg:text-[96px] leading-[0.95] font-extrabold text-[#111111] max-w-4xl mx-auto mb-2"
-          style={{ fontFamily: "'Bitter', serif" }}
+          className="text-[56px] md:text-[88px] lg:text-[96px] leading-[0.95] font-extrabold text-[#181117] max-w-4xl mx-auto mb-2"
         >
           <span className="word">Food</span>{" "}
           <span className="word">is</span>{" "}
@@ -102,22 +100,13 @@ export default function HeroSection() {
         {/* Description & Icon */}
         <div className="mt-12 flex flex-col items-center gap-6 fade-line">
           <div className="relative">
-            {/* Glowing background for icon */}
-            <div
-              className="absolute inset-0 blur-xl opacity-40"
-              style={{ backgroundColor: "#2D6933" }}
-            />
-            <div
-              className="relative w-20 h-20 rounded-2xl flex items-center justify-center icon-bounce"
-              style={{ backgroundColor: "rgba(45, 105, 51, 0.1)" }}
-            >
-              <FaLeaf className="text-4xl" style={{ color: "#2D6933" }} />
+            <div className="icon-bounce">
+              <FaLeaf className="text-6xl" style={{ color: "#2D6933" }} />
             </div>
           </div>
 
           <p
-            className="max-w-2xl mx-auto text-xl md:text-2xl text-[#444444] leading-relaxed font-medium"
-            style={{ fontFamily: "'Merriweather Sans', sans-serif" }}
+            className="max-w-2xl mx-auto text-xl md:text-2xl text-[#181117] leading-relaxed font-medium"
           >
             Better health begins with personalising diets.
           </p>
@@ -127,10 +116,10 @@ export default function HeroSection() {
         <div className="mt-14 fade-line delay-3">
           <a
             href="#"
-            className="group relative inline-block px-8 py-4 text-base font-semibold uppercase tracking-wide text-white transition-all duration-300 hover:shadow-xl rounded-lg overflow-hidden"
+            className="group relative inline-block px-8 py-4 text-base font-semibold tracking-wide text-white transition-all duration-300 hover:shadow-xl rounded-lg overflow-hidden"
             style={{
               backgroundColor: "#2D6933",
-              fontFamily: "'Merriweather Sans', sans-serif",
+              backgroundColor: "#2D6933",
             }}
           >
             <span className="relative z-10">Explore Our Courses</span>

@@ -27,7 +27,7 @@ export default function ComparisonSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen flex items-center overflow-hidden py-20 md:py-32"
+      className="relative min-h-screen flex items-center overflow-hidden py-16 md:py-24"
       style={{ backgroundColor: "#F6F4F3" }}
     >
       {/* Decorative background elements */}
@@ -58,7 +58,6 @@ export default function ComparisonSection() {
               className="text-sm md:text-base font-medium"
               style={{
                 color: "#10295F",
-                fontFamily: "'Merriweather Sans', sans-serif"
               }}
             >
               Two Perspectives
@@ -71,7 +70,6 @@ export default function ComparisonSection() {
           className="section-fade-up text-center text-[48px] md:text-[72px] lg:text-[84px] font-extrabold leading-[1.05] mb-8"
           style={{
             color: "#10295F",
-            fontFamily: "'Bitter', serif",
           }}
         >
           Can they be combined?
@@ -82,7 +80,6 @@ export default function ComparisonSection() {
           className="section-fade-up text-center text-lg md:text-xl max-w-3xl mx-auto mb-16 md:mb-20"
           style={{
             color: "rgba(16, 41, 95, 0.7)",
-            fontFamily: "'Merriweather Sans', sans-serif",
           }}
         >
           Bridging ancient wisdom with modern science for holistic nutrition
@@ -95,7 +92,6 @@ export default function ComparisonSection() {
             style={{
               backgroundColor: "#F9A620",
               color: "#FFFFFF",
-              fontFamily: "'Bitter', serif",
             }}
           >
             VS
@@ -110,16 +106,14 @@ export default function ComparisonSection() {
             {/* Header with Icon */}
             <div className="flex items-center gap-4 mb-6">
               <div
-                className="w-14 h-14 rounded-2xl flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6"
-                style={{ backgroundColor: "rgba(16, 41, 95, 0.1)" }}
+                className="flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6"
               >
-                <FaFlask className="text-2xl" style={{ color: "#10295F" }} />
+                <FaFlask className="text-4xl" style={{ color: "#10295F" }} />
               </div>
               <h3
                 className="text-2xl md:text-3xl font-bold"
                 style={{
                   color: "#10295F",
-                  fontFamily: "'Bitter', serif",
                 }}
               >
                 Nutrient View
@@ -137,7 +131,7 @@ export default function ComparisonSection() {
               {/* Image Placeholder */}
               <div
                 className="w-full h-80 flex items-center justify-center relative overflow-hidden"
-                style={{ backgroundColor: "#E8F0FE" }}
+                style={{ backgroundColor: "#F6F4F3" }}
               >
                 <div className="absolute inset-0 opacity-10">
                   <div className="absolute top-4 left-4 w-16 h-16 rounded-full" style={{ backgroundColor: "#10295F" }} />
@@ -147,7 +141,6 @@ export default function ComparisonSection() {
                   className="text-lg font-medium z-10"
                   style={{
                     color: "rgba(16, 41, 95, 0.4)",
-                    fontFamily: "'Merriweather Sans', sans-serif"
                   }}
                 >
                   Scientific Analysis
@@ -159,19 +152,19 @@ export default function ComparisonSection() {
                 <ul className="space-y-3">
                   <li className="flex items-start gap-3">
                     <div className="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0" style={{ backgroundColor: "#10295F" }} />
-                    <span style={{ color: "rgba(16, 41, 95, 0.8)", fontFamily: "'Merriweather Sans', sans-serif" }}>
+                    <span style={{ color: "rgba(16, 41, 95, 0.8)" }}>
                       Focuses on macros and micronutrients
                     </span>
                   </li>
                   <li className="flex items-start gap-3">
                     <div className="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0" style={{ backgroundColor: "#10295F" }} />
-                    <span style={{ color: "rgba(16, 41, 95, 0.8)", fontFamily: "'Merriweather Sans', sans-serif" }}>
+                    <span style={{ color: "rgba(16, 41, 95, 0.8)" }}>
                       Evidence-based approach
                     </span>
                   </li>
                   <li className="flex items-start gap-3">
                     <div className="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0" style={{ backgroundColor: "#10295F" }} />
-                    <span style={{ color: "rgba(16, 41, 95, 0.8)", fontFamily: "'Merriweather Sans', sans-serif" }}>
+                    <span style={{ color: "rgba(16, 41, 95, 0.8)" }}>
                       Standardized recommendations
                     </span>
                   </li>
@@ -188,16 +181,14 @@ export default function ComparisonSection() {
             {/* Header with Icon */}
             <div className="flex items-center gap-4 mb-6">
               <div
-                className="w-14 h-14 rounded-2xl flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6"
-                style={{ backgroundColor: "rgba(45, 105, 51, 0.1)" }}
+                className="flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6"
               >
-                <FaLeaf className="text-2xl" style={{ color: "#2D6933" }} />
+                <FaLeaf className="text-4xl" style={{ color: "#2D6933" }} />
               </div>
               <h3
                 className="text-2xl md:text-3xl font-bold"
                 style={{
                   color: "#2D6933",
-                  fontFamily: "'Bitter', serif",
                 }}
               >
                 Ayurvedic View
@@ -215,7 +206,7 @@ export default function ComparisonSection() {
               {/* Image Placeholder */}
               <div
                 className="w-full h-80 flex items-center justify-center relative overflow-hidden"
-                style={{ backgroundColor: "#F0F8F1" }}
+                style={{ backgroundColor: "#F6F4F3" }}
               >
                 <div className="absolute inset-0 opacity-10">
                   <div className="absolute top-8 right-4 w-20 h-20 rounded-full" style={{ backgroundColor: "#2D6933" }} />
@@ -225,7 +216,6 @@ export default function ComparisonSection() {
                   className="text-lg font-medium z-10"
                   style={{
                     color: "rgba(45, 105, 51, 0.4)",
-                    fontFamily: "'Merriweather Sans', sans-serif"
                   }}
                 >
                   Holistic Wisdom
@@ -237,19 +227,19 @@ export default function ComparisonSection() {
                 <ul className="space-y-3">
                   <li className="flex items-start gap-3">
                     <div className="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0" style={{ backgroundColor: "#2D6933" }} />
-                    <span style={{ color: "rgba(45, 105, 51, 0.8)", fontFamily: "'Merriweather Sans', sans-serif" }}>
+                    <span style={{ color: "rgba(45, 105, 51, 0.8)" }}>
                       Considers individual constitution
                     </span>
                   </li>
                   <li className="flex items-start gap-3">
                     <div className="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0" style={{ backgroundColor: "#2D6933" }} />
-                    <span style={{ color: "rgba(45, 105, 51, 0.8)", fontFamily: "'Merriweather Sans', sans-serif" }}>
+                    <span style={{ color: "rgba(45, 105, 51, 0.8)" }}>
                       Traditional time-tested approach
                     </span>
                   </li>
                   <li className="flex items-start gap-3">
                     <div className="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0" style={{ backgroundColor: "#2D6933" }} />
-                    <span style={{ color: "rgba(45, 105, 51, 0.8)", fontFamily: "'Merriweather Sans', sans-serif" }}>
+                    <span style={{ color: "rgba(45, 105, 51, 0.8)" }}>
                       Personalized to body type
                     </span>
                   </li>

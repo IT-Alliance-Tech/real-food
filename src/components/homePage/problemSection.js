@@ -1,14 +1,9 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import {
-  FaUniversity,
-  FaChalkboardTeacher,
-  FaCheckCircle,
-  FaHandshake,
-} from "react-icons/fa";
+import { FaExclamationCircle, FaLeaf, FaArrowRight } from "react-icons/fa";
 
-export default function AcademicSupportSection() {
+export default function ProblemSection() {
   const sectionRef = useRef(null);
   const [animateKey, setAnimateKey] = useState(0);
 
@@ -19,7 +14,7 @@ export default function AcademicSupportSection() {
           setAnimateKey((prev) => prev + 1);
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.3 }
     );
 
     if (sectionRef.current) observer.observe(sectionRef.current);
@@ -29,13 +24,12 @@ export default function AcademicSupportSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative py-20 md:py-32 overflow-hidden"
+      className="relative py-16 md:py-24 overflow-hidden"
       style={{
-        background:
-          "linear-gradient(135deg, #245F3A 0%, #2D6933 50%, #3A7F4B 100%)",
+        backgroundColor: "#2D6933",
       }}
     >
-      {/* Subtle texture */}
+      {/* Subtle Texture */}
       <div
         className="absolute inset-0 opacity-[0.06] pointer-events-none"
         style={{
@@ -45,135 +39,103 @@ export default function AcademicSupportSection() {
         }}
       />
 
-      <div key={animateKey} className="max-w-6xl mx-auto px-6 relative z-10">
+      <div key={animateKey} className="relative max-w-6xl mx-auto px-6 text-white z-10">
 
-        {/* Heading */}
-        <div className="text-center mb-16 md:mb-20 section-fade-up">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 mx-auto bg-white/15">
-            <FaHandshake className="text-white" />
-            <span className="text-sm font-semibold uppercase tracking-wider text-white">
-              Partnerships
+        {/* Header */}
+        <div className="text-center mb-16 section-fade-up">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 bg-white/15 backdrop-blur-md border border-white/10">
+            <FaExclamationCircle className="text-[#F9A620]" />
+            <span className="text-sm font-semibold tracking-wider">
+              Why Ayurveda Dietetics?
             </span>
           </div>
 
-          <h2
-            className="text-[34px] md:text-[52px] font-extrabold mb-6 text-white"
-            style={{ fontFamily: "'Bitter', serif" }}
-          >
-            Academic & Professional Support
+          <h2 className="text-[36px] md:text-[52px] font-extrabold leading-[1.1] mb-6">
+            The Problem We Address
           </h2>
 
-          <div className="w-24 h-1.5 mx-auto rounded-full bg-[#F9A620] mb-8" />
+          <div className="w-24 h-1.5 mx-auto rounded-full bg-[#F9A620]" />
+        </div>
 
-          <p className="max-w-3xl mx-auto text-lg md:text-xl text-white/90 leading-relaxed font-medium">
-            Our work extends beyond individual education to empower institutions,
-            strengthen academic frameworks, and advance integrative health practice.
+        {/* Content Grid */}
+        <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+
+          {/* Left: Modern Nutrition Gap */}
+          <div
+            className="bg-white/10 backdrop-blur-xl p-8 rounded-3xl border border-white/20 section-slide-left hover:border-[#F9A620]/50 transition-colors duration-300 cursor-pointer group h-full flex flex-col"
+          >
+            <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mb-6">
+              <span className="text-2xl">🔬</span>
+            </div>
+            <h3 className="text-2xl font-bold mb-4">
+              Modern Nutrition
+            </h3>
+            <p className="text-white/90 text-lg leading-relaxed">
+              Focuses heavily on nutrients, often <span className="text-[#F9A620] font-bold">overlooking digestion</span> and the unique individuality of the person.
+            </p>
+            {/* <div className="mt-auto pt-6 flex items-center gap-2 text-[#F9A620] font-semibold text-sm opacity-0 group-hover:opacity-100 transition-opacity">
+              <span>The Gap</span> <FaArrowRight />
+            </div> */}
+          </div>
+
+          {/* Right: Ayurveda Gap */}
+          <div
+            className="bg-white/10 backdrop-blur-xl p-8 rounded-3xl border border-white/20 section-slide-right hover:border-[#F9A620]/50 transition-colors duration-300 cursor-pointer group h-full flex flex-col"
+            style={{ animationDelay: "0.2s" }}
+          >
+            <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mb-6">
+              <FaLeaf className="text-2xl" />
+            </div>
+            <h3 className="text-2xl font-bold mb-4">
+              Traditional Ayurveda
+            </h3>
+            <p className="text-white/90 text-lg leading-relaxed">
+              Offers choices to suit physiology and habitat, but sometimes <span className="text-[#F9A620] font-bold">misses out on nutrients</span> and modern scientific context.
+            </p>
+            {/* <div className="mt-auto pt-6 flex items-center gap-2 text-[#F9A620] font-semibold text-sm opacity-0 group-hover:opacity-100 transition-opacity">
+              <span>The Gap</span> <FaArrowRight />
+            </div> */}
+          </div>
+
+        </div>
+
+        {/* Synthesis Statement */}
+        <div className="mt-16 text-center max-w-3xl mx-auto section-fade-up" style={{ animationDelay: "0.4s" }}>
+          <p className="text-xl md:text-2xl font-medium leading-relaxed italic text-white/80">
+            "We need a bridge that brings the best of both worlds."
           </p>
         </div>
 
-        {/* Two Columns */}
-        <div className="grid md:grid-cols-2 gap-10">
-
-          {/* Consultancy */}
-          <div
-            className="group rounded-[2rem] p-8 md:p-10 transition-all duration-500 hover:-translate-y-2 border border-white/15 bg-white/10 backdrop-blur-md section-slide-up"
-            style={{ animationDelay: "0.2s" }}
-          >
-            <div className="flex items-center gap-5 mb-8">
-              <div className="w-16 h-16 rounded-2xl flex items-center justify-center text-3xl bg-white/20 text-white">
-                <FaUniversity />
-              </div>
-              <h3
-                className="text-2xl md:text-3xl font-bold text-white"
-                style={{ fontFamily: "'Bitter', serif" }}
-              >
-                Consultancy & <br /> Academic Services
-              </h3>
-            </div>
-
-            <p className="text-white/85 mb-8 leading-relaxed text-lg">
-              We collaborate with healthcare organizations and academic
-              institutions to design and guide integrative nutrition programs.
-            </p>
-
-            <ul className="space-y-4">
-              {[
-                "Institutional and clinical menu design",
-                "Curriculum and content development",
-                "Academic advisory for nutrition programs",
-              ].map((item, i) => (
-                <li key={i} className="flex gap-4 items-start">
-                  <FaCheckCircle className="mt-1 text-[#FFD166]" />
-                  <span className="text-white/90 font-medium">{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Faculty */}
-          <div
-            className="group rounded-[2rem] p-8 md:p-10 transition-all duration-500 hover:-translate-y-2 border border-white/15 bg-white/10 backdrop-blur-md section-slide-up"
-            style={{ animationDelay: "0.4s" }}
-          >
-            <div className="flex items-center gap-5 mb-8">
-              <div className="w-16 h-16 rounded-2xl flex items-center justify-center text-3xl bg-white/20 text-white">
-                <FaChalkboardTeacher />
-              </div>
-              <h3
-                className="text-2xl md:text-3xl font-bold text-white"
-                style={{ fontFamily: "'Bitter', serif" }}
-              >
-                Faculty & <br /> Course Instructors
-              </h3>
-            </div>
-
-            <p className="text-white/85 mb-8 leading-relaxed text-lg">
-              Learn directly from experienced academicians and clinicians who
-              combine theoretical depth with real-world expertise.
-            </p>
-
-            <ul className="space-y-4 mb-8">
-              {[
-                "Ayurveda Dietetics & Medicine",
-                "Modern Clinical Nutrition",
-                "Integrative Health Sciences",
-              ].map((item, i) => (
-                <li key={i} className="flex gap-4 items-start">
-                  <FaCheckCircle className="mt-1 text-[#FFD166]" />
-                  <span className="text-white/90 font-medium">{item}</span>
-                </li>
-              ))}
-            </ul>
-
-            <div className="pt-6 border-t border-white/20">
-              <p className="text-sm font-semibold text-white/70 italic">
-                * Detailed instructor profiles available on course pages
-              </p>
-            </div>
-          </div>
-
-        </div>
       </div>
 
       {/* Animations */}
       <style>{`
-        .section-fade-up {
-          opacity: 0;
-          animation: fadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-        }
-        .section-slide-up {
-          opacity: 0;
-          animation: slideUp 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-        }
-        @keyframes fadeUp {
-          from { opacity: 0; transform: translateY(40px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes slideUp {
-          from { opacity: 0; transform: translateY(80px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-      `}</style>
+                .section-fade-up {
+                    opacity: 0;
+                    animation: fadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+                }
+                .section-slide-left {
+                    opacity: 0;
+                    animation: slideLeft 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+                }
+                .section-slide-right {
+                    opacity: 0;
+                    animation: slideRight 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+                }
+                
+                @keyframes fadeUp {
+                    from { opacity: 0; transform: translateY(40px); }
+                    to { opacity: 1; transform: translateY(0); }
+                }
+                @keyframes slideLeft {
+                    from { opacity: 0; transform: translateX(-40px); }
+                    to { opacity: 1; transform: translateX(0); }
+                }
+                @keyframes slideRight {
+                    from { opacity: 0; transform: translateX(40px); }
+                    to { opacity: 1; transform: translateX(0); }
+                }
+            `}</style>
     </section>
   );
 }

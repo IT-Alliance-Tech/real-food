@@ -9,7 +9,7 @@ import {
 
 export default function AcademicSupportSection() {
     return (
-        <section className="relative w-full py-20 md:py-28 bg-[#2D6933] overflow-hidden">
+        <section className="relative w-full py-16 md:py-24 bg-[#2D6933] overflow-hidden">
 
             {/* subtle green texture */}
             <div
@@ -30,7 +30,7 @@ export default function AcademicSupportSection() {
                 <div className="text-center mb-16 animate-fade-up">
                     <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 bg-white/15">
                         <FaHandshake />
-                        <span className="text-sm font-semibold uppercase tracking-wider">
+                        <span className="text-sm font-semibold tracking-wider">
                             Partnerships
                         </span>
                     </div>
@@ -61,7 +61,7 @@ export default function AcademicSupportSection() {
 
                         <div className="relative">
                             <div className="flex items-center gap-4 mb-6">
-                                <div className="w-14 h-14 rounded-xl bg-white/20 flex items-center justify-center text-2xl transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
+                                <div className="flex items-center justify-center text-5xl transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
                                     <FaUniversity />
                                 </div>
                                 <h3 className="text-2xl font-bold">
@@ -81,7 +81,7 @@ export default function AcademicSupportSection() {
                                     "Academic advisory for nutrition programs",
                                 ].map((item, i) => (
                                     <li key={i} className="flex gap-3">
-                                        <FaCheckCircle className="text-[#FFD166] mt-1" />
+                                        <FaCheckCircle className="text-[#F9A620] mt-1" />
                                         <span>{item}</span>
                                     </li>
                                 ))}
@@ -100,7 +100,7 @@ export default function AcademicSupportSection() {
 
                         <div className="relative">
                             <div className="flex items-center gap-4 mb-6">
-                                <div className="w-14 h-14 rounded-xl bg-white/20 flex items-center justify-center text-2xl transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-3">
+                                <div className="flex items-center justify-center text-5xl transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-3">
                                     <FaChalkboardTeacher />
                                 </div>
                                 <h3 className="text-2xl font-bold">
@@ -120,7 +120,7 @@ export default function AcademicSupportSection() {
                                     "Integrative Health Sciences",
                                 ].map((item, i) => (
                                     <li key={i} className="flex gap-3">
-                                        <FaCheckCircle className="text-[#FFD166] mt-1" />
+                                        <FaCheckCircle className="text-[#F9A620] mt-1" />
                                         <span>{item}</span>
                                     </li>
                                 ))}
