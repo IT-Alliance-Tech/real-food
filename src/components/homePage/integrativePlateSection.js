@@ -277,9 +277,7 @@ export default function IntegrativePlateSection() {
         <div className="hero-reveal delay-3 text-center">
           <a
             href="#"
-            className="group relative inline-block px-10 py-4 text-base font-semibold
-            uppercase tracking-wide text-white transition-all duration-300
-            hover:shadow-xl rounded-lg overflow-hidden"
+            className="group relative inline-block px-10 py-4 text-base font-semibold uppercase tracking-wide text-white transition-all duration-300 hover:shadow-xl rounded-lg overflow-hidden"
             style={{
               backgroundColor: "#2D6933",
               fontFamily: "'Merriweather Sans', sans-serif",
