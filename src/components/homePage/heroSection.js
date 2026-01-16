@@ -1,0 +1,278 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+import { FaLeaf, FaSeedling } from "react-icons/fa";
+
+export default function HeroSection() {
+  const sectionRef = useRef(null);
+  const [animateKey, setAnimateKey] = useState(0);
+
+  useEffect(() => {
+    setAnimateKey((k) => k + 1);
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setAnimateKey((k) => k + 1);
+        }
+      },
+      { threshold: 0.35 }
+    );
+
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <section
+      ref={sectionRef}
+      className="relative min-h-[90vh] bg-white flex items-center overflow-hidden py-12 md:py-20"
+    >
+      {/* Decorative background elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* Gradient orbs */}
+        <div
+          className="absolute top-20 right-[10%] w-96 h-96 rounded-full blur-3xl opacity-20 bg-orb-1"
+        />
+        <div
+          className="absolute bottom-20 left-[5%] w-80 h-80 rounded-full blur-3xl opacity-15 bg-orb-2"
+        />
+
+        {/* Floating leaf decorations */}
+        <FaLeaf
+          className="absolute top-32 left-[8%] text-5xl opacity-5 float-1"
+          style={{ color: "#2D6933" }}
+        />
+        <FaSeedling
+          className="absolute top-[60%] right-[12%] text-4xl opacity-5 float-2"
+          style={{ color: "#2D6933" }}
+        />
+        <FaLeaf
+          className="absolute bottom-40 left-[15%] text-3xl opacity-5 float-3"
+          style={{ color: "#2D6933" }}
+        />
+      </div>
+
+      <div key={animateKey} className="relative max-w-6xl mx-auto px-6 text-center">
+
+        {/* Badge/Label */}
+        <div className="badge-fade mb-6">
+          <div
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full"
+            style={{
+              backgroundColor: "rgba(45, 105, 51, 0.08)",
+              border: "1px solid rgba(45, 105, 51, 0.2)"
+            }}
+          >
+            <div className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: "#2D6933" }} />
+            <span
+              className="text-sm md:text-base font-medium tracking-wide"
+              style={{
+                color: "#2D6933",
+                fontFamily: "'Merriweather Sans', sans-serif"
+              }}
+            >
+              Ayurveda Dietetics
+            </span>
+          </div>
+        </div>
+
+        {/* Heading */}
+        <h1
+          className="text-[56px] md:text-[88px] lg:text-[96px] leading-[0.95]
+          font-extrabold text-[#111111] max-w-4xl mx-auto mb-2"
+          style={{ fontFamily: "'Bitter', serif" }}
+        >
+          <span className="word">Food</span>{" "}
+          <span className="word">is</span>{" "}
+          <span className="word">more</span>{" "}
+          <span className="word">than</span>
+          <br />
+          <span className="word">just</span>{" "}
+          <span className="word highlight-word">calories.</span>
+        </h1>
+
+        {/* Accent line under heading */}
+        <div className="flex justify-center mt-6 accent-line">
+          <div
+            className="h-1.5 w-24 rounded-full"
+            style={{ backgroundColor: "#2D6933" }}
+          />
+        </div>
+
+        {/* Description & Icon */}
+        <div className="mt-12 flex flex-col items-center gap-6 fade-line">
+          <div className="relative">
+            {/* Glowing background for icon */}
+            <div
+              className="absolute inset-0 blur-xl opacity-40"
+              style={{ backgroundColor: "#2D6933" }}
+            />
+            <div
+              className="relative w-20 h-20 rounded-2xl flex items-center justify-center icon-bounce"
+              style={{ backgroundColor: "rgba(45, 105, 51, 0.1)" }}
+            >
+              <FaLeaf className="text-4xl" style={{ color: "#2D6933" }} />
+            </div>
+          </div>
+
+          <p
+            className="max-w-2xl mx-auto text-xl md:text-2xl
+            text-[#444444] leading-relaxed font-medium"
+            style={{ fontFamily: "'Merriweather Sans', sans-serif" }}
+          >
+            Better health begins with personalising diets.
+          </p>
+        </div>
+
+        {/* CTA */}
+        <div className="mt-14 fade-line delay-3">
+          <a
+            href="#"
+            className="group relative inline-block px-8 py-4 text-base font-semibold
+            uppercase tracking-wide text-white transition-all duration-300
+            hover:shadow-xl rounded-lg overflow-hidden"
+            style={{
+              backgroundColor: "#2D6933",
+              fontFamily: "'Merriweather Sans', sans-serif",
+            }}
+          >
+            <span className="relative z-10">Explore Our Courses</span>
+            <div
+              className="absolute inset-0 bg-gradient-to-r opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              style={{
+                backgroundImage: "linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0) 100%)"
+              }}
+            />
+          </a>
+        </div>
+
+        {/* Animations */}
+        <style>{`
+          .bg-orb-1 {
+            background: radial-gradient(circle, rgba(45, 105, 51, 0.3) 0%, rgba(45, 105, 51, 0) 70%);
+            animation: float 8s ease-in-out infinite;
+          }
+
+          .bg-orb-2 {
+            background: radial-gradient(circle, rgba(158, 209, 158, 0.3) 0%, rgba(158, 209, 158, 0) 70%);
+            animation: float 10s ease-in-out infinite reverse;
+          }
+
+          .float-1 {
+            animation: floatLeaf 6s ease-in-out infinite;
+          }
+
+          .float-2 {
+            animation: floatLeaf 8s ease-in-out infinite 2s;
+          }
+
+          .float-3 {
+            animation: floatLeaf 7s ease-in-out infinite 4s;
+          }
+
+          @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-30px); }
+          }
+
+          @keyframes floatLeaf {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+          }
+
+          .badge-fade {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.8s ease-out forwards;
+            animation-delay: 0.05s;
+          }
+
+          .word {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(60px);
+            animation: wordUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+          }
+
+          .word:nth-child(1) { animation-delay: 0.15s; }
+          .word:nth-child(2) { animation-delay: 0.25s; }
+          .word:nth-child(3) { animation-delay: 0.35s; }
+          .word:nth-child(4) { animation-delay: 0.45s; }
+          .word:nth-child(5) { animation-delay: 0.55s; }
+          .word:nth-child(6) { animation-delay: 0.65s; }
+
+          .highlight-word {
+            background: linear-gradient(120deg, transparent 0%, transparent 50%, rgba(45, 105, 51, 0.15) 50%, rgba(45, 105, 51, 0.15) 100%);
+            background-size: 220% 100%;
+            background-position: 100% 0;
+            animation: wordUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards,
+                       highlightSlide 1.2s ease-out forwards;
+            animation-delay: 0.65s, 1.3s;
+            padding: 0 0.2em;
+          }
+
+          @keyframes highlightSlide {
+            to {
+              background-position: 0 0;
+            }
+          }
+
+          .accent-line {
+            opacity: 0;
+            transform: scaleX(0);
+            animation: lineGrow 0.8s ease-out forwards;
+            animation-delay: 0.75s;
+          }
+
+          @keyframes lineGrow {
+            to {
+              opacity: 1;
+              transform: scaleX(1);
+            }
+          }
+
+          .fade-line {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 0.8s ease-out forwards;
+            animation-delay: 0.9s;
+          }
+
+          .delay-3 {
+            animation-delay: 1.2s;
+          }
+
+          .delay-4 {
+            animation-delay: 1.4s;
+          }
+
+          .icon-bounce {
+            animation: fadeUp 0.8s ease-out forwards, iconBounce 2s ease-in-out infinite;
+            animation-delay: 0.9s, 2s;
+          }
+
+          @keyframes wordUp {
+            to {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+
+          @keyframes fadeUp {
+            to {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+
+          @keyframes iconBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+          }
+        `}</style>
+
+      </div>
+    </section>
+  );
+}
