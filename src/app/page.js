@@ -5,6 +5,8 @@ import IntegrativePlateSection from "@/components/homePage/integrativePlateSecti
 import CoursesSection from "@/components/homePage/coursesSection";
 import WhoLearnsWithUsSection from "@/components/homePage/whoLearnsWithUsSection";
 import AcademicSupportSection from "@/components/homePage/academicSupportSection";
+import FaqSection from "@/components/homePage/faqSection";
+import ContactConnectSection from "@/components/homePage/contactConnectSection";
 
 export default function Home() {
   return (
@@ -16,6 +18,8 @@ export default function Home() {
       <CoursesSection />
       <WhoLearnsWithUsSection />
       <AcademicSupportSection />
+      <FaqSection />
+      <ContactConnectSection />
     </>
   );
 }

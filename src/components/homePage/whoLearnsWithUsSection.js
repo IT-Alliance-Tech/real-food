@@ -50,7 +50,7 @@ export default function WhoLearnsWithUsSection() {
     return (
         <section
             ref={sectionRef}
-            className="py-20 md:py-28 bg-gradient-to-b from-white to-[#F6F8F6]"
+            className="py-16 md:py-24 bg-gradient-to-b from-white to-[#F6F4F3]"
         >
             <div className="max-w-6xl mx-auto px-6">
 
@@ -58,11 +58,11 @@ export default function WhoLearnsWithUsSection() {
                 <div className="text-center mb-14">
                     <h2
                         className="text-[34px] md:text-[48px] font-extrabold"
-                        style={{ fontFamily: "'Bitter', serif", color: "#10295F" }}
+                        style={{ color: "#10295F" }}
                     >
                         Who learns with us
                     </h2>
-                    <p className="mt-3 text-gray-600 max-w-xl mx-auto">
+                    <p className="mt-3 text-[#181117]/80 max-w-xl mx-auto">
                         Professionals from diverse wellness backgrounds trust our learning ecosystem
                     </p>
                 </div>
@@ -73,8 +73,8 @@ export default function WhoLearnsWithUsSection() {
                     <div>
                         {/* Participants */}
                         <div className="flex items-center gap-5 mb-10">
-                            <div className="p-4 rounded-full bg-[#EAF2EC]">
-                                <FaUserGraduate className="text-3xl text-[#2D6933]" />
+                            <div className="flex items-center justify-center">
+                                <FaUserGraduate className="text-5xl text-[#2D6933]" />
                             </div>
                             <div>
                                 <p className="text-[40px] font-extrabold text-[#2D6933]">
@@ -101,7 +101,7 @@ export default function WhoLearnsWithUsSection() {
                                     className="h-full"
                                     style={{
                                         width: `${dietitians}%`,
-                                        background: "linear-gradient(90deg, #2D6933, #4E8A57)",
+                                        backgroundColor: "#2D6933",
                                     }}
                                 />
                             </div>
@@ -122,7 +122,7 @@ export default function WhoLearnsWithUsSection() {
                                     className="h-full"
                                     style={{
                                         width: `${therapists}%`,
-                                        background: "linear-gradient(90deg, #10295F, #345C9C)",
+                                        backgroundColor: "#10295F",
                                     }}
                                 />
                             </div>
@@ -133,7 +133,7 @@ export default function WhoLearnsWithUsSection() {
                     <div className="bg-white rounded-3xl p-8 shadow-md border">
                         <h3
                             className="text-2xl font-bold mb-6"
-                            style={{ color: "#10295F", fontFamily: "'Bitter', serif" }}
+                            style={{ color: "#10295F" }}
                         >
                             Rate this page
                         </h3>
@@ -146,11 +146,11 @@ export default function WhoLearnsWithUsSection() {
                                         key={star}
                                         className="text-2xl"
                                         style={{
-                                            color: star <= rating ? "#F9A620" : "#E0E0E0",
+                                            color: star <= rating ? "#F9A620" : "rgba(16, 41, 95, 0.15)",
                                         }}
                                     />
                                 ))}
-                                <span className="text-sm text-gray-600">
+                                <span className="text-sm text-[#181117]/80">
                                     {rating ? `${rating} / 5` : "Not rated"}
                                 </span>
                             </div>
@@ -160,7 +160,7 @@ export default function WhoLearnsWithUsSection() {
                                     className="h-full transition-all duration-300"
                                     style={{
                                         width: rating ? `${(rating / 5) * 100}%` : "0%",
-                                        background: "linear-gradient(90deg, #F9A620, #FFD166)",
+                                        backgroundColor: "#F9A620",
                                     }}
                                 />
                             </div>
@@ -173,7 +173,7 @@ export default function WhoLearnsWithUsSection() {
                                     key={star}
                                     className="text-4xl cursor-pointer transition-transform hover:scale-125"
                                     style={{
-                                        color: star <= (hover || rating) ? "#F9A620" : "#DDD",
+                                        color: star <= (hover || rating) ? "#F9A620" : "rgba(16, 41, 95, 0.15)",
                                     }}
                                     onMouseEnter={() => setHover(star)}
                                     onMouseLeave={() => setHover(0)}
@@ -187,12 +187,12 @@ export default function WhoLearnsWithUsSection() {
                             onChange={(e) => setReview(e.target.value)}
                             placeholder="Share your learning experience…"
                             rows={4}
-                            className="w-full p-4 rounded-xl border mb-5 resize-none focus:outline-none text-gray-800"
+                            className="w-full p-4 rounded-xl border mb-5 resize-none focus:outline-none text-[#181117]"
                             style={{ borderColor: "#2D6933" }}
                         />
 
                         <button
-                            className="w-full py-3 rounded-xl font-semibold text-white transition-all hover:scale-[1.02]"
+                            className="w-full py-3 rounded-xl font-semibold text-white transition-all hover:scale-[1.02] cursor-pointer"
                             style={{ backgroundColor: "#2D6933" }}
                         >
                             Submit Review

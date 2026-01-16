@@ -61,9 +61,9 @@ export default function CoursesSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative py-24 md:py-32 overflow-hidden"
+      className="relative py-16 md:py-24 overflow-hidden"
       style={{
-        background: "linear-gradient(135deg, #FAFAFA 0%, #F6F4F3 50%, #F9F7F6 100%)"
+        backgroundColor: "#F6F4F3"
       }}
     >
       {/* Decorative background elements */}
@@ -94,7 +94,6 @@ export default function CoursesSection() {
               className="text-sm md:text-base font-medium tracking-wide"
               style={{
                 color: "#2D6933",
-                fontFamily: "'Merriweather Sans', sans-serif"
               }}
             >
               Our Programs
@@ -105,7 +104,7 @@ export default function CoursesSection() {
         {/* Heading */}
         <h2
           className="section-fade-up text-center text-[48px] md:text-[72px] lg:text-[84px] font-extrabold leading-[1.05] mb-6"
-          style={{ color: "#10295F", fontFamily: "'Bitter', serif" }}
+          style={{ color: "#10295F" }}
         >
           Courses We Offer
         </h2>
@@ -123,7 +122,6 @@ export default function CoursesSection() {
           className="section-fade-up delay-1 text-center max-w-3xl mx-auto text-lg md:text-xl mb-20"
           style={{
             color: "rgba(16,41,95,0.7)",
-            fontFamily: "'Merriweather Sans', sans-serif",
           }}
         >
           All courses and learning materials are hosted on the official TDU platform for a seamless learning experience.
@@ -137,23 +135,22 @@ export default function CoursesSection() {
               href={course.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="course-card group"
+              className="course-card group cursor-pointer"
               style={{ animationDelay: course.delay }}
             >
               {/* Card Header with Icon */}
               <div className="flex items-start justify-between mb-6">
                 <div
-                  className="w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:rotate-6"
+                  className="flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:rotate-6"
                   style={{
-                    backgroundColor: `${course.color}15`,
                     color: course.color
                   }}
                 >
-                  <span className="text-2xl">{course.icon}</span>
+                  <span className="text-4xl">{course.icon}</span>
                 </div>
 
                 <div
-                  className="flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase"
+                  className="flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold tracking-wider"
                   style={{
                     backgroundColor: `${course.color}10`,
                     color: course.color
@@ -169,7 +166,6 @@ export default function CoursesSection() {
                 className="text-2xl md:text-3xl font-bold mb-4 transition-colors duration-300"
                 style={{
                   color: "#10295F",
-                  fontFamily: "'Bitter', serif"
                 }}
               >
                 {course.title}
@@ -180,7 +176,6 @@ export default function CoursesSection() {
                 className="text-base md:text-lg leading-relaxed mb-6"
                 style={{
                   color: "rgba(16,41,95,0.7)",
-                  fontFamily: "'Merriweather Sans', sans-serif"
                 }}
               >
                 {course.description}
@@ -220,7 +215,6 @@ export default function CoursesSection() {
             className="text-base md:text-lg mb-6"
             style={{
               color: "rgba(16,41,95,0.6)",
-              fontFamily: "'Merriweather Sans', sans-serif"
             }}
           >
             Ready to begin your journey in Ayurveda Dietetics?
@@ -232,7 +226,6 @@ export default function CoursesSection() {
             className="inline-flex items-center gap-3 px-8 py-4 rounded-xl font-semibold text-white transition-all duration-300 hover:shadow-xl hover:scale-105"
             style={{
               backgroundColor: "#2D6933",
-              fontFamily: "'Merriweather Sans', sans-serif"
             }}
           >
             Explore All Programs
