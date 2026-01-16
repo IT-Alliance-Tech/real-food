@@ -1,147 +1,206 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { FaUserMd, FaHeartbeat, FaSpa, FaChalkboardTeacher, FaUsers } from "react-icons/fa";
+import { FaStar, FaUserGraduate } from "react-icons/fa";
 
 export default function WhoLearnsWithUsSection() {
     const sectionRef = useRef(null);
-    const [animateKey, setAnimateKey] = useState(0);
 
+    const [count, setCount] = useState(0);
+    const [dietitians, setDietitians] = useState(0);
+    const [therapists, setTherapists] = useState(0);
+
+    const [rating, setRating] = useState(0);
+    const [hover, setHover] = useState(0);
+    const [review, setReview] = useState("");
+
+    const MAX_COUNT = 2053;
+    const MAX_DIETITIANS = 60;
+    const MAX_THERAPISTS = 40;
+
+    /* ---------- Scroll-based Counter ---------- */
     useEffect(() => {
-        setAnimateKey((k) => k + 1);
+        const handleScroll = () => {
+            if (!sectionRef.current) return;
 
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) {
-                    setAnimateKey((k) => k + 1);
-                }
-            },
-            { threshold: 0.3 }
-        );
+            const rect = sectionRef.current.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
 
-        if (sectionRef.current) observer.observe(sectionRef.current);
-        return () => observer.disconnect();
+            // how much section is visible (0 → 1)
+            const visible =
+                1 -
+                Math.min(
+                    Math.max(rect.top / windowHeight, 0),
+                    1
+                );
+
+            const progress = Math.min(Math.max(visible, 0), 1);
+
+            setCount(Math.floor(progress * MAX_COUNT));
+            setDietitians(Math.floor(progress * MAX_DIETITIANS));
+            setTherapists(Math.floor(progress * MAX_THERAPISTS));
+        };
+
+        window.addEventListener("scroll", handleScroll, { passive: true });
+        handleScroll();
+
+        return () => window.removeEventListener("scroll", handleScroll);
     }, []);
-
-    const personas = [
-        {
-            icon: <FaUserMd />,
-            title: "Doctors & Clinicians",
-            description: "Integrate ancient dietary wisdom with modern clinical practice for better patient outcomes.",
-            color: "#2D6933"
-        },
-        {
-            icon: <FaHeartbeat />,
-            title: "Nutritionists & Dietitians",
-            description: "Expand your toolkit beyond calories and macros to include digestion and constitution.",
-            color: "#10295F"
-        },
-        {
-            icon: <FaSpa />,
-            title: "Ayurveda Practitioners",
-            description: "Bridge the gap between traditional texts and contemporary nutritional science.",
-            color: "#F9A620"
-        },
-        {
-            icon: <FaChalkboardTeacher />,
-            title: "Yoga Therapists",
-            description: "Offer holistic lifestyle and dietary guidance to complement physical practices.",
-            color: "#2D6933"
-        }
-    ];
 
     return (
         <section
             ref={sectionRef}
-            className="relative py-24 md:py-32 overflow-hidden bg-white"
+            className="py-20 md:py-28 bg-gradient-to-b from-white to-[#F6F8F6]"
         >
-            <div key={animateKey} className="max-w-7xl mx-auto px-6">
+            <div className="max-w-6xl mx-auto px-6">
 
-                {/* Header */}
-                <div className="text-center mb-16 md:mb-24 section-fade-up">
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
-                        style={{ backgroundColor: "rgba(16, 41, 95, 0.05)" }}>
-                        <FaUsers className="text-[#10295F]" />
-                        <span className="text-sm font-semibold uppercase tracking-wider text-[#10295F]">Community</span>
-                    </div>
-
+                {/* Heading */}
+                <div className="text-center mb-14">
                     <h2
-                        className="text-[42px] md:text-[64px] font-extrabold leading-[1.1] mb-6"
+                        className="text-[34px] md:text-[48px] font-extrabold"
                         style={{ fontFamily: "'Bitter', serif", color: "#10295F" }}
                     >
-                        Who Learns With Us?
+                        Who learns with us
                     </h2>
-                    <div className="w-24 h-1.5 mx-auto rounded-full bg-[#F9A620] mb-8" />
-
-                    <p className="max-w-3xl mx-auto text-lg md:text-xl leading-relaxed text-gray-600 font-medium"
-                        style={{ fontFamily: "'Merriweather Sans', sans-serif" }}>
-                        Our courses are designed for forward-thinking health professionals ready to embrace an integrative approach.
+                    <p className="mt-3 text-gray-600 max-w-xl mx-auto">
+                        Professionals from diverse wellness backgrounds trust our learning ecosystem
                     </p>
                 </div>
 
-                {/* Persona Grid */}
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    {personas.map((persona, index) => (
-                        <div
-                            key={index}
-                            className="group relative p-8 rounded-3xl bg-gray-50 hover:bg-white border border-transparent hover:border-gray-100 shadow-sm hover:shadow-xl transition-all duration-500 ease-out flex flex-col items-center text-center stagger-slide-up"
-                            style={{ animationDelay: `${0.2 + (index * 0.15)}s` }}
+                <div className="grid md:grid-cols-2 gap-14 items-start">
+
+                    {/* LEFT — COUNTERS */}
+                    <div>
+                        {/* Participants */}
+                        <div className="flex items-center gap-5 mb-10">
+                            <div className="p-4 rounded-full bg-[#EAF2EC]">
+                                <FaUserGraduate className="text-3xl text-[#2D6933]" />
+                            </div>
+                            <div>
+                                <p className="text-[40px] font-extrabold text-[#2D6933]">
+                                    {count.toLocaleString()}+
+                                </p>
+                                <p className="text-sm text-gray-600">
+                                    participants trained
+                                </p>
+                            </div>
+                        </div>
+
+                        {/* Dietitians */}
+                        <div className="mb-6 p-6 rounded-2xl bg-white shadow-sm border">
+                            <div className="flex justify-between mb-2">
+                                <span className="font-medium text-[#2D6933]">
+                                    Dietitians & Nutrition Professionals
+                                </span>
+                                <span className="text-xl font-bold text-[#2D6933]">
+                                    {dietitians}%
+                                </span>
+                            </div>
+                            <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
+                                <div
+                                    className="h-full"
+                                    style={{
+                                        width: `${dietitians}%`,
+                                        background: "linear-gradient(90deg, #2D6933, #4E8A57)",
+                                    }}
+                                />
+                            </div>
+                        </div>
+
+                        {/* Therapists */}
+                        <div className="p-6 rounded-2xl bg-white shadow-sm border">
+                            <div className="flex justify-between mb-2">
+                                <span className="font-medium text-[#10295F]">
+                                    Yoga, Ayurveda & Food Professionals
+                                </span>
+                                <span className="text-xl font-bold text-[#10295F]">
+                                    {therapists}%
+                                </span>
+                            </div>
+                            <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
+                                <div
+                                    className="h-full"
+                                    style={{
+                                        width: `${therapists}%`,
+                                        background: "linear-gradient(90deg, #10295F, #345C9C)",
+                                    }}
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* RIGHT — RATING CARD */}
+                    <div className="bg-white rounded-3xl p-8 shadow-md border">
+                        <h3
+                            className="text-2xl font-bold mb-6"
+                            style={{ color: "#10295F", fontFamily: "'Bitter', serif" }}
                         >
-                            <div
-                                className="w-20 h-20 rounded-2xl flex items-center justify-center text-3xl mb-6 transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-3"
-                                style={{
-                                    backgroundColor: `${persona.color}15`,
-                                    color: persona.color
-                                }}
-                            >
-                                {persona.icon}
+                            Rate this page
+                        </h3>
+
+                        {/* Visual Indicator */}
+                        <div className="mb-6">
+                            <div className="flex items-center gap-3 mb-2">
+                                {[1, 2, 3, 4, 5].map((star) => (
+                                    <FaStar
+                                        key={star}
+                                        className="text-2xl"
+                                        style={{
+                                            color: star <= rating ? "#F9A620" : "#E0E0E0",
+                                        }}
+                                    />
+                                ))}
+                                <span className="text-sm text-gray-600">
+                                    {rating ? `${rating} / 5` : "Not rated"}
+                                </span>
                             </div>
 
-                            <h3
-                                className="text-xl font-bold mb-4"
-                                style={{ fontFamily: "'Bitter', serif", color: "#10295F" }}
-                            >
-                                {persona.title}
-                            </h3>
-
-                            <p
-                                className="text-gray-600 leading-relaxed text-sm md:text-base font-medium"
-                                style={{ fontFamily: "'Merriweather Sans', sans-serif" }}
-                            >
-                                {persona.description}
-                            </p>
-
-                            <div
-                                className="absolute bottom-0 left-0 w-full h-1.5 transition-transform duration-300 transform scale-x-0 group-hover:scale-x-100 origin-center"
-                                style={{ backgroundColor: persona.color }}
-                            />
+                            <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
+                                <div
+                                    className="h-full transition-all duration-300"
+                                    style={{
+                                        width: rating ? `${(rating / 5) * 100}%` : "0%",
+                                        background: "linear-gradient(90deg, #F9A620, #FFD166)",
+                                    }}
+                                />
+                            </div>
                         </div>
-                    ))}
+
+                        {/* Click Stars */}
+                        <div className="flex gap-3 mb-6">
+                            {[1, 2, 3, 4, 5].map((star) => (
+                                <FaStar
+                                    key={star}
+                                    className="text-4xl cursor-pointer transition-transform hover:scale-125"
+                                    style={{
+                                        color: star <= (hover || rating) ? "#F9A620" : "#DDD",
+                                    }}
+                                    onMouseEnter={() => setHover(star)}
+                                    onMouseLeave={() => setHover(0)}
+                                    onClick={() => setRating(star)}
+                                />
+                            ))}
+                        </div>
+
+                        <textarea
+                            value={review}
+                            onChange={(e) => setReview(e.target.value)}
+                            placeholder="Share your learning experience…"
+                            rows={4}
+                            className="w-full p-4 rounded-xl border mb-5 resize-none focus:outline-none text-gray-800"
+                            style={{ borderColor: "#2D6933" }}
+                        />
+
+                        <button
+                            className="w-full py-3 rounded-xl font-semibold text-white transition-all hover:scale-[1.02]"
+                            style={{ backgroundColor: "#2D6933" }}
+                        >
+                            Submit Review
+                        </button>
+                    </div>
+
                 </div>
-
             </div>
-
-            <style>{`
-        .section-fade-up {
-            opacity: 0;
-            animation: fadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-        }
-        
-        .stagger-slide-up {
-            opacity: 0;
-            animation: slideUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-        }
-
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(60px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-      `}</style>
         </section>
     );
 }
