@@ -79,8 +79,7 @@ export default function HeroSection() {
 
         {/* Heading */}
         <h1
-          className="text-[56px] md:text-[88px] lg:text-[96px] leading-[0.95]
-          font-extrabold text-[#111111] max-w-4xl mx-auto mb-2"
+          className="text-[56px] md:text-[88px] lg:text-[96px] leading-[0.95] font-extrabold text-[#111111] max-w-4xl mx-auto mb-2"
           style={{ fontFamily: "'Bitter', serif" }}
         >
           <span className="word">Food</span>{" "}
@@ -117,8 +116,7 @@ export default function HeroSection() {
           </div>
 
           <p
-            className="max-w-2xl mx-auto text-xl md:text-2xl
-            text-[#444444] leading-relaxed font-medium"
+            className="max-w-2xl mx-auto text-xl md:text-2xl text-[#444444] leading-relaxed font-medium"
             style={{ fontFamily: "'Merriweather Sans', sans-serif" }}
           >
             Better health begins with personalising diets.
@@ -129,9 +127,7 @@ export default function HeroSection() {
         <div className="mt-14 fade-line delay-3">
           <a
             href="#"
-            className="group relative inline-block px-8 py-4 text-base font-semibold
-            uppercase tracking-wide text-white transition-all duration-300
-            hover:shadow-xl rounded-lg overflow-hidden"
+            className="group relative inline-block px-8 py-4 text-base font-semibold uppercase tracking-wide text-white transition-all duration-300 hover:shadow-xl rounded-lg overflow-hidden"
             style={{
               backgroundColor: "#2D6933",
               fontFamily: "'Merriweather Sans', sans-serif",

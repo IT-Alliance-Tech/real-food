@@ -4,6 +4,7 @@ import ComparisonSection from "@/components/homePage/comparisonSection";
 import IntegrativePlateSection from "@/components/homePage/integrativePlateSection";
 import CoursesSection from "@/components/homePage/coursesSection";
 import WhoLearnsWithUsSection from "@/components/homePage/whoLearnsWithUsSection";
+import AcademicSupportSection from "@/components/homePage/academicSupportSection";
 
 export default function Home() {
   return (
@@ -13,7 +14,8 @@ export default function Home() {
       <ComparisonSection />
       <IntegrativePlateSection />
       <CoursesSection />
-      {/* <WhoLearnsWithUsSection /> */}
+      <WhoLearnsWithUsSection />
+      <AcademicSupportSection />
     </>
   );
 }
