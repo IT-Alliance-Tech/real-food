@@ -5,6 +5,7 @@ import { FaStar, FaUserGraduate } from "react-icons/fa";
 
 export default function WhoLearnsWithUsSection() {
     const sectionRef = useRef(null);
+    const rafRef = useRef(null);
 
     const [count, setCount] = useState(0);
     const [dietitians, setDietitians] = useState(0);
@@ -18,7 +19,7 @@ export default function WhoLearnsWithUsSection() {
     const MAX_DIETITIANS = 60;
     const MAX_THERAPISTS = 40;
 
-    /* ---------- Scroll-based Counter ---------- */
+    /* ---------- Extra Smooth Scroll-based Counter ---------- */
     useEffect(() => {
         const handleScroll = () => {
             if (!sectionRef.current) return;
@@ -26,25 +27,49 @@ export default function WhoLearnsWithUsSection() {
             const rect = sectionRef.current.getBoundingClientRect();
             const windowHeight = window.innerHeight;
 
-            // how much section is visible (0 → 1)
             const visible =
-                1 -
-                Math.min(
-                    Math.max(rect.top / windowHeight, 0),
-                    1
-                );
+                1 - Math.min(Math.max(rect.top / windowHeight, 0), 1);
 
             const progress = Math.min(Math.max(visible, 0), 1);
 
-            setCount(Math.floor(progress * MAX_COUNT));
-            setDietitians(Math.floor(progress * MAX_DIETITIANS));
-            setTherapists(Math.floor(progress * MAX_THERAPISTS));
+            const targetCount = Math.floor(progress * MAX_COUNT);
+            const targetDietitians = Math.floor(progress * MAX_DIETITIANS);
+            const targetTherapists = Math.floor(progress * MAX_THERAPISTS);
+
+            cancelAnimationFrame(rafRef.current);
+
+            const animate = () => {
+                setCount((prev) =>
+                    Math.abs(targetCount - prev) < 1
+                        ? targetCount
+                        : prev + (targetCount - prev) * 0.05
+                );
+
+                setDietitians((prev) =>
+                    Math.abs(targetDietitians - prev) < 1
+                        ? targetDietitians
+                        : prev + (targetDietitians - prev) * 0.05
+                );
+
+                setTherapists((prev) =>
+                    Math.abs(targetTherapists - prev) < 1
+                        ? targetTherapists
+                        : prev + (targetTherapists - prev) * 0.05
+                );
+
+                rafRef.current = requestAnimationFrame(animate);
+            };
+
+            animate();
         };
 
         window.addEventListener("scroll", handleScroll, { passive: true });
         handleScroll();
 
-        return () => window.removeEventListener("scroll", handleScroll);
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+            cancelAnimationFrame(rafRef.current);
+        };
     }, []);
 
     return (
@@ -71,14 +96,11 @@ export default function WhoLearnsWithUsSection() {
 
                     {/* LEFT — COUNTERS */}
                     <div>
-                        {/* Participants */}
                         <div className="flex items-center gap-5 mb-10">
-                            <div className="flex items-center justify-center">
-                                <FaUserGraduate className="text-5xl text-[#2D6933]" />
-                            </div>
+                            <FaUserGraduate className="text-5xl text-[#2D6933]" />
                             <div>
                                 <p className="text-[40px] font-extrabold text-[#2D6933]">
-                                    {count.toLocaleString()}+
+                                    {Math.floor(count).toLocaleString()}+
                                 </p>
                                 <p className="text-sm text-gray-600">
                                     participants trained
@@ -86,19 +108,18 @@ export default function WhoLearnsWithUsSection() {
                             </div>
                         </div>
 
-                        {/* Dietitians */}
                         <div className="mb-6 p-6 rounded-2xl bg-white shadow-sm border">
                             <div className="flex justify-between mb-2">
                                 <span className="font-medium text-[#2D6933]">
                                     Dietitians & Nutrition Professionals
                                 </span>
                                 <span className="text-xl font-bold text-[#2D6933]">
-                                    {dietitians}%
+                                    {Math.floor(dietitians)}%
                                 </span>
                             </div>
                             <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
                                 <div
-                                    className="h-full"
+                                    className="h-full transition-all"
                                     style={{
                                         width: `${dietitians}%`,
                                         backgroundColor: "#2D6933",
@@ -107,19 +128,18 @@ export default function WhoLearnsWithUsSection() {
                             </div>
                         </div>
 
-                        {/* Therapists */}
                         <div className="p-6 rounded-2xl bg-white shadow-sm border">
                             <div className="flex justify-between mb-2">
                                 <span className="font-medium text-[#10295F]">
                                     Yoga, Ayurveda & Food Professionals
                                 </span>
                                 <span className="text-xl font-bold text-[#10295F]">
-                                    {therapists}%
+                                    {Math.floor(therapists)}%
                                 </span>
                             </div>
                             <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
                                 <div
-                                    className="h-full"
+                                    className="h-full transition-all"
                                     style={{
                                         width: `${therapists}%`,
                                         backgroundColor: "#10295F",
@@ -138,19 +158,12 @@ export default function WhoLearnsWithUsSection() {
                             Rate this page
                         </h3>
 
-                        {/* Visual Indicator */}
                         <div className="mb-6">
-                            <div className="flex items-center gap-3 mb-2">
-                                {[1, 2, 3, 4, 5].map((star) => (
-                                    <FaStar
-                                        key={star}
-                                        className="text-2xl"
-                                        style={{
-                                            color: star <= rating ? "#F9A620" : "rgba(16, 41, 95, 0.15)",
-                                        }}
-                                    />
-                                ))}
+                            <div className="flex items-center justify-between mb-2">
                                 <span className="text-sm text-[#181117]/80">
+                                    Rating
+                                </span>
+                                <span className="text-sm font-semibold text-[#10295F]">
                                     {rating ? `${rating} / 5` : "Not rated"}
                                 </span>
                             </div>
@@ -166,14 +179,16 @@ export default function WhoLearnsWithUsSection() {
                             </div>
                         </div>
 
-                        {/* Click Stars */}
                         <div className="flex gap-3 mb-6">
                             {[1, 2, 3, 4, 5].map((star) => (
                                 <FaStar
                                     key={star}
                                     className="text-4xl cursor-pointer transition-transform hover:scale-125"
                                     style={{
-                                        color: star <= (hover || rating) ? "#F9A620" : "rgba(16, 41, 95, 0.15)",
+                                        color:
+                                            star <= (hover || rating)
+                                                ? "#F9A620"
+                                                : "rgba(16,41,95,0.15)",
                                     }}
                                     onMouseEnter={() => setHover(star)}
                                     onMouseLeave={() => setHover(0)}
@@ -192,7 +207,7 @@ export default function WhoLearnsWithUsSection() {
                         />
 
                         <button
-                            className="w-full py-3 rounded-xl font-semibold text-white transition-all hover:scale-[1.02] cursor-pointer"
+                            className="w-full py-3 rounded-xl font-semibold text-white transition-all hover:scale-[1.02]"
                             style={{ backgroundColor: "#2D6933" }}
                         >
                             Submit Review
