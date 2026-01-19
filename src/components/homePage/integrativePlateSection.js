@@ -268,7 +268,9 @@ export default function IntegrativePlateSection() {
         {/* CTA */}
         <div className="hero-reveal delay-3 text-center">
           <a
-            href="#"
+            href="https://www.tdu.edu.in/"
+            target="_blank"
+            rel="noopener noreferrer"
             className="group relative inline-block px-10 py-4 text-base font-semibold tracking-wide text-white transition-all duration-300 hover:shadow-xl rounded-lg overflow-hidden"
             style={{
               backgroundColor: "#2D6933",
@@ -281,10 +283,12 @@ export default function IntegrativePlateSection() {
             <div
               className="absolute inset-0 bg-gradient-to-r opacity-0 group-hover:opacity-100 transition-opacity duration-300"
               style={{
-                backgroundImage: "linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0) 100%)"
+                backgroundImage:
+                  "linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0) 100%)",
               }}
             />
           </a>
+
         </div>
 
       </div>
