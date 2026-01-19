@@ -7,6 +7,7 @@ import WhoLearnsWithUsSection from "@/components/homePage/whoLearnsWithUsSection
 import AcademicSupportSection from "@/components/homePage/academicSupportSection";
 import FaqSection from "@/components/homePage/faqSection";
 import ContactConnectSection from "@/components/homePage/contactConnectSection";
+import FacultyScrollSection from "@/components/homePage/facultyScrollSection";
 
 export default function Home() {
   return (
@@ -18,8 +19,10 @@ export default function Home() {
       <CoursesSection />
       <WhoLearnsWithUsSection />
       <AcademicSupportSection />
+      <FacultyScrollSection />
       <FaqSection />
       <ContactConnectSection />
+
     </>
   );
 }
