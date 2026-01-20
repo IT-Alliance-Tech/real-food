@@ -9,6 +9,7 @@ import FaqSection from "@/components/homePage/faqSection";
 import ContactConnectSection from "@/components/homePage/contactConnectSection";
 import FacultyScrollSection from "@/components/homePage/facultyScrollSection";
 import KnowledgeLevelSection from "@/components/homePage/knowledgeLevelSection";
+import ImpactRecommendationSection from "@/components/homePage/impactRecommendationSection";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
       <CoursesSection />
       <WhoLearnsWithUsSection />
       <KnowledgeLevelSection />
+      <ImpactRecommendationSection />
       <AcademicSupportSection />
       <FacultyScrollSection />
       <FaqSection />
