@@ -53,38 +53,41 @@ export default function KnowledgeLevelSection() {
         );
 
         if (sectionRef.current) observer.observe(sectionRef.current);
-
         return () => observer.disconnect();
     }, []);
 
     return (
         <section
             ref={sectionRef}
-            className="py-16 md:py-24 bg-[#F6F4F3]"
+            className="pt-6 pb-12 md:pt-8 md:pb-16 bg-[#F6F4F3]"
         >
             <div className="max-w-6xl mx-auto px-6">
 
                 {/* Heading */}
                 <div
-                    className={`text-center mb-12 transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                    className={`text-center mb-6 transition-all duration-1000 ${isVisible
+                            ? "opacity-100 translate-y-0"
+                            : "opacity-0 translate-y-8"
                         }`}
                 >
-                    <h2 className="text-[36px] md:text-[48px] font-extrabold text-[#10295F] mb-3">
+                    <h2 className="text-[32px] md:text-[44px] font-extrabold text-[#10295F] mb-2">
                         Knowledge Level Improvement
                     </h2>
-                    <p className="text-lg text-[#181117]/70 max-w-2xl mx-auto">
+                    <p className="text-base md:text-lg text-[#181117]/70 max-w-2xl mx-auto">
                         Track the remarkable growth in participant knowledge levels before and after completing our program
                     </p>
                 </div>
 
                 {/* Chart Card */}
                 <div
-                    className={`bg-white rounded-3xl p-6 md:p-10 shadow-sm transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                    className={`bg-white rounded-3xl pt-4 pb-6 px-6 md:pt-6 md:pb-8 md:px-10 shadow-sm transition-all duration-700 ${isVisible
+                            ? "opacity-100 translate-y-0"
+                            : "opacity-0 translate-y-8"
                         }`}
                     style={{ transitionDelay: "150ms" }}
                 >
                     {/* Legend */}
-                    <div className="flex justify-center gap-8 mb-8 flex-wrap">
+                    <div className="flex justify-center gap-8 mb-6 flex-wrap">
                         <div className="flex items-center gap-2">
                             <div className="w-12 h-1 bg-[#F9A620] rounded-full" />
                             <span className="text-sm font-semibold text-[#10295F]">
@@ -100,7 +103,7 @@ export default function KnowledgeLevelSection() {
                     </div>
 
                     {/* Chart */}
-                    <div className="w-full h-[360px]">
+                    <div className="w-full h-[340px]">
                         <ResponsiveContainer width="100%" height="100%">
                             <LineChart data={data}>
                                 <CartesianGrid
@@ -188,7 +191,9 @@ export default function KnowledgeLevelSection() {
 
                 {/* Highlight Counter */}
                 <div
-                    className={`text-center mt-12 transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                    className={`text-center mt-8 transition-all duration-1000 ${isVisible
+                            ? "opacity-100 translate-y-0"
+                            : "opacity-0 translate-y-8"
                         }`}
                     style={{ transitionDelay: "350ms" }}
                 >
