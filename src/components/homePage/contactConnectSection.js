@@ -123,26 +123,49 @@ export default function ContactConnectSection() {
                             Reach out for personalised academic guidance or collaborations.
                         </p>
 
-                        <div className="flex flex-wrap gap-3">
+                        {/* HERO-STYLE BUTTONS */}
+                        <div className="flex flex-wrap gap-4">
+
+                            {/* Email */}
                             <a
                                 href="mailto:wellness@tdu.edu.in"
-                                className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-[#F9A620] text-black font-semibold text-sm hover:scale-105 transition-transform"
+                                className="group relative inline-flex items-center gap-2 px-8 py-4 text-sm font-semibold tracking-wide text-black transition-all duration-300 hover:shadow-xl rounded-lg overflow-hidden"
+                                style={{ backgroundColor: "#F9A620" }}
                             >
-                                <FaEnvelope />
-                                Email
+                                <FaEnvelope className="relative z-10" />
+                                <span className="relative z-10">Email</span>
+
+                                <div
+                                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                                    style={{
+                                        backgroundImage:
+                                            "linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.25) 50%, rgba(255,255,255,0) 100%)",
+                                    }}
+                                />
                             </a>
 
+                            {/* WhatsApp */}
                             <a
                                 href="https://wa.me/917975651724"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-[#F6F4F3] text-[#2D6933] font-semibold text-sm hover:scale-105 transition-transform"
+                                className="group relative inline-flex items-center gap-2 px-8 py-4 text-sm font-semibold tracking-wide text-[#2D6933] transition-all duration-300 hover:shadow-xl rounded-lg overflow-hidden"
+                                style={{ backgroundColor: "#F6F4F3" }}
                             >
-                                <FaWhatsapp />
-                                WhatsApp
+                                <FaWhatsapp className="relative z-10" />
+                                <span className="relative z-10">WhatsApp</span>
+
+                                <div
+                                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                                    style={{
+                                        backgroundImage:
+                                            "linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.25) 50%, rgba(255,255,255,0) 100%)",
+                                    }}
+                                />
                             </a>
                         </div>
 
+                        {/* Instagram */}
                         <div className="pt-4 mt-6 border-t border-white/20 text-sm">
                             <a
                                 href="https://instagram.com/TDUPGConnect"
