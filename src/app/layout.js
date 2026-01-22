@@ -2,6 +2,7 @@ import { Bitter, Merriweather_Sans } from "next/font/google";
 import "./globals.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import FloatingWhatsAppButton from "../components/floatingWhatsAppButton";
 
 
 const bitter = Bitter({
@@ -28,6 +29,7 @@ export default function RootLayout({ children }) {
         className={`${bitter.variable} ${merriweatherSans.variable} antialiased`}
       >
         {children}
+        <FloatingWhatsAppButton />
       </body>
     </html>
   );
