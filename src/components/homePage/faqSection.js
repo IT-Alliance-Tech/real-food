@@ -139,10 +139,23 @@ export default function FAQSection() {
                         href="https://www.tdu.edu.in/education-programs#learnforlife"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-3 px-10 py-5 rounded-full bg-[#2D6933] text-white font-semibold text-lg hover:scale-105 transition-transform shadow-xl"
+                        className="group relative inline-block px-8 py-4 text-base font-semibold tracking-wide text-white transition-all duration-300 hover:shadow-xl rounded-lg overflow-hidden"
+                        style={{ backgroundColor: "#2D6933" }}
                     >
-                        Explore All Courses →
+                        <span className="relative z-10">
+                            Explore All Courses →
+                        </span>
+
+                        {/* Hover shine */}
+                        <div
+                            className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                            style={{
+                                backgroundImage:
+                                    "linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0) 100%)",
+                            }}
+                        />
                     </a>
+
                 </div>
             </div>
 

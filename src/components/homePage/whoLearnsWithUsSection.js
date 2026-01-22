@@ -19,7 +19,7 @@ export default function WhoLearnsWithUsSection() {
     const MAX_DIETITIANS = 60;
     const MAX_THERAPISTS = 40;
 
-    /* ---------- Extra Smooth Scroll-based Counter ---------- */
+    /* ---------- Smooth Scroll-based Counter ---------- */
     useEffect(() => {
         const handleScroll = () => {
             if (!sectionRef.current) return;
@@ -27,9 +27,7 @@ export default function WhoLearnsWithUsSection() {
             const rect = sectionRef.current.getBoundingClientRect();
             const windowHeight = window.innerHeight;
 
-            const visible =
-                1 - Math.min(Math.max(rect.top / windowHeight, 0), 1);
-
+            const visible = 1 - Math.min(Math.max(rect.top / windowHeight, 0), 1);
             const progress = Math.min(Math.max(visible, 0), 1);
 
             const targetCount = Math.floor(progress * MAX_COUNT);
@@ -202,15 +200,27 @@ export default function WhoLearnsWithUsSection() {
                             onChange={(e) => setReview(e.target.value)}
                             placeholder="Share your learning experience…"
                             rows={4}
-                            className="w-full p-4 rounded-xl border mb-5 resize-none focus:outline-none text-[#181117]"
+                            className="w-full p-4 rounded-xl border mb-6 resize-none focus:outline-none text-[#181117]"
                             style={{ borderColor: "#2D6933" }}
                         />
 
+                        {/* HERO-STYLE SUBMIT BUTTON */}
                         <button
-                            className="w-full py-3 rounded-xl font-semibold text-white transition-all hover:scale-[1.02]"
+                            className="group relative w-full inline-flex justify-center px-8 py-4 text-sm font-semibold tracking-wide text-white transition-all duration-300 hover:shadow-xl rounded-lg overflow-hidden"
                             style={{ backgroundColor: "#2D6933" }}
                         >
-                            Submit Review
+                            <span className="relative z-10">
+                                Submit Review
+                            </span>
+
+                            {/* Hover shine */}
+                            <div
+                                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                                style={{
+                                    backgroundImage:
+                                        "linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.15) 50%, rgba(255,255,255,0) 100%)",
+                                }}
+                            />
                         </button>
                     </div>
 

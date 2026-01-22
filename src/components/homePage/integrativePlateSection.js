@@ -1,6 +1,11 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
+
+/* -------------------- IMAGE IMPORTS -------------------- */
+import nutrientPlate from "../../../public/nutritionalview.png";
+import ayurvedicPlate from "../../../public/ayurvedicview.png";
 
 export default function IntegrativePlateSection() {
   const sectionRef = useRef(null);
@@ -70,10 +75,7 @@ export default function IntegrativePlateSection() {
 
         {/* Accent line */}
         <div className="hero-reveal delay-1 flex justify-center mb-8">
-          <div
-            className="h-1.5 w-24 rounded-full"
-            style={{ backgroundColor: "#10295F" }}
-          />
+          <div className="h-1.5 w-24 rounded-full" style={{ backgroundColor: "#10295F" }} />
         </div>
 
         {/* Subheading */}
@@ -100,24 +102,21 @@ export default function IntegrativePlateSection() {
                 className="p-6"
                 style={{ backgroundColor: "rgba(16, 41, 95, 0.05)" }}
               >
-                <h3
-                  className="text-2xl md:text-3xl font-bold"
-                  style={{ color: "#10295F" }}
-                >
+                <h3 className="text-2xl md:text-3xl font-bold" style={{ color: "#10295F" }}>
                   Nutrient View
                 </h3>
               </div>
 
-              <div
-                className="relative h-72 flex items-center justify-center"
-                style={{ backgroundColor: "#F6F4F3" }}
-              >
-                <span
-                  className="text-sm font-medium"
-                  style={{ color: "rgba(16, 41, 95, 0.4)" }}
-                >
-                  Image Placeholder – Macros & Micronutrients
-                </span>
+              {/* Image */}
+              <div className="relative h-80 md:h-90 bg-[#F6F4F3]">
+
+                <Image
+                  src={nutrientPlate}
+                  alt="Nutrient View Plate"
+                  fill
+                  className="object-contain p-6"
+                  priority
+                />
               </div>
 
               <div className="h-2 w-full transition-all duration-500 group-hover:h-3" style={{ backgroundColor: "#10295F" }} />
@@ -137,24 +136,19 @@ export default function IntegrativePlateSection() {
                 className="p-6"
                 style={{ backgroundColor: "rgba(45, 105, 51, 0.05)" }}
               >
-                <h3
-                  className="text-2xl md:text-3xl font-bold"
-                  style={{ color: "#2D6933" }}
-                >
+                <h3 className="text-2xl md:text-3xl font-bold" style={{ color: "#2D6933" }}>
                   Ayurvedic View
                 </h3>
               </div>
 
-              <div
-                className="relative h-72 flex items-center justify-center"
-                style={{ backgroundColor: "#F6F4F3" }}
-              >
-                <span
-                  className="text-sm font-medium"
-                  style={{ color: "rgba(45, 105, 51, 0.4)" }}
-                >
-                  Image Placeholder – Doshas & Properties
-                </span>
+              {/* Image */}
+              <div className="relative h-80 md:h-90 bg-[#F6F4F3]">
+                <Image
+                  src={ayurvedicPlate}
+                  alt="Ayurvedic View Plate"
+                  fill
+                  className="object-contain p-6"
+                />
               </div>
 
               <div className="h-2 w-full transition-all duration-500 group-hover:h-3" style={{ backgroundColor: "#2D6933" }} />
@@ -172,10 +166,7 @@ export default function IntegrativePlateSection() {
               border: "1px solid rgba(16, 41, 95, 0.1)"
             }}
           >
-            <p
-              className="text-xl md:text-2xl leading-relaxed font-medium"
-              style={{ color: "#10295F" }}
-            >
+            <p className="text-xl md:text-2xl leading-relaxed font-medium" style={{ color: "#10295F" }}>
               Ayurveda Dietetics trains health professionals to interpret the same
               meal through multiple scientific lenses.
             </p>
@@ -191,29 +182,17 @@ export default function IntegrativePlateSection() {
             className="group relative inline-block px-10 py-4 text-base font-semibold tracking-wide text-white transition-all duration-300 hover:shadow-xl rounded-lg overflow-hidden"
             style={{ backgroundColor: "#2D6933" }}
           >
-            <span className="relative z-10">
-              Explore the Curriculum →
-            </span>
+            Explore the Curriculum →
           </a>
         </div>
 
       </div>
 
+      {/* Animations */}
       <style>{`
-        .hero-reveal {
-          opacity: 0;
-          animation: fadeUp 1.1s cubic-bezier(0.22,1,0.36,1) forwards;
-        }
-        .hero-reveal-left {
-          opacity: 0;
-          animation: slideLeft 1.2s cubic-bezier(0.22,1,0.36,1) forwards;
-          animation-delay: 0.3s;
-        }
-        .hero-reveal-right {
-          opacity: 0;
-          animation: slideRight 1.2s cubic-bezier(0.22,1,0.36,1) forwards;
-          animation-delay: 0.5s;
-        }
+        .hero-reveal { opacity: 0; animation: fadeUp 1.1s cubic-bezier(0.22,1,0.36,1) forwards; }
+        .hero-reveal-left { opacity: 0; animation: slideLeft 1.2s cubic-bezier(0.22,1,0.36,1) forwards; animation-delay: 0.3s; }
+        .hero-reveal-right { opacity: 0; animation: slideRight 1.2s cubic-bezier(0.22,1,0.36,1) forwards; animation-delay: 0.5s; }
         .delay-1 { animation-delay: 0.2s; }
         .delay-2 { animation-delay: 0.7s; }
         .delay-3 { animation-delay: 0.9s; }
