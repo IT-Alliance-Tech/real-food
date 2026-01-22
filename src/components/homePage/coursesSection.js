@@ -223,14 +223,26 @@ export default function CoursesSection() {
             href="https://www.tdu.edu.in"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 px-8 py-4 rounded-xl font-semibold text-white transition-all duration-300 hover:shadow-xl hover:scale-105"
-            style={{
-              backgroundColor: "#2D6933",
-            }}
+            className="group relative inline-flex items-center gap-2 px-8 py-4 text-base font-semibold tracking-wide text-white transition-all duration-300 hover:shadow-xl rounded-lg overflow-hidden"
+            style={{ backgroundColor: "#2D6933" }}
           >
-            Explore All Programs
-            <FaExternalLinkAlt className="text-sm" />
+            <span className="relative z-10">
+              Explore All Programs
+            </span>
+
+            {/* optional icon */}
+            <FaExternalLinkAlt className="relative z-10 text-sm" />
+
+            {/* hover shine */}
+            <div
+              className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              style={{
+                backgroundImage:
+                  "linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.15) 50%, rgba(255,255,255,0) 100%)",
+              }}
+            />
           </a>
+
         </div>
 
       </div>
