@@ -1,6 +1,11 @@
 "use client";
 
+import Image from "next/image";
 import { FaUniversity, FaCheckCircle, FaHandshake } from "react-icons/fa";
+
+/* ---------- IMAGE IMPORT ---------- */
+/* Replace the path/name if your image is different */
+import AcademicImage from "../../../public/university.png";
 
 export default function AcademicSupportSection() {
     return (
@@ -76,11 +81,20 @@ export default function AcademicSupportSection() {
                         </ul>
                     </div>
 
-                    {/* RIGHT — Visual Accent (NO new content) */}
+                    {/* RIGHT — Image */}
                     <div className="relative animate-slide-right">
+                        {/* Soft glow */}
                         <div className="absolute inset-0 rounded-[32px] bg-white/10 blur-xl" />
-                        <div className="relative h-[280px] rounded-[32px] border border-white/20 flex items-center justify-center">
-                            <FaUniversity className="text-[120px] text-white/20" />
+
+                        {/* Image container */}
+                        <div className="relative h-[280px] rounded-[32px] overflow-hidden border border-white/20">
+                            <Image
+                                src={AcademicImage}
+                                alt="Academic and professional support"
+                                fill
+                                className="object-cover"
+                                priority
+                            />
                         </div>
                     </div>
 
