@@ -21,32 +21,44 @@ const data = [
 
 export default function KnowledgeLevelSection() {
     const sectionRef = useRef(null);
-    const hasAnimated = useRef(false);
+    const counterTimer = useRef(null);
 
     const [isVisible, setIsVisible] = useState(false);
     const [animatedNumber, setAnimatedNumber] = useState(0);
+    const [chartKey, setChartKey] = useState(0);
+    const [scrollProgress, setScrollProgress] = useState(0);
+    const [showFirstLine, setShowFirstLine] = useState(false);
+    const [showSecondLine, setShowSecondLine] = useState(false);
 
+    /* ---------- INTERSECTION OBSERVER ---------- */
     useEffect(() => {
         const observer = new IntersectionObserver(
             ([entry]) => {
-                if (entry.isIntersecting && !hasAnimated.current) {
-                    hasAnimated.current = true;
+                if (entry.isIntersecting) {
                     setIsVisible(true);
+                    setChartKey((prev) => prev + 1);
+                    setAnimatedNumber(0);
+                    setShowFirstLine(false);
+                    setShowSecondLine(false);
 
                     let start = 0;
                     const end = 76;
                     const duration = 2000;
                     const increment = end / (duration / 16);
 
-                    const timer = setInterval(() => {
+                    counterTimer.current = setInterval(() => {
                         start += increment;
                         if (start >= end) {
                             setAnimatedNumber(end);
-                            clearInterval(timer);
+                            clearInterval(counterTimer.current);
                         } else {
                             setAnimatedNumber(Math.floor(start));
                         }
                     }, 16);
+                } else {
+                    clearInterval(counterTimer.current);
+                    setShowFirstLine(false);
+                    setShowSecondLine(false);
                 }
             },
             { threshold: 0.4 }
@@ -54,6 +66,28 @@ export default function KnowledgeLevelSection() {
 
         if (sectionRef.current) observer.observe(sectionRef.current);
         return () => observer.disconnect();
+    }, []);
+
+    /* ---------- SCROLL-BASED LINE REVEAL ---------- */
+    useEffect(() => {
+        const onScroll = () => {
+            if (!sectionRef.current) return;
+
+            const rect = sectionRef.current.getBoundingClientRect();
+            const progress = Math.min(
+                Math.max(1 - rect.top / window.innerHeight, 0),
+                1
+            );
+
+            setScrollProgress(progress);
+
+            if (progress > 0.25) setShowFirstLine(true);
+            if (progress > 0.55) setShowSecondLine(true);
+        };
+
+        window.addEventListener("scroll", onScroll);
+        onScroll();
+        return () => window.removeEventListener("scroll", onScroll);
     }, []);
 
     return (
@@ -65,26 +99,25 @@ export default function KnowledgeLevelSection() {
 
                 {/* Heading */}
                 <div
-                    className={`text-center mb-6 transition-all duration-1000 ${isVisible
-                            ? "opacity-100 translate-y-0"
-                            : "opacity-0 translate-y-8"
+                    className={`text-center mb-6 transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                         }`}
                 >
                     <h2 className="text-[32px] md:text-[44px] font-extrabold text-[#10295F] mb-2">
                         Knowledge Level Improvement
                     </h2>
                     <p className="text-base md:text-lg text-[#181117]/70 max-w-2xl mx-auto">
-                        Track the remarkable growth in participant knowledge levels before and after completing our program
+                        Track the remarkable growth in participant knowledge levels before
+                        and after completing our program
                     </p>
                 </div>
 
                 {/* Chart Card */}
                 <div
-                    className={`bg-white rounded-3xl pt-4 pb-6 px-6 md:pt-6 md:pb-8 md:px-10 shadow-sm transition-all duration-700 ${isVisible
-                            ? "opacity-100 translate-y-0"
-                            : "opacity-0 translate-y-8"
+                    className={`bg-white rounded-3xl pt-4 pb-6 px-6 md:pt-6 md:pb-8 md:px-10 shadow-sm transition-all duration-700 ${isVisible ? "opacity-100" : "opacity-0"
                         }`}
-                    style={{ transitionDelay: "150ms" }}
+                    style={{
+                        transform: `translateY(${20 - scrollProgress * 20}px)`,
+                    }}
                 >
                     {/* Legend */}
                     <div className="flex justify-center gap-8 mb-6 flex-wrap">
@@ -105,7 +138,7 @@ export default function KnowledgeLevelSection() {
                     {/* Chart */}
                     <div className="w-full h-[340px]">
                         <ResponsiveContainer width="100%" height="100%">
-                            <LineChart data={data}>
+                            <LineChart key={chartKey} data={data}>
                                 <CartesianGrid
                                     strokeDasharray="3 3"
                                     opacity={0.2}
@@ -129,6 +162,7 @@ export default function KnowledgeLevelSection() {
                                     }}
                                 />
 
+                                {/* ✅ TOOLTIP FIXED FOR LIGHT + DARK MODE */}
                                 <Tooltip
                                     contentStyle={{
                                         backgroundColor: "#FFFFFF",
@@ -136,6 +170,7 @@ export default function KnowledgeLevelSection() {
                                         borderRadius: "12px",
                                         padding: "12px",
                                     }}
+                                    wrapperStyle={{ color: "#10295F" }}
                                     formatter={(value, name) =>
                                         name === "before"
                                             ? [value, "Before Course"]
@@ -152,18 +187,9 @@ export default function KnowledgeLevelSection() {
                                     dataKey="before"
                                     stroke="#F9A620"
                                     strokeWidth={4}
-                                    dot={{
-                                        r: 6,
-                                        fill: "#F9A620",
-                                        strokeWidth: 2,
-                                        stroke: "#FFFFFF",
-                                    }}
-                                    activeDot={{
-                                        r: 8,
-                                        fill: "#F9A620",
-                                        strokeWidth: 3,
-                                        stroke: "#FFFFFF",
-                                    }}
+                                    isAnimationActive={showFirstLine}
+                                    animationDuration={1200}
+                                    animationEasing="ease-out"
                                 />
 
                                 <Line
@@ -171,31 +197,19 @@ export default function KnowledgeLevelSection() {
                                     dataKey="after"
                                     stroke="#2D6933"
                                     strokeWidth={4}
-                                    dot={{
-                                        r: 6,
-                                        fill: "#2D6933",
-                                        strokeWidth: 2,
-                                        stroke: "#FFFFFF",
-                                    }}
-                                    activeDot={{
-                                        r: 8,
-                                        fill: "#2D6933",
-                                        strokeWidth: 3,
-                                        stroke: "#FFFFFF",
-                                    }}
+                                    isAnimationActive={showSecondLine}
+                                    animationDuration={1400}
+                                    animationEasing="ease-out"
                                 />
                             </LineChart>
                         </ResponsiveContainer>
                     </div>
                 </div>
 
-                {/* Highlight Counter */}
+                {/* Counter */}
                 <div
-                    className={`text-center mt-8 transition-all duration-1000 ${isVisible
-                            ? "opacity-100 translate-y-0"
-                            : "opacity-0 translate-y-8"
+                    className={`text-center mt-8 transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                         }`}
-                    style={{ transitionDelay: "350ms" }}
                 >
                     <div className="inline-block px-8 py-5 rounded-2xl bg-[#FFF6E5] text-[#B46900]">
                         <span className="block text-sm font-semibold mb-1 opacity-70">
