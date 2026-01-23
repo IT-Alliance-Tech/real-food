@@ -1,26 +1,43 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { FaStar, FaUserGraduate } from "react-icons/fa";
+import { FaStar, FaUserGraduate, FaChartLine, FaAward } from "react-icons/fa";
 
 export default function WhoLearnsWithUsSection() {
     const sectionRef = useRef(null);
     const rafRef = useRef(null);
+    const hasEntered = useRef(false);
 
     const [count, setCount] = useState(0);
     const [dietitians, setDietitians] = useState(0);
     const [therapists, setTherapists] = useState(0);
-
-    const [rating, setRating] = useState(0);
-    const [hover, setHover] = useState(0);
-    const [review, setReview] = useState("");
+    const [isVisible, setIsVisible] = useState(false);
+    const [scrollProgress, setScrollProgress] = useState(0);
 
     const MAX_COUNT = 2053;
     const MAX_DIETITIANS = 60;
     const MAX_THERAPISTS = 40;
 
-    /* ---------- Smooth Scroll-based Counter ---------- */
+    /* ---------- Intersection Observer (ENTER ONCE) ---------- */
     useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting && !hasEntered.current) {
+                    hasEntered.current = true;
+                    setIsVisible(true);
+                }
+            },
+            { threshold: 0.35 }
+        );
+
+        if (sectionRef.current) observer.observe(sectionRef.current);
+        return () => observer.disconnect();
+    }, []);
+
+    /* ---------- Smooth Scroll-based Counter + Animations ---------- */
+    useEffect(() => {
+        if (!isVisible) return;
+
         const handleScroll = () => {
             if (!sectionRef.current) return;
 
@@ -29,6 +46,8 @@ export default function WhoLearnsWithUsSection() {
 
             const visible = 1 - Math.min(Math.max(rect.top / windowHeight, 0), 1);
             const progress = Math.min(Math.max(visible, 0), 1);
+
+            setScrollProgress(progress);
 
             const targetCount = Math.floor(progress * MAX_COUNT);
             const targetDietitians = Math.floor(progress * MAX_DIETITIANS);
@@ -68,164 +87,228 @@ export default function WhoLearnsWithUsSection() {
             window.removeEventListener("scroll", handleScroll);
             cancelAnimationFrame(rafRef.current);
         };
-    }, []);
+    }, [isVisible]);
 
     return (
         <section
             ref={sectionRef}
-            className="py-16 md:py-24 bg-gradient-to-b from-white to-[#F6F4F3]"
+            className="py-20 md:py-28 bg-gradient-to-br from-[#F6F4F3] via-white to-[#F6F4F3] relative overflow-hidden"
         >
-            <div className="max-w-6xl mx-auto px-6">
+            {/* Background blobs with scroll animation */}
+            <div
+                className="absolute top-20 left-10 w-72 h-72 bg-[#2D6933]/5 rounded-full blur-3xl transition-all duration-700"
+                style={{
+                    transform: `translate(${scrollProgress * 30}px, ${scrollProgress * -20}px) scale(${1 + scrollProgress * 0.3})`,
+                    opacity: 0.3 + scrollProgress * 0.7
+                }}
+            />
+            <div
+                className="absolute bottom-20 right-10 w-96 h-96 bg-[#F9A620]/5 rounded-full blur-3xl transition-all duration-700"
+                style={{
+                    transform: `translate(${scrollProgress * -40}px, ${scrollProgress * 30}px) scale(${1 + scrollProgress * 0.2})`,
+                    opacity: 0.3 + scrollProgress * 0.7
+                }}
+            />
 
-                {/* Heading */}
-                <div className="text-center mb-14">
-                    <h2
-                        className="text-[34px] md:text-[48px] font-extrabold"
-                        style={{ color: "#10295F" }}
-                    >
+            {/* MAIN WRAPPER – SCROLL ENTRANCE */}
+            <div
+                className={`max-w-7xl mx-auto px-6 relative z-10 transition-all duration-[1200ms] ease-out ${isVisible
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-16"
+                    }`}
+            >
+                {/* Heading with parallax */}
+                <div
+                    className="text-center mb-16 transition-all duration-500"
+                    style={{
+                        transform: `translateY(${scrollProgress * -20}px)`,
+                        opacity: 1 - scrollProgress * 0.3
+                    }}
+                >
+                    <h2 className="text-[40px] md:text-[56px] font-extrabold mb-4 text-[#10295F]">
                         Who learns with us
                     </h2>
-                    <p className="mt-3 text-[#181117]/80 max-w-xl mx-auto">
+                    <p className="text-lg md:text-xl text-[#181117]/70 max-w-2xl mx-auto">
                         Professionals from diverse wellness backgrounds trust our learning ecosystem
                     </p>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-14 items-start">
+                {/* Main Counter Card with 3D tilt effect */}
+                <div
+                    className={`bg-gradient-to-br from-[#2D6933] to-[#1a4020] rounded-3xl p-10 md:p-14 mb-10 shadow-2xl relative overflow-hidden transition-all duration-700 ${isVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"
+                        }`}
+                    style={{
+                        transform: `perspective(1000px) rotateX(${scrollProgress * -5}deg) translateY(${scrollProgress * 10}px)`,
+                        boxShadow: `0 ${20 + scrollProgress * 30}px ${60 + scrollProgress * 40}px rgba(45, 105, 51, ${0.2 + scrollProgress * 0.3})`
+                    }}
+                >
+                    <div
+                        className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 transition-transform duration-700"
+                        style={{
+                            transform: `translate(${50 + scrollProgress * 20}%, ${-50 + scrollProgress * 20}%) scale(${1 + scrollProgress * 0.5})`
+                        }}
+                    />
+                    <div
+                        className="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/2 transition-transform duration-700"
+                        style={{
+                            transform: `translate(${-50 - scrollProgress * 15}%, ${50 + scrollProgress * 15}%) scale(${1 + scrollProgress * 0.4})`
+                        }}
+                    />
 
-                    {/* LEFT — COUNTERS */}
-                    <div>
-                        <div className="flex items-center gap-5 mb-10">
-                            <FaUserGraduate className="text-5xl text-[#2D6933]" />
+                    <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
+                        <div className="flex items-center gap-6">
+                            <div
+                                className="bg-white/10 backdrop-blur-sm p-6 rounded-2xl transition-all duration-500"
+                                style={{
+                                    transform: `rotate(${scrollProgress * 360}deg) scale(${1 + scrollProgress * 0.1})`
+                                }}
+                            >
+                                <FaUserGraduate className="text-6xl text-white" />
+                            </div>
                             <div>
-                                <p className="text-[40px] font-extrabold text-[#2D6933]">
+                                <p className="text-[48px] md:text-[64px] font-extrabold text-white leading-none">
                                     {Math.floor(count).toLocaleString()}+
                                 </p>
-                                <p className="text-sm text-gray-600">
-                                    participants trained
+                                <p className="text-lg text-white/80 mt-2">
+                                    Participants trained
                                 </p>
                             </div>
                         </div>
 
-                        <div className="mb-6 p-6 rounded-2xl bg-white shadow-sm border">
-                            <div className="flex justify-between mb-2">
-                                <span className="font-medium text-[#2D6933]">
-                                    Dietitians & Nutrition Professionals
-                                </span>
-                                <span className="text-xl font-bold text-[#2D6933]">
-                                    {Math.floor(dietitians)}%
-                                </span>
-                            </div>
-                            <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
-                                <div
-                                    className="h-full transition-all"
-                                    style={{
-                                        width: `${dietitians}%`,
-                                        backgroundColor: "#2D6933",
-                                    }}
-                                />
-                            </div>
-                        </div>
-
-                        <div className="p-6 rounded-2xl bg-white shadow-sm border">
-                            <div className="flex justify-between mb-2">
-                                <span className="font-medium text-[#10295F]">
-                                    Yoga, Ayurveda & Food Professionals
-                                </span>
-                                <span className="text-xl font-bold text-[#10295F]">
-                                    {Math.floor(therapists)}%
-                                </span>
-                            </div>
-                            <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
-                                <div
-                                    className="h-full transition-all"
-                                    style={{
-                                        width: `${therapists}%`,
-                                        backgroundColor: "#10295F",
-                                    }}
-                                />
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* RIGHT — RATING CARD */}
-                    <div className="bg-white rounded-3xl p-8 shadow-md border">
-                        <h3
-                            className="text-2xl font-bold mb-6"
-                            style={{ color: "#10295F" }}
-                        >
-                            Rate this page
-                        </h3>
-
-                        <div className="mb-6">
-                            <div className="flex items-center justify-between mb-2">
-                                <span className="text-sm text-[#181117]/80">
-                                    Rating
-                                </span>
-                                <span className="text-sm font-semibold text-[#10295F]">
-                                    {rating ? `${rating} / 5` : "Not rated"}
-                                </span>
-                            </div>
-
-                            <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
-                                <div
-                                    className="h-full transition-all duration-300"
-                                    style={{
-                                        width: rating ? `${(rating / 5) * 100}%` : "0%",
-                                        backgroundColor: "#F9A620",
-                                    }}
-                                />
-                            </div>
-                        </div>
-
-                        <div className="flex gap-3 mb-6">
-                            {[1, 2, 3, 4, 5].map((star) => (
-                                <FaStar
-                                    key={star}
-                                    className="text-4xl cursor-pointer transition-transform hover:scale-125"
-                                    style={{
-                                        color:
-                                            star <= (hover || rating)
-                                                ? "#F9A620"
-                                                : "rgba(16,41,95,0.15)",
-                                    }}
-                                    onMouseEnter={() => setHover(star)}
-                                    onMouseLeave={() => setHover(0)}
-                                    onClick={() => setRating(star)}
-                                />
-                            ))}
-                        </div>
-
-                        <textarea
-                            value={review}
-                            onChange={(e) => setReview(e.target.value)}
-                            placeholder="Share your learning experience…"
-                            rows={4}
-                            className="w-full p-4 rounded-xl border mb-6 resize-none focus:outline-none text-[#181117]"
-                            style={{ borderColor: "#2D6933" }}
-                        />
-
-                        {/* HERO-STYLE SUBMIT BUTTON */}
-                        <button
-                            className="group relative w-full inline-flex justify-center px-8 py-4 text-sm font-semibold tracking-wide text-white transition-all duration-300 hover:shadow-xl rounded-lg overflow-hidden"
-                            style={{ backgroundColor: "#2D6933" }}
-                        >
-                            <span className="relative z-10">
-                                Submit Review
-                            </span>
-
-                            {/* Hover shine */}
+                        <div className="flex gap-4">
                             <div
-                                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                                className="bg-white/10 backdrop-blur-sm p-4 rounded-xl text-center transition-all duration-500 hover:scale-110"
                                 style={{
-                                    backgroundImage:
-                                        "linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.15) 50%, rgba(255,255,255,0) 100%)",
+                                    transform: `translateY(${Math.sin(scrollProgress * Math.PI) * 10}px)`
                                 }}
-                            />
-                        </button>
+                            >
+                                <FaChartLine className="text-3xl text-[#F9A620] mx-auto mb-2" />
+                                <p className="text-2xl font-bold text-white">98%</p>
+                                <p className="text-xs text-white/70">Success Rate</p>
+                            </div>
+                            <div
+                                className="bg-white/10 backdrop-blur-sm p-4 rounded-xl text-center transition-all duration-500 hover:scale-110"
+                                style={{
+                                    transform: `translateY(${Math.sin((scrollProgress + 0.5) * Math.PI) * 10}px)`
+                                }}
+                            >
+                                <FaAward className="text-3xl text-[#F9A620] mx-auto mb-2" />
+                                <p className="text-2xl font-bold text-white">4.8</p>
+                                <p className="text-xs text-white/70">Avg Rating</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Progress Bars with staggered slide-in */}
+                <div className="grid md:grid-cols-2 gap-8">
+                    {/* Dietitians */}
+                    <div
+                        className={`bg-white rounded-2xl p-8 shadow-lg border-2 border-[#2D6933]/10 hover:border-[#2D6933]/30 transition-all duration-700 hover:shadow-2xl hover:-translate-y-1 ${isVisible
+                            ? "opacity-100 translate-x-0"
+                            : "opacity-0 -translate-x-12"
+                            }`}
+                        style={{
+                            transitionDelay: "200ms",
+                            transform: `translateX(${(1 - scrollProgress) * -30}px) scale(${0.95 + scrollProgress * 0.05})`,
+                            opacity: scrollProgress
+                        }}
+                    >
+                        <div className="flex items-center gap-4 mb-6">
+                            <div
+                                className="bg-[#2D6933]/10 p-4 rounded-xl transition-transform duration-500"
+                                style={{
+                                    transform: `rotate(${scrollProgress * 180}deg)`
+                                }}
+                            >
+                                <FaStar className="text-3xl text-[#2D6933]" />
+                            </div>
+                            <div className="flex-1">
+                                <h3 className="font-bold text-xl text-[#2D6933] mb-1">
+                                    Dietitians & Nutrition Professionals
+                                </h3>
+                                <p className="text-sm text-gray-600">Primary audience segment</p>
+                            </div>
+                            <p className="text-4xl font-extrabold text-[#2D6933]">
+                                {Math.floor(dietitians)}%
+                            </p>
+                        </div>
+
+                        <div className="relative h-3 bg-gray-100 rounded-full overflow-hidden">
+                            <div
+                                className="h-full rounded-full relative transition-all duration-700"
+                                style={{ width: `${dietitians}%`, backgroundColor: "#2D6933" }}
+                            >
+                                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-shimmer" />
+                                <div
+                                    className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/50 to-white/0"
+                                    style={{
+                                        transform: `translateX(${scrollProgress * 200 - 100}%)`
+                                    }}
+                                />
+                            </div>
+                        </div>
                     </div>
 
+                    {/* Therapists */}
+                    <div
+                        className={`bg-white rounded-2xl p-8 shadow-lg border-2 border-[#10295F]/10 hover:border-[#10295F]/30 transition-all duration-700 hover:shadow-2xl hover:-translate-y-1 ${isVisible
+                            ? "opacity-100 translate-x-0"
+                            : "opacity-0 translate-x-12"
+                            }`}
+                        style={{
+                            transitionDelay: "400ms",
+                            transform: `translateX(${(1 - scrollProgress) * 30}px) scale(${0.95 + scrollProgress * 0.05})`,
+                            opacity: scrollProgress
+                        }}
+                    >
+                        <div className="flex items-center gap-4 mb-6">
+                            <div
+                                className="bg-[#10295F]/10 p-4 rounded-xl transition-transform duration-500"
+                                style={{
+                                    transform: `rotate(${scrollProgress * -180}deg)`
+                                }}
+                            >
+                                <FaStar className="text-3xl text-[#10295F]" />
+                            </div>
+                            <div className="flex-1">
+                                <h3 className="font-bold text-xl text-[#10295F] mb-1">
+                                    Yoga, Ayurveda & Food Professionals
+                                </h3>
+                                <p className="text-sm text-gray-600">Growing community</p>
+                            </div>
+                            <p className="text-4xl font-extrabold text-[#10295F]">
+                                {Math.floor(therapists)}%
+                            </p>
+                        </div>
+
+                        <div className="relative h-3 bg-gray-100 rounded-full overflow-hidden">
+                            <div
+                                className="h-full rounded-full relative transition-all duration-700"
+                                style={{ width: `${therapists}%`, backgroundColor: "#10295F" }}
+                            >
+                                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-shimmer" />
+                                <div
+                                    className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/50 to-white/0"
+                                    style={{
+                                        transform: `translateX(${scrollProgress * 200 - 100}%)`
+                                    }}
+                                />
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+
+            <style jsx>{`
+        @keyframes shimmer {
+          0% { transform: translateX(-100%); }
+          100% { transform: translateX(100%); }
+        }
+        .animate-shimmer {
+          animation: shimmer 2s infinite;
+        }
+      `}</style>
         </section>
     );
 }
