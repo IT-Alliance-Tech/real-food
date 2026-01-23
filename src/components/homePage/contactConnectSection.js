@@ -7,6 +7,7 @@ import {
     FaWhatsapp,
     FaUserTie,
     FaInstagram,
+    FaYoutube,
 } from "react-icons/fa";
 
 export default function ContactConnectSection() {
@@ -165,8 +166,8 @@ export default function ContactConnectSection() {
                             </a>
                         </div>
 
-                        {/* Instagram */}
-                        <div className="pt-4 mt-6 border-t border-white/20 text-sm">
+                        {/* Social Links */}
+                        <div className="pt-4 mt-6 border-t border-white/20 text-sm flex gap-6">
                             <a
                                 href="https://instagram.com/TDUPGConnect"
                                 target="_blank"
@@ -175,6 +176,16 @@ export default function ContactConnectSection() {
                             >
                                 <FaInstagram />
                                 @TDUPGConnect
+                            </a>
+
+                            <a
+                                href="https://www.youtube.com/@TDUPGConnect/videos"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-2 hover:text-white transition"
+                            >
+                                <FaYoutube />
+                                YouTube
                             </a>
                         </div>
                     </div>
