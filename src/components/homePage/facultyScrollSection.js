@@ -37,7 +37,7 @@ const cards = [
     { name: "Dr. Shridevi Gothe", position: "Assistant Professor, TDU", image: faculty7 },
     { name: "Dr. Yashaswini G", position: "Consultant, IAIM Healthcare", image: faculty8 },
     { name: "Dr. Narendra Pendse", position: "MD", image: faculty9 },
-    { name: "Dr. Aswini Mohan L", position: ",BAMS,MSConsultant,IAIM Healthcare", image: faculty10 },
+    { name: "Dr. Aswini Mohan L", position: "BAMS,MSConsultant,IAIM Healthcare", image: faculty10 },
     { name: "Dr. Vineeta Deshmukh", position: "Deputy Director, Integrated Cancer Treatment and Research Center, Wagholi, Pune", image: faculty11 },
     { name: "Dr. Subrahmanya Kumar K", position: "Associate Professor, TDU", image: faculty12 },
     { name: "Dr. Anjali Jayantrao Raichur,", position: "Senior Consultant, Kerala Ayurveda Limited", image: faculty13 },
@@ -55,102 +55,179 @@ export default function FacultyScrollSection() {
     const isAnimating = useRef(false);
     const [activeIndex, setActiveIndex] = useState(0);
 
-    /* -------------------- AUTO SLIDE ONLY (NO SCROLL) -------------------- */
+    /* -------------------- NAVIGATION FUNCTIONS -------------------- */
+    const goToNext = () => {
+        if (isAnimating.current) return;
+        isAnimating.current = true;
+        setActiveIndex((prev) => (prev + 1) % cards.length);
+        setTimeout(() => {
+            isAnimating.current = false;
+        }, 700);
+    };
+
+    const goToPrev = () => {
+        if (isAnimating.current) return;
+        isAnimating.current = true;
+        setActiveIndex((prev) => (prev - 1 + cards.length) % cards.length);
+        setTimeout(() => {
+            isAnimating.current = false;
+        }, 700);
+    };
+
+    /* -------------------- AUTO SLIDE -------------------- */
     useEffect(() => {
         const interval = setInterval(() => {
-            if (isAnimating.current) return;
-
-            isAnimating.current = true;
-            setActiveIndex((prev) => (prev + 1) % cards.length);
-
-            setTimeout(() => {
-                isAnimating.current = false;
-            }, 700);
+            goToNext();
         }, 3000);
 
         return () => clearInterval(interval);
     }, []);
 
     return (
-        <section className="relative bg-[#140b08] text-white py-20 md:py-28">
-            <div className="flex flex-col items-center justify-center px-4">
+        <>
+            <style jsx>{`
+                @keyframes fadeInUp {
+                    from {
+                        opacity: 0;
+                        transform: translateY(20px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+                .animate-fade-in-up {
+                    animation: fadeInUp 0.6s ease-out forwards;
+                }
+            `}</style>
+            <section className="relative bg-[#140b08] text-white py-20 md:py-28">
+                <div className="flex flex-col items-center justify-center px-4">
 
-                {/* Heading */}
-                <h2 className="mb-16 md:mb-20 text-center text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight font-[var(--font-bitter)]">
-                    Faculty & Course Instructors
-                </h2>
+                    {/* Heading */}
+                    <h2 className="mb-16 md:mb-20 text-center text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight font-[var(--font-bitter)]">
+                        Faculty & Course Instructors
+                    </h2>
 
-                {/* Card Stack - FIXED HEIGHT CONTAINER */}
-                <div className="relative h-[550px] w-[300px] sm:w-[420px] mb-16 md:mb-20">
-                    {cards.map((card, index) => {
-                        const total = cards.length;
+                    {/* Card Stack Container with Navigation */}
+                    <div className="relative w-full max-w-6xl mb-16 md:mb-20">
 
-                        let offset = index - activeIndex;
-                        if (offset > total / 2) offset -= total;
-                        if (offset < -total / 2) offset += total;
-
-                        if (Math.abs(offset) > 1) return null;
-
-                        const isActive = offset === 0;
-
-                        return (
-                            <div
-                                key={index}
-                                className="absolute left-1/2 top-1/2 transition-all duration-700 ease-in-out"
-                                style={{
-                                    zIndex: isActive ? 30 : 10,
-                                    opacity: isActive ? 1 : 0.55,
-                                    transform: `
-                                        translate(-50%, -50%)
-                                        translateX(${offset * 200}px)
-                                        scale(${isActive ? 1.05 : 0.9})
-                                    `,
-                                    width: "100%",
-                                    height: "100%",
-                                }}
+                        {/* Previous Button */}
+                        <button
+                            onClick={goToPrev}
+                            className="absolute left-0 top-1/2 -translate-y-1/2 z-40 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full p-3 transition-all duration-300 hover:scale-110"
+                            aria-label="Previous faculty"
+                        >
+                            <svg
+                                className="w-6 h-6 text-white"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
                             >
-                                {/* FIXED HEIGHT CARD WRAPPER */}
-                                <div className="flex flex-col items-center h-full">
-                                    {/* FIXED HEIGHT IMAGE - NEVER CHANGES */}
-                                    <div className="relative h-[350px] sm:h-[380px] w-full overflow-hidden rounded-2xl shadow-2xl flex-shrink-0">
-                                        <Image
-                                            src={card.image}
-                                            alt={card.name}
-                                            fill
-                                            className="object-cover object-top"
-                                            priority={isActive}
-                                        />
-                                    </div>
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                            </svg>
+                        </button>
 
-                                    {/* FIXED HEIGHT TEXT AREA - ALWAYS RESERVED */}
-                                    <div className="mt-6 text-center w-full h-[120px] flex flex-col items-center justify-start flex-shrink-0">
-                                        {isActive && (
-                                            <div className="animate-fade-in">
-                                                <h4 className="text-2xl sm:text-3xl font-semibold text-white line-clamp-2">
-                                                    {card.name}
-                                                </h4>
-                                                <p className="mt-2 text-base sm:text-lg text-white/70 line-clamp-3">
-                                                    {card.position}
-                                                </p>
+                        {/* Card Stack - FIXED HEIGHT CONTAINER */}
+                        <div className="relative h-[550px] w-[300px] sm:w-[420px] mx-auto">
+                            {cards.map((card, index) => {
+                                const total = cards.length;
+
+                                let offset = index - activeIndex;
+                                if (offset > total / 2) offset -= total;
+                                if (offset < -total / 2) offset += total;
+
+                                if (Math.abs(offset) > 1) return null;
+
+                                const isActive = offset === 0;
+
+                                return (
+                                    <div
+                                        key={index}
+                                        className="absolute left-1/2 top-1/2 transition-all duration-700 ease-out"
+                                        style={{
+                                            zIndex: isActive ? 30 : 10,
+                                            opacity: isActive ? 1 : 0.4,
+                                            transform: `
+                                                translate(-50%, -50%)
+                                                translateX(${offset * 200}px)
+                                                scale(${isActive ? 1.05 : 0.88})
+                                                rotateY(${offset * -8}deg)
+                                            `,
+                                            width: "100%",
+                                            height: "100%",
+                                            filter: isActive ? 'blur(0px) brightness(1)' : 'blur(2px) brightness(0.7)',
+                                        }}
+                                    >
+                                        {/* FIXED HEIGHT CARD WRAPPER */}
+                                        <div className="flex flex-col items-center h-full">
+                                            {/* FIXED HEIGHT IMAGE - NEVER CHANGES */}
+                                            <div className="relative h-[350px] sm:h-[380px] w-full overflow-hidden rounded-2xl shadow-2xl flex-shrink-0 transition-transform duration-700">
+                                                <Image
+                                                    src={card.image}
+                                                    alt={card.name}
+                                                    fill
+                                                    className="object-cover object-top transition-all duration-700"
+                                                    priority={isActive}
+                                                    style={{
+                                                        transform: isActive ? 'scale(1)' : 'scale(1.1)',
+                                                    }}
+                                                />
+                                                {/* Overlay for inactive cards */}
+                                                <div
+                                                    className="absolute inset-0 bg-black/30 transition-opacity duration-700"
+                                                    style={{
+                                                        opacity: isActive ? 0 : 1
+                                                    }}
+                                                />
                                             </div>
-                                        )}
+
+                                            {/* FIXED HEIGHT TEXT AREA - ALWAYS RESERVED */}
+                                            <div className="mt-6 text-center w-full h-[120px] flex flex-col items-center justify-start flex-shrink-0">
+                                                {isActive && (
+                                                    <div className="animate-fade-in-up">
+                                                        <h4 className="text-2xl sm:text-3xl font-semibold text-white line-clamp-2">
+                                                            {card.name}
+                                                        </h4>
+                                                        <p className="mt-2 text-base sm:text-lg text-white/70 line-clamp-3">
+                                                            {card.position}
+                                                        </p>
+                                                    </div>
+                                                )}
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                        );
-                    })}
-                </div>
+                                );
+                            })}
+                        </div>
 
-                {/* Description */}
-                <div className="max-w-2xl px-4">
-                    <p className="text-center text-[15px] sm:text-base leading-relaxed text-white/80 font-[var(--font-merri)]">
-                        All courses are taught by experienced academicians, clinicians,
-                        and subject-matter experts across Ayurveda, Nutrition & Dietetics,
-                        and Integrative Health Sciences.
-                    </p>
-                </div>
+                        {/* Next Button */}
+                        <button
+                            onClick={goToNext}
+                            className="absolute right-0 top-1/2 -translate-y-1/2 z-40 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full p-3 transition-all duration-300 hover:scale-110"
+                            aria-label="Next faculty"
+                        >
+                            <svg
+                                className="w-6 h-6 text-white"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                            </svg>
+                        </button>
+                    </div>
 
-            </div>
-        </section>
+                    {/* Description */}
+                    <div className="max-w-2xl px-4">
+                        <p className="text-center text-[15px] sm:text-base leading-relaxed text-white/80 font-[var(--font-merri)]">
+                            All courses are taught by experienced academicians, clinicians,
+                            and subject-matter experts across Ayurveda, Nutrition & Dietetics,
+                            and Integrative Health Sciences.
+                        </p>
+                    </div>
+
+                </div>
+            </section>
+        </>
     );
 }
