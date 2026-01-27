@@ -13,7 +13,7 @@ export default function FloatingWhatsAppButton() {
     if (!mounted) return null;
 
     const handleClick = () => {
-        const whatsappNumber = "919876543210";
+        const whatsappNumber = "917975651724";
         const url = `https://wa.me/${whatsappNumber}`;
         window.open(url, '_blank');
     };

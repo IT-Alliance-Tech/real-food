@@ -62,9 +62,7 @@ export default function ProblemSection() {
           {/* Left */}
           <div className="section-slide-left">
             <div className="card-animate bg-white/10 backdrop-blur-xl p-8 rounded-3xl border border-white/20 glow h-full flex flex-col">
-              <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mb-6">
-                <span className="text-2xl">🔬</span>
-              </div>
+
               <h3 className="text-2xl font-bold mb-4">Modern Nutrition</h3>
               <p className="text-white/90 text-lg leading-relaxed">
                 Focuses heavily on nutrients, often{" "}
@@ -78,13 +76,9 @@ export default function ProblemSection() {
 
           {/* Right */}
           <div className="section-slide-right" style={{ animationDelay: "0.15s" }}>
-            <div className="card-animate bg-white/10 backdrop-blur-xl p-8 rounded-3xl border border-white/20 glow h-full flex flex-col">
-              <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mb-6">
-                <FaLeaf className="text-2xl" />
-              </div>
-              <h3 className="text-2xl font-bold mb-4">
-                Traditional Ayurveda
-              </h3>
+            <div className="card-animate bg-[#F9A620]/20 backdrop-blur-xl p-8 rounded-3xl border border-[#F9A620]/40 glow h-full flex flex-col">
+
+              <h3 className="text-2xl font-bold mb-4">Traditional Ayurveda</h3>
               <p className="text-white/90 text-lg leading-relaxed">
                 Personalized and holistic, but sometimes{" "}
                 <span className="text-[#F9A620] font-bold">
@@ -95,6 +89,7 @@ export default function ProblemSection() {
             </div>
           </div>
         </div>
+
 
         {/* Quote */}
         <div

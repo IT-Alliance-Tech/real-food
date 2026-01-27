@@ -106,7 +106,7 @@ export default function CoursesSection() {
           className="section-fade-up text-center text-[48px] md:text-[72px] lg:text-[84px] font-extrabold leading-[1.05] mb-6"
           style={{ color: "#10295F" }}
         >
-          Courses We Offer
+          Courses we offer
         </h2>
 
         {/* Accent line */}
