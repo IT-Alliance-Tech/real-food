@@ -196,15 +196,6 @@ export default function ImpactRecommendationSection() {
                                 {animatedPercentage}%
                             </span>
                         </div>
-
-                        {/* Floating Particles */}
-                        {isVisible && (
-                            <>
-                                <div className="absolute top-4 right-8 w-2 h-2 bg-[#2D6933] rounded-full animate-bounce" style={{ animationDelay: '0s', animationDuration: '2s' }} />
-                                <div className="absolute bottom-8 left-4 w-2 h-2 bg-[#F9A620] rounded-full animate-bounce" style={{ animationDelay: '0.5s', animationDuration: '2.5s' }} />
-                                <div className="absolute top-12 left-12 w-1.5 h-1.5 bg-[#10295F] rounded-full animate-bounce" style={{ animationDelay: '1s', animationDuration: '3s' }} />
-                            </>
-                        )}
                     </div>
 
                     {/* Legend + Insight */}
