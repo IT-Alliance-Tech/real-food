@@ -271,17 +271,25 @@ export default function CoursesSection() {
           text-decoration: none;
           cursor: pointer;
           transition: all 0.4s cubic-bezier(0.22,1,0.36,1);
-          border: 2px solid rgba(16, 41, 95, 0.08);
-          box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+          border: 2px solid rgba(16, 41, 95, 0.1);
+          /* Enhanced shadow for better differentiation */
+          box-shadow: 
+            0 4px 12px rgba(0, 0, 0, 0.08),
+            0 8px 24px rgba(16, 41, 95, 0.12),
+            0 16px 48px rgba(16, 41, 95, 0.06);
           overflow: hidden;
           opacity: 0;
           animation: fadeUp 1.2s cubic-bezier(0.22,1,0.36,1) forwards;
         }
 
         .course-card:hover {
-          transform: translateY(-10px);
-          box-shadow: 0 24px 48px rgba(0,0,0,0.12);
-          border-color: rgba(16, 41, 95, 0.15);
+          transform: translateY(-12px);
+          /* More pronounced shadow on hover */
+          box-shadow: 
+            0 12px 24px rgba(0, 0, 0, 0.12),
+            0 20px 40px rgba(16, 41, 95, 0.18),
+            0 32px 64px rgba(16, 41, 95, 0.1);
+          border-color: rgba(16, 41, 95, 0.2);
         }
 
         .course-card::before {
@@ -304,6 +312,10 @@ export default function CoursesSection() {
         @media (max-width: 768px) {
           .course-card {
             padding: 24px;
+            /* Adjust shadow for mobile */
+            box-shadow: 
+              0 4px 10px rgba(0, 0, 0, 0.08),
+              0 6px 20px rgba(16, 41, 95, 0.1);
           }
         }
       `}</style>
