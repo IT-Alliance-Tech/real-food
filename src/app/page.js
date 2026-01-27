@@ -1,3 +1,7 @@
+"use client";
+
+import { useState } from "react";
+import IntroOverlay from "@/components/homePage/introOverlay";
 import HeroSection from "@/components/homePage/heroSection";
 import ProblemSection from "@/components/homePage/problemSection";
 // import ComparisonSection from "@/components/homePage/comparisonSection";
@@ -12,21 +16,28 @@ import KnowledgeLevelSection from "@/components/homePage/knowledgeLevelSection";
 import ImpactRecommendationSection from "@/components/homePage/impactRecommendationSection";
 
 export default function Home() {
+  const [showIntro, setShowIntro] = useState(true);
+
   return (
     <>
-      <HeroSection />
-      <ProblemSection />
-      {/* <ComparisonSection /> */}
-      <IntegrativePlateSection />
-      <CoursesSection />
-      <WhoLearnsWithUsSection />
-      <KnowledgeLevelSection />
-      <ImpactRecommendationSection />
-      <AcademicSupportSection />
-      <FacultyScrollSection />
-      <FaqSection />
-      <ContactConnectSection />
-
+      {showIntro ? (
+        <IntroOverlay onFinish={() => setShowIntro(false)} />
+      ) : (
+        <>
+          <HeroSection />
+          <ProblemSection />
+          {/* <ComparisonSection /> */}
+          <IntegrativePlateSection />
+          <CoursesSection />
+          <WhoLearnsWithUsSection />
+          <KnowledgeLevelSection />
+          <ImpactRecommendationSection />
+          <AcademicSupportSection />
+          <FacultyScrollSection />
+          <FaqSection />
+          <ContactConnectSection />
+        </>
+      )}
     </>
   );
 }
