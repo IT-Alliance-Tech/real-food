@@ -55,7 +55,7 @@ export default function ContactConnectSection() {
                         Get in Touch
                     </span>
 
-                    <h2 className="text-[32px] md:text-[42px] font-extrabold mb-4">
+                    <h2 className="text-[48px] md:text-[72px] lg:text-[84px] font-extrabold leading-[1.05] mb-6">
                         Contact & Connect
                     </h2>
 
