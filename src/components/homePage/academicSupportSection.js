@@ -32,7 +32,7 @@ export default function AcademicSupportSection() {
                         </span>
                     </div>
 
-                    <h2 className="text-[36px] md:text-[50px] font-semibold mb-6">
+                    <h2 className="text-[48px] md:text-[72px] lg:text-[84px] font-extrabold leading-[1.05] mb-6">
                         Academic & Professional Support
                     </h2>
 

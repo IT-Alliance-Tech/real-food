@@ -108,7 +108,7 @@ export default function ImpactRecommendationSection() {
                         transform: `translateY(${isVisible ? 0 : 24}px) scale(${0.95 + scrollProgress * 0.05})`,
                     }}
                 >
-                    <h2 className="text-4xl md:text-5xl font-extrabold text-[#10295F] mb-3">
+                    <h2 className="text-[48px] md:text-[72px] lg:text-[84px] font-extrabold leading-[1.05] text-[#10295F] mb-6">
                         Impact
                     </h2>
                     <p className="text-lg md:text-xl text-[#181117]/70 max-w-3xl mx-auto">
@@ -214,8 +214,8 @@ export default function ImpactRecommendationSection() {
                                 <li
                                     key={item.name}
                                     className={`flex items-center gap-4 p-4 rounded-xl bg-[#F6F4F3] transition-all duration-500 cursor-pointer hover:scale-105 hover:shadow-md ${isVisible
-                                            ? "opacity-100 translate-x-0"
-                                            : "opacity-0 translate-x-6"
+                                        ? "opacity-100 translate-x-0"
+                                        : "opacity-0 translate-x-6"
                                         } ${activeIndex === index ? 'ring-2 ring-offset-2 scale-105 shadow-lg' : ''
                                         }`}
                                     style={{
