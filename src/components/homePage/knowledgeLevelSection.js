@@ -102,7 +102,7 @@ export default function KnowledgeLevelSection() {
                     className={`text-center mb-6 transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                         }`}
                 >
-                    <h2 className="text-[32px] md:text-[44px] font-extrabold text-[#10295F] mb-2">
+                    <h2 className="text-[48px] md:text-[72px] lg:text-[84px] font-extrabold leading-[1.05] text-[#10295F] mb-6">
                         Knowledge Level Improvement
                     </h2>
                     <p className="text-base md:text-lg text-[#181117]/70 max-w-2xl mx-auto">

@@ -125,7 +125,7 @@ export default function WhoLearnsWithUsSection() {
                         opacity: 1 - scrollProgress * 0.3
                     }}
                 >
-                    <h2 className="text-[40px] md:text-[56px] font-extrabold mb-4 text-[#10295F]">
+                    <h2 className="text-[48px] md:text-[72px] lg:text-[84px] font-extrabold leading-[1.05] text-[#10295F] mb-6">
                         Who learns with us
                     </h2>
                     <p className="text-lg md:text-xl text-[#181117]/70 max-w-2xl mx-auto">

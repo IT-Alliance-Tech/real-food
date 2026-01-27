@@ -104,7 +104,7 @@ export default function FacultyScrollSection() {
                 <div className="flex flex-col items-center justify-center px-4">
 
                     {/* Heading */}
-                    <h2 className="mb-16 md:mb-20 text-center text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight font-[var(--font-bitter)]">
+                    <h2 className="text-center text-[48px] md:text-[72px] lg:text-[84px] font-extrabold leading-[1.05] mb-16 md:mb-24">
                         Faculty & Course Instructors
                     </h2>
 

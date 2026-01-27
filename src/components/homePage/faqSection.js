@@ -76,7 +76,7 @@ export default function FAQSection() {
                         Need clarity?
                     </span>
 
-                    <h2 className="text-[36px] md:text-[48px] font-extrabold text-[#2D6933] mb-6">
+                    <h2 className="text-[48px] md:text-[72px] lg:text-[84px] font-extrabold leading-[1.05] text-[#10295F] mb-6">
                         Frequently Asked Questions
                     </h2>
 

@@ -85,15 +85,7 @@ export default function IntegrativePlateScrollSection() {
       {/* CONTENT */}
       <div ref={contentRef} className="relative opacity-0">
         <div className="max-w-7xl mx-auto px-6 py-28">
-          <h2
-            className="text-center text-[48px] md:text-[72px] font-black mb-4 tracking-tight"
-            style={{
-              background: "linear-gradient(135deg, #10295F 0%, #1a3d7f 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text"
-            }}
-          >
+          <h2 className="text-center text-[48px] md:text-[72px] lg:text-[84px] font-extrabold leading-[1.05] text-[#10295F] mb-6">
             The Integrative Plate
           </h2>
 
