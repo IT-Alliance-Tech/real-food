@@ -98,6 +98,7 @@ export default function IntegrativePlateScrollSection() {
               title="Nutrient View"
               titleColor="#10295F"
               accentColor="#10295F"
+              borderColor="#3B82F6"
               gradientFrom="#10295F"
               gradientTo="#1a3d7f"
               tooltips={{
@@ -113,6 +114,7 @@ export default function IntegrativePlateScrollSection() {
               title="Ayurvedic View"
               titleColor="#2D6933"
               accentColor="#2D6933"
+              borderColor="#22C55E"
               gradientFrom="#2D6933"
               gradientTo="#3d8f47"
               tooltips={{
@@ -131,12 +133,37 @@ export default function IntegrativePlateScrollSection() {
 }
 
 /* ---------- PLATE CARD ---------- */
-function PlateCard({ title, titleColor, accentColor, gradientFrom, gradientTo, tooltips }) {
+function PlateCard({ title, titleColor, accentColor, gradientFrom, gradientTo, tooltips, borderColor }) {
+  const activeColor = borderColor || accentColor;
+  const cardRef = useRef(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.to(cardRef.current, {
+        borderColor: `${activeColor}50`, // Fade border to lower opacity
+        boxShadow: `0 10px 30px -10px ${activeColor}30`, // Reduce shadow intensity
+        duration: 1.2,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+      });
+    }, cardRef);
+
+    return () => ctx.revert();
+  }, [activeColor]);
+
   return (
-    <div className="rounded-[32px] bg-white shadow-xl p-8 relative overflow-hidden group/card transition-all duration-500 hover:shadow-2xl">
+    <div
+      ref={cardRef}
+      className="rounded-[32px] bg-white relative group/card transition-all duration-500 border-4 max-w-[460px] w-full mx-auto"
+      style={{
+        borderColor: activeColor,
+        boxShadow: `0 25px 50px -12px ${activeColor}66` // Stronger shadow: more opacity, larger blur
+      }}
+    >
       {/* Gradient overlay on hover */}
       <div
-        className="absolute inset-0 opacity-0 group-hover/card:opacity-100 transition-opacity duration-700 pointer-events-none"
+        className="absolute inset-0 opacity-0 group-hover/card:opacity-100 transition-opacity duration-700 pointer-events-none rounded-[28px]"
         style={{
           background: `radial-gradient(circle at 50% 50%, ${accentColor}06 0%, transparent 65%)`,
         }}
@@ -144,26 +171,34 @@ function PlateCard({ title, titleColor, accentColor, gradientFrom, gradientTo, t
 
       {/* Border glow effect */}
       <div
-        className="absolute inset-0 rounded-[32px] opacity-0 group-hover/card:opacity-100 transition-opacity duration-700 pointer-events-none"
+        className="absolute inset-0 rounded-[28px] opacity-0 group-hover/card:opacity-100 transition-opacity duration-700 pointer-events-none"
         style={{
           boxShadow: `inset 0 0 0 1px ${accentColor}15`,
         }}
       />
 
       {/* Title with gradient */}
-      <h3
-        className="text-3xl font-black mb-8 relative z-10 tracking-tight"
-        style={{
-          background: `linear-gradient(135deg, ${gradientFrom} 0%, ${gradientTo} 100%)`,
-          WebkitBackgroundClip: "text",
-          WebkitTextFillColor: "transparent",
-          backgroundClip: "text"
-        }}
-      >
-        {title}
-      </h3>
+      <div className="flex justify-center w-full pt-8 pb-2 relative z-10">
+        <h3
+          className="text-3xl font-black tracking-tight text-center"
+          style={{
+            background: `linear-gradient(135deg, ${gradientFrom} 0%, ${gradientTo} 100%)`,
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            backgroundClip: "text"
+          }}
+        >
+          {title}
+        </h3>
+      </div>
 
       <div className="relative h-[480px] w-full overflow-visible">
+        {/* Circular Dotted Connector */}
+        <div
+          className="absolute top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[85%] h-[50%] rounded-[100%] border-[2.5px] border-dotted pointer-events-none opacity-50"
+          style={{ borderColor: accentColor }}
+        />
+
         <HoverImage
           src={Fiber}
           alt="Fiber"
@@ -171,7 +206,7 @@ function PlateCard({ title, titleColor, accentColor, gradientFrom, gradientTo, t
           accentColor={accentColor}
           gradientFrom={gradientFrom}
           gradientTo={gradientTo}
-          className="absolute top-[5%] left-1/2 -translate-x-1/2 w-[310px]"
+          className="absolute top-[5%] left-1/2 -translate-x-1/2 w-[280px]"
         />
 
         <HoverImage
@@ -181,7 +216,7 @@ function PlateCard({ title, titleColor, accentColor, gradientFrom, gradientTo, t
           accentColor={accentColor}
           gradientFrom={gradientFrom}
           gradientTo={gradientTo}
-          className="absolute top-[33%] left-[1%] w-[280px]"
+          className="absolute top-[33%] -left-[13%] w-[260px]"
         />
 
         <HoverImage
@@ -191,7 +226,7 @@ function PlateCard({ title, titleColor, accentColor, gradientFrom, gradientTo, t
           accentColor={accentColor}
           gradientFrom={gradientFrom}
           gradientTo={gradientTo}
-          className="absolute top-[55%] left-1/2 -translate-x-1/2 z-10 w-[280px]"
+          className="absolute top-[55%] left-1/2 -translate-x-1/2 z-10 w-[260px]"
         />
 
         <HoverImage
@@ -201,7 +236,7 @@ function PlateCard({ title, titleColor, accentColor, gradientFrom, gradientTo, t
           accentColor={accentColor}
           gradientFrom={gradientFrom}
           gradientTo={gradientTo}
-          className="absolute top-[35%] right-[6%] w-[230px]"
+          className="absolute top-[35%] -right-[10%] w-[230px]"
         />
 
         <HoverImage
@@ -211,7 +246,7 @@ function PlateCard({ title, titleColor, accentColor, gradientFrom, gradientTo, t
           accentColor={accentColor}
           gradientFrom={gradientFrom}
           gradientTo={gradientTo}
-          className="absolute bottom-[1%] right-[0%] w-[230px]"
+          className="absolute bottom-[1%] right-[0%] w-[210px]"
         />
       </div>
     </div>
@@ -221,7 +256,7 @@ function PlateCard({ title, titleColor, accentColor, gradientFrom, gradientTo, t
 /* ---------- HOVER IMAGE ---------- */
 function HoverImage({ src, alt, className, tooltip, accentColor, gradientFrom, gradientTo }) {
   return (
-    <div className={`group/item absolute ${className} cursor-pointer z-10`}>
+    <div className={`group/item absolute ${className} cursor-pointer z-10 hover:z-[60]`}>
       {/* Softer glow */}
       <div
         className="absolute inset-0 rounded-full blur-2xl opacity-0 
@@ -235,7 +270,7 @@ function HoverImage({ src, alt, className, tooltip, accentColor, gradientFrom, g
       {/* Image */}
       <div
         className="relative transition-all duration-700 ease-out
-                   group-hover/item:scale-105 group-hover/item:-translate-y-2
+                   group-hover/item:scale-110 group-hover/item:-translate-y-2
                    filter group-hover/item:brightness-105 group-hover/item:drop-shadow-xl"
       >
         <Image src={src} alt={alt} className="relative z-10" />
