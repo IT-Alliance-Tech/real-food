@@ -37,7 +37,7 @@ const cards = [
     { name: "Dr. Shridevi Gothe", position: "Assistant Professor, TDU", image: faculty7 },
     { name: "Dr. Yashaswini G", position: "Consultant, IAIM Healthcare", image: faculty8 },
     { name: "Dr. Narendra Pendse", position: "MD", image: faculty9 },
-    { name: "Dr. Aswini Mohan L", position: "BAMS,MSConsultant,IAIM Healthcare", image: faculty10 },
+    { name: "Dr. Aswini Mohan L", position: "BAMS, MSConsultant, IAIM Healthcare", image: faculty10 },
     { name: "Dr. Vineeta Deshmukh", position: "Deputy Director, Integrated Cancer Treatment and Research Center, Wagholi, Pune", image: faculty11 },
     { name: "Dr. Subrahmanya Kumar K", position: "Associate Professor, TDU", image: faculty12 },
     { name: "Dr. Anjali Jayantrao Raichur,", position: "Senior Consultant, Kerala Ayurveda Limited", image: faculty13 },
