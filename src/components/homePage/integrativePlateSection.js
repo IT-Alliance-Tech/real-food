@@ -238,7 +238,7 @@ function PlateCard({
             accentColor={accentColor}
             gradientFrom={gradientFrom}
             gradientTo={gradientTo}
-            className="absolute top-[10%] left-[15%] w-[180px] md:w-[200px]"
+            className="absolute top-[5%] left-[15%] w-[180px] md:w-[300px]"
           />
 
           <HoverImage
@@ -248,7 +248,7 @@ function PlateCard({
             accentColor={accentColor}
             gradientFrom={gradientFrom}
             gradientTo={gradientTo}
-            className="absolute top-[40%] left-[5%] w-[160px] md:w-[180px]"
+            className="absolute top-[35%] left-[0%] w-[160px] md:w-[250px]"
           />
 
           <HoverImage
@@ -258,7 +258,7 @@ function PlateCard({
             accentColor={accentColor}
             gradientFrom={gradientFrom}
             gradientTo={gradientTo}
-            className="absolute top-[35%] left-[35%] z-20 w-[180px] md:w-[220px]"
+            className="absolute top-[60%] left-[20%] z-20 w-[180px] md:w-[250px]"
           />
 
           <HoverImage
@@ -268,7 +268,7 @@ function PlateCard({
             accentColor={accentColor}
             gradientFrom={gradientFrom}
             gradientTo={gradientTo}
-            className="absolute top-[15%] right-[5%] w-[160px] md:w-[190px]"
+            className="absolute top-[25%] right-[0%] w-[160px] md:w-[250px]"
           />
 
           <HoverImage
@@ -278,7 +278,7 @@ function PlateCard({
             accentColor={accentColor}
             gradientFrom={gradientFrom}
             gradientTo={gradientTo}
-            className="absolute bottom-[10%] right-[15%] w-[140px] md:w-[160px]"
+            className="absolute bottom-[20%] right-[10%] w-[140px] md:w-[180px]"
           />
         </div>
       </div>

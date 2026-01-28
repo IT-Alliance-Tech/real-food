@@ -16,7 +16,7 @@ export default function HeroSection() {
           setAnimateKey((k) => k + 1);
         }
       },
-      { threshold: 0.35 }
+      { threshold: 0.35 },
     );
 
     if (sectionRef.current) observer.observe(sectionRef.current);
@@ -33,13 +33,24 @@ export default function HeroSection() {
         <div className="absolute top-20 right-[10%] w-96 h-96 rounded-full blur-3xl opacity-20 bg-orb-1" />
         <div className="absolute bottom-20 left-[5%] w-80 h-80 rounded-full blur-3xl opacity-15 bg-orb-2" />
 
-        <FaLeaf className="absolute top-32 left-[8%] text-5xl opacity-5 float-1" style={{ color: "#2D6933" }} />
-        <FaSeedling className="absolute top-[60%] right-[12%] text-4xl opacity-5 float-2" style={{ color: "#2D6933" }} />
-        <FaLeaf className="absolute bottom-40 left-[15%] text-3xl opacity-5 float-3" style={{ color: "#2D6933" }} />
+        <FaLeaf
+          className="absolute top-32 left-[8%] text-5xl opacity-5 float-1"
+          style={{ color: "#2D6933" }}
+        />
+        <FaSeedling
+          className="absolute top-[60%] right-[12%] text-4xl opacity-5 float-2"
+          style={{ color: "#2D6933" }}
+        />
+        <FaLeaf
+          className="absolute bottom-40 left-[15%] text-3xl opacity-5 float-3"
+          style={{ color: "#2D6933" }}
+        />
       </div>
 
-      <div key={animateKey} className="relative max-w-6xl mx-auto px-6 text-center">
-
+      <div
+        key={animateKey}
+        className="relative max-w-6xl mx-auto px-6 text-center"
+      >
         {/* Premium Badge */}
         <div className="badge-fade mb-10">
           <div
@@ -51,7 +62,7 @@ export default function HeroSection() {
             }}
           >
             <span
-              className="text-xl md:text-2xl font-semibold tracking-wide"
+              className="text-xl md:text-5xl font-semibold tracking-wide"
               style={{ color: "#2D6933" }}
             >
               Ayurveda Diabetics Program @ TDU
@@ -60,13 +71,9 @@ export default function HeroSection() {
         </div>
 
         {/* Heading */}
-        <h1
-          className="text-[44px] md:text-[60px] lg:text-[78px] leading-tight font-extrabold text-[#181117] max-w-4xl mx-auto mb-4"
-        >
-          <span className="word">Food</span>{" "}
-          <span className="word">is</span>{" "}
-          <span className="word">more</span>{" "}
-          <span className="word">than</span>
+        <h1 className="text-[44px] md:text-[60px] lg:text-[65px] leading-tight font-extrabold text-[#181117] max-w-4xl mx-auto mb-4">
+          <span className="word">Food</span> <span className="word">is</span>{" "}
+          <span className="word">more</span> <span className="word">than</span>
           <br />
           <span className="word">just</span>{" "}
           <span className="word highlight-word">calories.</span>
@@ -74,7 +81,10 @@ export default function HeroSection() {
 
         {/* Accent line */}
         <div className="flex justify-center mt-6 accent-line">
-          <div className="h-1 w-20 rounded-full" style={{ backgroundColor: "#2D6933" }} />
+          <div
+            className="h-1 w-20 rounded-full"
+            style={{ backgroundColor: "#2D6933" }}
+          />
         </div>
 
         {/* Description */}
@@ -205,7 +215,6 @@ export default function HeroSection() {
             to { opacity: 1; transform: scaleX(1); }
           }
         `}</style>
-
       </div>
     </section>
   );
