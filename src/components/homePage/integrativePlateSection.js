@@ -118,7 +118,7 @@ export default function IntegrativePlateScrollSection() {
               tooltips={{
                 fiber: "Fiber",
                 dal: "Protein",
-                rice: "Carbohydrates",
+                rice: "Light Carbs",
                 chapathi: "Complex Carbs",
                 curd: "Dairy – Calcium",
               }}
@@ -132,11 +132,11 @@ export default function IntegrativePlateScrollSection() {
               gradientFrom="#2D6933"
               gradientTo="#3d8f47"
               tooltips={{
-                fiber: "Madhura (Sweet), Sheeta (Cooling)",
-                dal: "Madhura, Kashaya, Laghu",
-                rice: "Madhura, Guru",
-                chapathi: "Madhura (Sweet), Guru (Heavy)",
-                curd: "Amla (Sour), Laghu (Light)",
+                fiber: "Sweet, cooling to potency",
+                dal: "Sweet, Astringent, light to digest",
+                rice: "Sweet, Heavy to digest",
+                chapathi: "Sweet, Heavy to digest",
+                curd: "Sweet, Sour, Astringent, light to digest",
               }}
             />
           </div>
@@ -278,7 +278,7 @@ function PlateCard({
             accentColor={accentColor}
             gradientFrom={gradientFrom}
             gradientTo={gradientTo}
-            className="absolute bottom-[20%] right-[10%] w-[140px] md:w-[180px]"
+            className="absolute bottom-[20%] right-[10%] w-[140px] md:w-[200px]"
           />
         </div>
       </div>
