@@ -28,57 +28,40 @@ export default function HeroSection() {
       ref={sectionRef}
       className="relative min-h-[90vh] bg-white flex items-center overflow-hidden py-12 md:py-20"
     >
-      {/* Decorative background elements */}
+      {/* Decorative background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Gradient orbs */}
-        <div
-          className="absolute top-20 right-[10%] w-96 h-96 rounded-full blur-3xl opacity-20 bg-orb-1"
-        />
-        <div
-          className="absolute bottom-20 left-[5%] w-80 h-80 rounded-full blur-3xl opacity-15 bg-orb-2"
-        />
+        <div className="absolute top-20 right-[10%] w-96 h-96 rounded-full blur-3xl opacity-20 bg-orb-1" />
+        <div className="absolute bottom-20 left-[5%] w-80 h-80 rounded-full blur-3xl opacity-15 bg-orb-2" />
 
-        {/* Floating leaf decorations */}
-        <FaLeaf
-          className="absolute top-32 left-[8%] text-5xl opacity-5 float-1"
-          style={{ color: "#2D6933" }}
-        />
-        <FaSeedling
-          className="absolute top-[60%] right-[12%] text-4xl opacity-5 float-2"
-          style={{ color: "#2D6933" }}
-        />
-        <FaLeaf
-          className="absolute bottom-40 left-[15%] text-3xl opacity-5 float-3"
-          style={{ color: "#2D6933" }}
-        />
+        <FaLeaf className="absolute top-32 left-[8%] text-5xl opacity-5 float-1" style={{ color: "#2D6933" }} />
+        <FaSeedling className="absolute top-[60%] right-[12%] text-4xl opacity-5 float-2" style={{ color: "#2D6933" }} />
+        <FaLeaf className="absolute bottom-40 left-[15%] text-3xl opacity-5 float-3" style={{ color: "#2D6933" }} />
       </div>
 
       <div key={animateKey} className="relative max-w-6xl mx-auto px-6 text-center">
 
-        {/* Badge/Label */}
-        <div className="badge-fade mb-6">
+        {/* Premium Badge */}
+        <div className="badge-fade mb-10">
           <div
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full"
+            className="inline-flex items-center px-8 py-3 rounded-full shadow-lg backdrop-blur-md"
             style={{
-              backgroundColor: "#F6F4F3",
-              border: "1px solid #2D6933"
+              background:
+                "linear-gradient(135deg, rgba(45,105,51,0.12), rgba(158,209,158,0.18))",
+              border: "1px solid rgba(45,105,51,0.35)",
             }}
           >
-            <div className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: "#2D6933" }} />
             <span
-              className="text-sm md:text-base font-medium tracking-wide"
-              style={{
-                color: "#2D6933",
-              }}
+              className="text-xl md:text-2xl font-semibold tracking-wide"
+              style={{ color: "#2D6933" }}
             >
-              Ayurveda Dietetics
+              Ayurveda Diabetics Program @ TDU
             </span>
           </div>
         </div>
 
         {/* Heading */}
         <h1
-          className="text-[56px] md:text-[88px] lg:text-[96px] leading-[0.95] font-extrabold text-[#181117] max-w-4xl mx-auto mb-2"
+          className="text-[44px] md:text-[60px] lg:text-[78px] leading-tight font-extrabold text-[#181117] max-w-4xl mx-auto mb-4"
         >
           <span className="word">Food</span>{" "}
           <span className="word">is</span>{" "}
@@ -89,25 +72,18 @@ export default function HeroSection() {
           <span className="word highlight-word">calories.</span>
         </h1>
 
-        {/* Accent line under heading */}
+        {/* Accent line */}
         <div className="flex justify-center mt-6 accent-line">
-          <div
-            className="h-1.5 w-24 rounded-full"
-            style={{ backgroundColor: "#2D6933" }}
-          />
+          <div className="h-1 w-20 rounded-full" style={{ backgroundColor: "#2D6933" }} />
         </div>
 
-        {/* Description & Icon */}
+        {/* Description */}
         <div className="mt-12 flex flex-col items-center gap-6 fade-line">
-          <div className="relative">
-            <div className="icon-bounce">
-              <FaLeaf className="text-6xl" style={{ color: "#2D6933" }} />
-            </div>
+          <div className="icon-bounce">
+            <FaLeaf className="text-5xl" style={{ color: "#2D6933" }} />
           </div>
 
-          <p
-            className="max-w-2xl mx-auto text-xl md:text-2xl text-[#181117] leading-relaxed font-medium"
-          >
+          <p className="max-w-2xl mx-auto text-lg md:text-xl text-[#181117] leading-relaxed font-medium">
             Better health begins with personalising diets.
           </p>
         </div>
@@ -119,53 +95,41 @@ export default function HeroSection() {
             target="_blank"
             rel="noopener noreferrer"
             className="group relative inline-block px-8 py-4 text-base font-semibold tracking-wide text-white transition-all duration-300 hover:shadow-xl rounded-lg overflow-hidden"
-            style={{
-              backgroundColor: "#2D6933",
-            }}
+            style={{ backgroundColor: "#2D6933" }}
           >
             <span className="relative z-10">Explore Our Courses</span>
             <div
-              className="absolute inset-0 bg-gradient-to-r opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
               style={{
                 backgroundImage:
                   "linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0) 100%)",
               }}
             />
           </a>
-
         </div>
 
         {/* Animations */}
         <style>{`
           .bg-orb-1 {
-            background: radial-gradient(circle, rgba(45, 105, 51, 0.3) 0%, rgba(45, 105, 51, 0) 70%);
+            background: radial-gradient(circle, rgba(45,105,51,0.3) 0%, rgba(45,105,51,0) 70%);
             animation: float 8s ease-in-out infinite;
           }
-
           .bg-orb-2 {
-            background: radial-gradient(circle, rgba(158, 209, 158, 0.3) 0%, rgba(158, 209, 158, 0) 70%);
+            background: radial-gradient(circle, rgba(158,209,158,0.3) 0%, rgba(158,209,158,0) 70%);
             animation: float 10s ease-in-out infinite reverse;
           }
 
-          .float-1 {
-            animation: floatLeaf 6s ease-in-out infinite;
-          }
-
-          .float-2 {
-            animation: floatLeaf 8s ease-in-out infinite 2s;
-          }
-
-          .float-3 {
-            animation: floatLeaf 7s ease-in-out infinite 4s;
-          }
+          .float-1 { animation: floatLeaf 6s ease-in-out infinite; }
+          .float-2 { animation: floatLeaf 8s ease-in-out infinite 2s; }
+          .float-3 { animation: floatLeaf 7s ease-in-out infinite 4s; }
 
           @keyframes float {
-            0%, 100% { transform: translateY(0px); }
+            0%,100% { transform: translateY(0); }
             50% { transform: translateY(-30px); }
           }
 
           @keyframes floatLeaf {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            0%,100% { transform: translateY(0) rotate(0); }
             50% { transform: translateY(-20px) rotate(5deg); }
           }
 
@@ -173,14 +137,13 @@ export default function HeroSection() {
             opacity: 0;
             transform: translateY(20px);
             animation: fadeUp 0.8s ease-out forwards;
-            animation-delay: 0.05s;
           }
 
           .word {
             display: inline-block;
             opacity: 0;
-            transform: translateY(60px);
-            animation: wordUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+            transform: translateY(40px);
+            animation: wordUp 0.8s cubic-bezier(0.22,1,0.36,1) forwards;
           }
 
           .word:nth-child(1) { animation-delay: 0.15s; }
@@ -191,72 +154,55 @@ export default function HeroSection() {
           .word:nth-child(6) { animation-delay: 0.65s; }
 
           .highlight-word {
-            background: linear-gradient(120deg, transparent 0%, transparent 50%, rgba(45, 105, 51, 0.15) 50%, rgba(45, 105, 51, 0.15) 100%);
+            background: linear-gradient(120deg, transparent 50%, rgba(45,105,51,0.15) 50%);
             background-size: 220% 100%;
             background-position: 100% 0;
-            animation: wordUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards,
+            animation: wordUp 0.8s cubic-bezier(0.22,1,0.36,1) forwards,
                        highlightSlide 1.2s ease-out forwards;
-            animation-delay: 0.65s, 1.3s;
+            animation-delay: 0.65s, 1.2s;
             padding: 0 0.2em;
           }
 
           @keyframes highlightSlide {
-            to {
-              background-position: 0 0;
-            }
+            to { background-position: 0 0; }
           }
 
           .accent-line {
             opacity: 0;
             transform: scaleX(0);
-            animation: lineGrow 0.8s ease-out forwards;
-            animation-delay: 0.75s;
-          }
-
-          @keyframes lineGrow {
-            to {
-              opacity: 1;
-              transform: scaleX(1);
-            }
+            animation: lineGrow 0.7s ease-out forwards;
+            animation-delay: 0.8s;
           }
 
           .fade-line {
             opacity: 0;
             transform: translateY(30px);
             animation: fadeUp 0.8s ease-out forwards;
-            animation-delay: 0.9s;
+            animation-delay: 1s;
           }
 
-          .delay-3 {
-            animation-delay: 1.2s;
-          }
-
-          .delay-4 {
-            animation-delay: 1.4s;
-          }
+          .delay-3 { animation-delay: 1.2s; }
 
           .icon-bounce {
             animation: fadeUp 0.8s ease-out forwards, iconBounce 2s ease-in-out infinite;
-            animation-delay: 0.9s, 2s;
+            animation-delay: 1s, 2s;
           }
 
           @keyframes wordUp {
-            to {
-              opacity: 1;
-              transform: translateY(0);
-            }
+            to { opacity: 1; transform: translateY(0); }
           }
 
           @keyframes fadeUp {
-            to {
-              opacity: 1;
-              transform: translateY(0);
-            }
+            to { opacity: 1; transform: translateY(0); }
           }
 
           @keyframes iconBounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+            0%,100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+          }
+
+          @keyframes lineGrow {
+            to { opacity: 1; transform: scaleX(1); }
           }
         `}</style>
 
