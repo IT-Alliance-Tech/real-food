@@ -91,7 +91,7 @@ export default function ContactConnectSection() {
                         <div className="space-y-3 text-sm text-white/90">
                             <div className="flex items-center gap-2">
                                 <FaEnvelope className="text-[#F9A620]" />
-                                wellness@tdu.edu.in
+                                {`wellness@tdu.edu.in (Prefered)`}
                             </div>
 
                             <div className="flex items-center gap-2">
@@ -101,12 +101,12 @@ export default function ContactConnectSection() {
 
                             <div className="flex items-center gap-2">
                                 <FaWhatsapp className="text-[#F9A620]" />
-                                WhatsApp: Anytime
+                                WhatsApp
                             </div>
 
                             <div className="flex items-center gap-2">
                                 <FaPhoneAlt className="text-[#F9A620]" />
-                                10:00 AM – 6:00 PM (Mon–Fri)
+                                09:00 AM – 05:30 PM (Mon–Fri)
                             </div>
                         </div>
                     </div>

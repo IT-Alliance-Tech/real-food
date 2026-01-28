@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { FaExclamationCircle, FaLeaf } from "react-icons/fa";
+import { FaExclamationCircle } from "react-icons/fa";
 
 export default function ProblemSection() {
   const sectionRef = useRef(null);
@@ -51,7 +51,7 @@ export default function ProblemSection() {
           </div>
 
           <h2 className="text-[48px] md:text-[72px] lg:text-[84px] font-extrabold leading-[1.05] mb-6">
-            The Problem We Address
+            The Problem
           </h2>
 
           <div className="w-24 h-1.5 mx-auto rounded-full bg-[#F9A620] width-pulse" />
@@ -59,52 +59,55 @@ export default function ProblemSection() {
 
         {/* Cards */}
         <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
-          {/* Left */}
+          {/* Modern Nutrition */}
           <div className="section-slide-left">
             <div className="card-animate bg-white/10 backdrop-blur-xl p-8 rounded-3xl border border-white/20 glow h-full flex flex-col">
-
-              <h3 className="text-2xl font-bold mb-4">Modern Nutrition</h3>
+              <h3
+                className="text-2xl font-bold mb-4"
+                style={{ color: "#F9A620" }}
+              >
+                Modern Nutrition
+              </h3>
               <p className="text-white/90 text-lg leading-relaxed">
-                Focuses heavily on nutrients, often{" "}
-                <span className="text-[#F9A620] font-bold">
-                  overlooking digestion
-                </span>{" "}
-                and individuality.
+                Modern nutrition is based on recommendations for population and
+                often overlooks digestion.
               </p>
             </div>
           </div>
 
-          {/* Right */}
-          <div className="section-slide-right" style={{ animationDelay: "0.15s" }}>
+          {/* Traditional Ayurveda */}
+          <div
+            className="section-slide-right"
+            style={{ animationDelay: "0.15s" }}
+          >
             <div className="card-animate bg-[#F9A620]/20 backdrop-blur-xl p-8 rounded-3xl border border-[#F9A620]/40 glow h-full flex flex-col">
-
-              <h3 className="text-2xl font-bold mb-4">Traditional Ayurveda</h3>
+              <h3
+                className="text-2xl font-bold mb-4"
+                style={{ color: "#F9A620" }}
+              >
+                Traditional Ayurveda
+              </h3>
               <p className="text-white/90 text-lg leading-relaxed">
-                Personalized and holistic, but sometimes{" "}
-                <span className="text-[#F9A620] font-bold">
-                  misses modern nutrients
-                </span>{" "}
-                and science.
+                Focuses on digestion and individual constitution rather than
+                nutrient.
               </p>
             </div>
           </div>
         </div>
 
-
-        {/* Quote */}
+        {/* Bottom Line */}
         <div
           className="mt-16 text-center max-w-3xl mx-auto section-fade-up"
           style={{ animationDelay: "0.3s" }}
         >
           <p className="text-xl md:text-2xl italic text-white/80">
-            "We need a bridge that brings the best of both worlds."
+            {` "Two perspectives on food, one shared goal : health and well-being."`}
           </p>
         </div>
       </div>
 
       {/* Styles */}
       <style>{`
-        /* Entry Animations - FASTER & STRONGER */
         .section-fade-up {
           opacity: 0;
           animation: fadeUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
@@ -135,24 +138,16 @@ export default function ProblemSection() {
           to { opacity: 1; transform: translateX(0); }
         }
 
-        /* Continuous Card Animation - FASTER & MORE DRAMATIC */
         .card-animate {
           animation: floatZoom 3.5s ease-in-out infinite;
         }
 
         @keyframes floatZoom {
-          0% {
-            transform: translateY(0) scale(1);
-          }
-          50% {
-            transform: translateY(-16px) scale(1.06);
-          }
-          100% {
-            transform: translateY(0) scale(1);
-          }
+          0% { transform: translateY(0) scale(1); }
+          50% { transform: translateY(-16px) scale(1.06); }
+          100% { transform: translateY(0) scale(1); }
         }
 
-        /* Glow - STRONGER & FASTER */
         .glow {
           animation: glowPulse 2.5s ease-in-out infinite;
         }
@@ -163,7 +158,6 @@ export default function ProblemSection() {
           100% { box-shadow: 0 0 0 rgba(249,166,32,0); }
         }
 
-        /* Header Effects - FASTER & MORE PRONOUNCED */
         .pill-pulse {
           animation: pillPulse 2s ease-in-out infinite;
         }

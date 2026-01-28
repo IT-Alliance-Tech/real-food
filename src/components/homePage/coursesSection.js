@@ -50,7 +50,7 @@ export default function CoursesSection() {
     },
     {
       icon: <FaLaptop />,
-      title: "Applied Nutrition Science (Online)",
+      title: "Applied Nutrition Science",
       description: "An online program bridging modern nutrition science with applied, evidence-based practice.",
       url: "https://www.tdu.edu.in/courses/applied-nutrition-science-online",
       color: "#2D6933",
@@ -96,7 +96,7 @@ export default function CoursesSection() {
                 color: "#2D6933",
               }}
             >
-              Our Programs
+              Our Offerings
             </span>
           </div>
         </div>
@@ -106,7 +106,7 @@ export default function CoursesSection() {
           className="section-fade-up text-center text-[48px] md:text-[72px] lg:text-[84px] font-extrabold leading-[1.05] mb-6"
           style={{ color: "#10295F" }}
         >
-          Courses we offer
+          Courses
         </h2>
 
         {/* Accent line */}

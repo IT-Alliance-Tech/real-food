@@ -6,7 +6,7 @@ import { FaChevronDown } from "react-icons/fa";
 const faqs = [
     {
         q: "What is Ayurveda Dietetics?",
-        a: "Ayurveda Dietetics is an academic discipline that integrates Ayurvedic dietary principles with modern nutrition science to guide both personalised nutrition and population-level dietary planning.",
+        a: "Ayurveda Dietetics is an academic discipline that integrates Ayurvedic dietary principles with modern nutrition science to guide personalized dietary planning.",
     },
     {
         q: "Who is this program for?",
@@ -18,12 +18,13 @@ const faqs = [
                 <li>Yoga therapists</li>
                 <li>Chefs and food professionals</li>
                 <li>Food industry employees, regulators, and entrepreneurs</li>
+                <li>Curious minds</li>
             </ul>
         ),
     },
     {
-        q: "How is this different from other nutrition courses?",
-        a: "This program goes beyond nutrients. It gives authentic Ayurveda knowledge combined with the latest in nutrition science.",
+        q: "How are we different from other nutrition courses?",
+        a: "This course conciously waves between Nutritional Science, Ayurveda and latest research.",
     },
     {
         q: "Are the courses academically recognised?",
@@ -31,7 +32,7 @@ const faqs = [
     },
     {
         q: "What are the learning outcomes?",
-        a: "Learners develop the ability to bridge Ayurveda and modern nutrition science, enabling integrative dietary planning for clinical, community, and institutional settings.",
+        a: "Increased awareness on traditional knowledge in content of modern nutrition science.",
     },
 ];
 
@@ -132,7 +133,7 @@ export default function FAQSection() {
                         }`}
                 >
                     <h3 className="text-2xl md:text-3xl font-bold text-[#2D6933] mb-6">
-                        Begin Your Journey in Integrative Nutrition
+                        Begin Your Journey in Ayurveda Dietetics
                     </h3>
 
                     <a

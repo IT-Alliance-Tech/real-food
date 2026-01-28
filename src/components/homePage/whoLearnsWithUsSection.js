@@ -126,10 +126,10 @@ export default function WhoLearnsWithUsSection() {
                     }}
                 >
                     <h2 className="text-[48px] md:text-[72px] lg:text-[84px] font-extrabold leading-[1.05] text-[#10295F] mb-6">
-                        Who learns with us
+                        Who learns with us?
                     </h2>
                     <p className="text-lg md:text-xl text-[#181117]/70 max-w-2xl mx-auto">
-                        Professionals from diverse wellness backgrounds trust our learning ecosystem
+                        Knowledge seekers from diverse backgrounds trust our courses
                     </p>
                 </div>
 

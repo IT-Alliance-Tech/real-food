@@ -55,19 +55,16 @@ export default function AcademicSupportSection() {
                             <span className="text-[#F9A620] text-4xl">
                                 <FaUniversity />
                             </span>
-                            Consultancy & Academic Services
+                            Services
                         </h3>
-
-                        <p className="text-white/85 mb-8 leading-relaxed">
-                            We partner with healthcare organizations and educational bodies to
-                            build robust integrative nutrition frameworks.
-                        </p>
 
                         <ul className="space-y-4">
                             {[
-                                "Institutional and clinical menu design",
-                                "Curriculum and content development",
-                                "Academic advisory for nutrition programs",
+                                "Bespoke IKS module on food for schools and colleges",
+                                "Dietetic Research Design and Implementation",
+                                "Menu Planning and evaluation`",
+                                "Content development",
+                                "Corporate Wellness Training",
                             ].map((item, i) => (
                                 <li
                                     key={i}
