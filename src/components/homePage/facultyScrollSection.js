@@ -557,7 +557,7 @@ export default function FacultyScrollSection() {
                         <p className="text-center text-[15px] sm:text-base leading-relaxed text-white/80 font-[var(--font-merri)]">
                             All courses are taught by experienced academicians, clinicians,
                             and subject-matter experts across Ayurveda, Nutrition & Dietetics,
-                            and Integrative Health Sciences.
+                            and Integrative Health Science.
                         </p>
                     </div>
 
