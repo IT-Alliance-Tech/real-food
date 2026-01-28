@@ -33,14 +33,26 @@ export default function IntegrativePlateScrollSection() {
       });
 
       tl.to(sectionRef.current, { backgroundColor: "#000000", duration: 0.6 })
-        .fromTo(questionRef.current, { opacity: 0, y: 80 }, { opacity: 1, y: 0, duration: 1 })
+        .fromTo(
+          questionRef.current,
+          { opacity: 0, y: 80 },
+          { opacity: 1, y: 0, duration: 1 },
+        )
         .to(questionRef.current, { opacity: 1, duration: 1.2 })
         .to(questionRef.current, { opacity: 0, y: -80, duration: 1 })
         .to(sectionRef.current, { backgroundColor: "#F6F4F3", duration: 0.6 })
-        .fromTo(yesRef.current, { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 1 })
+        .fromTo(
+          yesRef.current,
+          { opacity: 0, scale: 0.6 },
+          { opacity: 1, scale: 1, duration: 1 },
+        )
         .to(yesRef.current, { opacity: 1, duration: 1.4 })
         .to(yesRef.current, { opacity: 0, scale: 1.2, duration: 1 })
-        .fromTo(contentRef.current, { opacity: 0, y: 120 }, { opacity: 1, y: 0, duration: 1 });
+        .fromTo(
+          contentRef.current,
+          { opacity: 0, y: 120 },
+          { opacity: 1, y: 0, duration: 1 },
+        );
     }, sectionRef);
 
     return () => ctx.revert();
@@ -51,7 +63,8 @@ export default function IntegrativePlateScrollSection() {
       ref={sectionRef}
       className="relative w-full min-h-screen overflow-hidden"
       style={{
-        background: "linear-gradient(135deg, #F6F4F3 0%, #FDFBFA 50%, #F6F4F3 100%)"
+        background:
+          "linear-gradient(135deg, #F6F4F3 0%, #FDFBFA 50%, #F6F4F3 100%)",
       }}
     >
       {/* QUESTION */}
@@ -64,10 +77,11 @@ export default function IntegrativePlateScrollSection() {
         </h2>
       </div>
 
-
-
       {/* YES */}
-      <div ref={yesRef} className="absolute inset-0 flex justify-center text-center pt-[26vh]">
+      <div
+        ref={yesRef}
+        className="absolute inset-0 flex justify-center text-center pt-[26vh]"
+      >
         <h1
           className="text-[120px] md:text-[200px] font-black tracking-tighter"
           style={{
@@ -75,7 +89,7 @@ export default function IntegrativePlateScrollSection() {
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
             backgroundClip: "text",
-            filter: "drop-shadow(0 4px 20px rgba(45, 105, 51, 0.3))"
+            filter: "drop-shadow(0 4px 20px rgba(45, 105, 51, 0.3))",
           }}
         >
           Yes!
@@ -84,16 +98,16 @@ export default function IntegrativePlateScrollSection() {
 
       {/* CONTENT */}
       <div ref={contentRef} className="relative opacity-0">
-        <div className="max-w-7xl mx-auto px-6 py-28">
-          <h2 className="text-center text-[48px] md:text-[72px] lg:text-[84px] font-extrabold leading-[1.05] text-[#10295F] mb-6">
+        <div className="max-w-7xl mx-auto px-6 py-16 md:py-20">
+          <h2 className="text-center text-[40px] md:text-[64px] lg:text-[72px] font-extrabold leading-[1.1] text-[#10295F] mb-4">
             The Integrative Plate
           </h2>
 
-          <p className="text-center max-w-3xl mx-auto text-xl md:text-2xl mb-24 text-[#10295F]/60 font-medium">
+          <p className="text-center max-w-2xl mx-auto text-lg md:text-xl mb-12 text-[#10295F]/60 font-medium">
             Same plate. Two ways of understanding food.
           </p>
 
-          <div className="grid md:grid-cols-2 gap-12 lg:gap-16">
+          <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
             <PlateCard
               title="Nutrient View"
               titleColor="#10295F"
@@ -133,16 +147,24 @@ export default function IntegrativePlateScrollSection() {
 }
 
 /* ---------- PLATE CARD ---------- */
-function PlateCard({ title, titleColor, accentColor, gradientFrom, gradientTo, tooltips, borderColor }) {
+function PlateCard({
+  title,
+  titleColor,
+  accentColor,
+  gradientFrom,
+  gradientTo,
+  tooltips,
+  borderColor,
+}) {
   const activeColor = borderColor || accentColor;
   const cardRef = useRef(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.to(cardRef.current, {
-        borderColor: `${activeColor}50`, // Fade border to lower opacity
-        boxShadow: `0 10px 30px -10px ${activeColor}30`, // Reduce shadow intensity
-        duration: 1.2,
+        borderColor: `${activeColor}40`,
+        boxShadow: `0 15px 40px -15px ${activeColor}25`,
+        duration: 1.5,
         repeat: -1,
         yoyo: true,
         ease: "sine.inOut",
@@ -155,132 +177,153 @@ function PlateCard({ title, titleColor, accentColor, gradientFrom, gradientTo, t
   return (
     <div
       ref={cardRef}
-      className="rounded-[32px] bg-white relative group/card transition-all duration-500 border-4 max-w-[460px] w-full mx-auto"
+      className="rounded-[40px] bg-white relative group/card transition-all duration-500 border-2 max-w-[500px] w-full mx-auto overflow-hidden"
       style={{
-        borderColor: activeColor,
-        boxShadow: `0 25px 50px -12px ${activeColor}66` // Stronger shadow: more opacity, larger blur
+        borderColor: `${activeColor}20`,
+        boxShadow: `0 20px 60px -15px ${activeColor}30`,
       }}
     >
-      {/* Gradient overlay on hover */}
+      {/* Subtle background texture/gradient */}
       <div
-        className="absolute inset-0 opacity-0 group-hover/card:opacity-100 transition-opacity duration-700 pointer-events-none rounded-[28px]"
+        className="absolute inset-0 opacity-[0.03] pointer-events-none"
         style={{
-          background: `radial-gradient(circle at 50% 50%, ${accentColor}06 0%, transparent 65%)`,
+          background: `radial-gradient(circle at 50% 50%, ${accentColor} 0%, transparent 70%)`,
         }}
       />
 
-      {/* Border glow effect */}
-      <div
-        className="absolute inset-0 rounded-[28px] opacity-0 group-hover/card:opacity-100 transition-opacity duration-700 pointer-events-none"
-        style={{
-          boxShadow: `inset 0 0 0 1px ${accentColor}15`,
-        }}
-      />
-
-      {/* Title with gradient */}
-      <div className="flex justify-center w-full pt-8 pb-2 relative z-10">
+      {/* Title Section */}
+      <div className="flex justify-center w-full pt-8 pb-4 relative z-10">
         <h3
-          className="text-3xl font-black tracking-tight text-center"
+          className="text-3xl md:text-4xl font-black tracking-tight text-center"
           style={{
             background: `linear-gradient(135deg, ${gradientFrom} 0%, ${gradientTo} 100%)`,
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
-            backgroundClip: "text"
+            backgroundClip: "text",
           }}
         >
           {title}
         </h3>
       </div>
 
-      <div className="relative h-[480px] w-full overflow-visible">
-        {/* Circular Dotted Connector */}
-        <div
-          className="absolute top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[85%] h-[50%] rounded-[100%] border-[2.5px] border-dotted pointer-events-none opacity-50"
-          style={{ borderColor: accentColor }}
-        />
+      <div className="relative h-[440px] w-full flex items-center justify-center">
+        {/* THE PLATE - Styled Background */}
+        <div className="absolute w-[380px] h-[380px] rounded-full flex items-center justify-center z-0">
+          {/* Outer Rim */}
+          <div
+            className="absolute inset-0 rounded-full border-[12px] opacity-10"
+            style={{ borderColor: accentColor }}
+          />
+          {/* Inner Plate Surface */}
+          <div
+            className="absolute inset-[12px] rounded-full bg-white shadow-inner"
+            style={{
+              boxShadow: `inset 0 0 40px ${accentColor}10`,
+              border: `1px solid ${accentColor}15`,
+            }}
+          />
+          {/* Subtle Dotted Guide */}
+          <div
+            className="absolute inset-[40px] rounded-full border border-dashed opacity-20"
+            style={{ borderColor: accentColor }}
+          />
+        </div>
 
-        <HoverImage
-          src={Fiber}
-          alt="Fiber"
-          tooltip={tooltips.fiber}
-          accentColor={accentColor}
-          gradientFrom={gradientFrom}
-          gradientTo={gradientTo}
-          className="absolute top-[5%] left-1/2 -translate-x-1/2 w-[280px]"
-        />
+        {/* FOOD ITEMS ARRANGED ON PLATE */}
+        <div className="relative w-full h-full z-10">
+          <HoverImage
+            src={Fiber}
+            alt="Fiber"
+            tooltip={tooltips.fiber}
+            accentColor={accentColor}
+            gradientFrom={gradientFrom}
+            gradientTo={gradientTo}
+            className="absolute top-[10%] left-[15%] w-[180px] md:w-[200px]"
+          />
 
-        <HoverImage
-          src={Dal}
-          alt="Dal"
-          tooltip={tooltips.dal}
-          accentColor={accentColor}
-          gradientFrom={gradientFrom}
-          gradientTo={gradientTo}
-          className="absolute top-[33%] -left-[13%] w-[260px]"
-        />
+          <HoverImage
+            src={Dal}
+            alt="Dal"
+            tooltip={tooltips.dal}
+            accentColor={accentColor}
+            gradientFrom={gradientFrom}
+            gradientTo={gradientTo}
+            className="absolute top-[40%] left-[5%] w-[160px] md:w-[180px]"
+          />
 
-        <HoverImage
-          src={Rice}
-          alt="Rice"
-          tooltip={tooltips.rice}
-          accentColor={accentColor}
-          gradientFrom={gradientFrom}
-          gradientTo={gradientTo}
-          className="absolute top-[55%] left-1/2 -translate-x-1/2 z-10 w-[260px]"
-        />
+          <HoverImage
+            src={Rice}
+            alt="Rice"
+            tooltip={tooltips.rice}
+            accentColor={accentColor}
+            gradientFrom={gradientFrom}
+            gradientTo={gradientTo}
+            className="absolute top-[35%] left-[35%] z-20 w-[180px] md:w-[220px]"
+          />
 
-        <HoverImage
-          src={Chapathi}
-          alt="Chapathi"
-          tooltip={tooltips.chapathi}
-          accentColor={accentColor}
-          gradientFrom={gradientFrom}
-          gradientTo={gradientTo}
-          className="absolute top-[35%] -right-[10%] w-[230px]"
-        />
+          <HoverImage
+            src={Chapathi}
+            alt="Chapathi"
+            tooltip={tooltips.chapathi}
+            accentColor={accentColor}
+            gradientFrom={gradientFrom}
+            gradientTo={gradientTo}
+            className="absolute top-[15%] right-[5%] w-[160px] md:w-[190px]"
+          />
 
-        <HoverImage
-          src={Curd}
-          alt="Curd"
-          tooltip={tooltips.curd}
-          accentColor={accentColor}
-          gradientFrom={gradientFrom}
-          gradientTo={gradientTo}
-          className="absolute bottom-[1%] right-[0%] w-[210px]"
-        />
+          <HoverImage
+            src={Curd}
+            alt="Curd"
+            tooltip={tooltips.curd}
+            accentColor={accentColor}
+            gradientFrom={gradientFrom}
+            gradientTo={gradientTo}
+            className="absolute bottom-[10%] right-[15%] w-[140px] md:w-[160px]"
+          />
+        </div>
       </div>
     </div>
   );
 }
 
 /* ---------- HOVER IMAGE ---------- */
-function HoverImage({ src, alt, className, tooltip, accentColor, gradientFrom, gradientTo }) {
+function HoverImage({
+  src,
+  alt,
+  className,
+  tooltip,
+  accentColor,
+  gradientFrom,
+  gradientTo,
+}) {
   return (
-    <div className={`group/item absolute ${className} cursor-pointer z-10 hover:z-[60]`}>
+    <div
+      className={`group/item absolute ${className} cursor-pointer z-10 hover:z-[60] transition-transform duration-500`}
+    >
       {/* Softer glow */}
       <div
         className="absolute inset-0 rounded-full blur-2xl opacity-0 
-                   group-hover/item:opacity-25 transition-all duration-700 -z-10"
+                   group-hover/item:opacity-30 transition-all duration-700 -z-10"
         style={{
-          background: `radial-gradient(circle, ${accentColor}30 0%, transparent 70%)`,
-          transform: "scale(0.8)"
+          background: `radial-gradient(circle, ${accentColor}40 0%, transparent 70%)`,
+          transform: "scale(1.2)",
         }}
       />
 
       {/* Image */}
       <div
         className="relative transition-all duration-700 ease-out
-                   group-hover/item:scale-110 group-hover/item:-translate-y-2
-                   filter group-hover/item:brightness-105 group-hover/item:drop-shadow-xl"
+                   group-hover/item:scale-110 group-hover/item:-translate-y-3
+                   filter group-hover/item:brightness-105 group-hover/item:drop-shadow-2xl"
       >
-        <Image src={src} alt={alt} className="relative z-10" />
+        <Image src={src} alt={alt} className="relative z-10 w-full h-auto" />
       </div>
 
       {/* Tooltip */}
       <div
-        className="pointer-events-none absolute left-1/2 bottom-full mb-5
+        className="pointer-events-none absolute left-1/2 bottom-[90%] mb-4
                    -translate-x-1/2
-                   opacity-0 scale-95 translate-y-3
+                   opacity-0 scale-90 translate-y-4
                    group-hover/item:opacity-100
                    group-hover/item:scale-100
                    group-hover/item:translate-y-0
@@ -290,46 +333,27 @@ function HoverImage({ src, alt, className, tooltip, accentColor, gradientFrom, g
         <div className="relative">
           {/* Arrow */}
           <div
-            className="absolute -bottom-2.5 left-1/2 -translate-x-1/2
-                       w-5 h-5 rotate-45"
+            className="absolute -bottom-2 left-1/2 -translate-x-1/2
+                       w-4 h-4 rotate-45"
             style={{
-              background: `linear-gradient(135deg, ${gradientFrom} 0%, ${gradientTo} 100%)`
+              background: `linear-gradient(135deg, ${gradientFrom} 0%, ${gradientTo} 100%)`,
             }}
           />
 
-          {/* Tooltip box (calmer) */}
+          {/* Tooltip box */}
           <div
             className="relative text-white
-                       text-[15px] leading-[1.65] font-semibold
-                       px-7 py-4 rounded-2xl
-                       backdrop-blur-md border border-white/25
-                       w-[280px] min-h-[60px]"
+                       text-[14px] md:text-[15px] leading-snug font-bold
+                       px-6 py-3 rounded-2xl
+                       backdrop-blur-lg border border-white/20
+                       min-w-[180px] max-w-[260px]"
             style={{
               background: `linear-gradient(135deg, ${gradientFrom} 0%, ${gradientTo} 100%)`,
-              boxShadow: `0 14px 40px ${accentColor}45, 0 0 0 1px ${accentColor}15`,
+              boxShadow: `0 10px 30px ${accentColor}40`,
             }}
           >
             <div className="whitespace-normal text-center relative z-10">
               {tooltip}
-            </div>
-
-            {/* Subtle inner glow */}
-            <div
-              className="absolute inset-0 rounded-2xl pointer-events-none"
-              style={{
-                background:
-                  "radial-gradient(circle at 50% 0%, rgba(255,255,255,0.12) 0%, transparent 60%)"
-              }}
-            />
-
-            {/* Shine */}
-            <div className="absolute inset-0 rounded-2xl overflow-hidden pointer-events-none">
-              <div
-                className="absolute inset-0 bg-gradient-to-r
-                           from-transparent via-white/18 to-transparent
-                           -translate-x-full group-hover/item:translate-x-full
-                           transition-transform duration-1200 ease-in-out"
-              />
             </div>
           </div>
         </div>
