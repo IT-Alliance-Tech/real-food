@@ -31,7 +31,7 @@ import faculty21 from "../../../public/staff/staff21.png";
 const programTeam = [
     { name: "Dr. Megha", position: "Associate Professor, TDU", image: faculty1 },
     { name: "Dr. Madhumitha Krishnan", position: "MD (Ayurveda)Consultant, TDU", image: faculty3 },
-    { name: "Dr. Ms. Sonia Velarsan,", position: "RD Program Asst.Ayurveda Dietetics, TDU", image: faculty2 },
+    { name: "Dr. Ms. Sonia Velarsan, RD,", position: "Program Asst. Ayurveda Dietetics, TDU", image: faculty2 },
 ];
 
 // Faculty Slider - Remaining members (sliding display)
@@ -376,24 +376,24 @@ export default function FacultyScrollSection() {
                     cursor: pointer;
                 }
             `}</style>
-            <section className="relative bg-[#140b08] text-white py-20 md:py-28">
-                <div className="flex flex-col items-center justify-center px-4">
+            <section className="relative bg-[#140b08] text-white py-8 sm:py-12 md:py-16 lg:py-20 xl:py-28">
+                <div className="flex flex-col items-center justify-center px-3 sm:px-4 md:px-6">
 
-                    {/* Heading */}
-                    <h2 className="text-center text-[48px] md:text-[72px] lg:text-[84px] font-extrabold leading-[1.05] mb-16 md:mb-24">
+                    {/* Heading - Enhanced Responsive */}
+                    <h2 className="text-center text-[28px] xs:text-[32px] sm:text-[38px] md:text-[56px] lg:text-[72px] xl:text-[84px] font-extrabold leading-[1.1] sm:leading-[1.05] mb-8 xs:mb-10 sm:mb-12 md:mb-16 lg:mb-20 xl:mb-24 px-2 sm:px-4">
                         Faculty & Course Instructors
                     </h2>
 
-                    {/* -------------------- PROGRAM TEAM (STATIC) -------------------- */}
-                    <div className="w-full max-w-6xl mb-20 md:mb-28">
-                        <h3 className="text-center text-3xl md:text-4xl font-bold mb-12">
+                    {/* -------------------- PROGRAM TEAM (STATIC) - Enhanced Responsive -------------------- */}
+                    <div className="w-full max-w-6xl mb-10 xs:mb-12 sm:mb-14 md:mb-20 lg:mb-24 xl:mb-28">
+                        <h3 className="text-center text-xl xs:text-2xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6 xs:mb-7 sm:mb-8 md:mb-10 lg:mb-12 px-2">
                             Program Team
                         </h3>
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 xs:gap-6 sm:gap-7 md:gap-8 lg:gap-10 max-w-[320px] sm:max-w-none mx-auto">
                             {programTeam.map((member, index) => (
-                                <div key={index} className="flex flex-col items-center program-card">
-                                    {/* Image */}
-                                    <div className="program-card-image relative h-[350px] sm:h-[380px] w-full max-w-[420px] overflow-hidden rounded-2xl shadow-2xl">
+                                <div key={index} className="flex flex-col items-center program-card w-full">
+                                    {/* Image - Enhanced Responsive heights */}
+                                    <div className="program-card-image relative h-[280px] xs:h-[300px] sm:h-[320px] md:h-[340px] lg:h-[360px] xl:h-[380px] w-full max-w-[280px] xs:max-w-[300px] sm:max-w-[320px] md:max-w-[360px] lg:max-w-[400px] xl:max-w-[420px] overflow-hidden rounded-xl sm:rounded-2xl shadow-2xl mx-auto">
                                         <div className="program-card-image-inner w-full h-full">
                                             <Image
                                                 src={member.image}
@@ -416,12 +416,12 @@ export default function FacultyScrollSection() {
                                         {/* Overlay that appears on hover */}
                                         <div className="program-card-overlay" />
                                     </div>
-                                    {/* Text */}
-                                    <div className="mt-6 text-center w-full">
-                                        <h4 className="text-2xl sm:text-3xl font-semibold text-white line-clamp-2">
+                                    {/* Text - Enhanced Responsive sizing */}
+                                    <div className="mt-3 xs:mt-4 sm:mt-5 md:mt-5 lg:mt-6 text-center w-full px-2 sm:px-3">
+                                        <h4 className="text-lg xs:text-xl sm:text-xl md:text-2xl lg:text-2xl xl:text-3xl font-semibold text-white line-clamp-2 leading-tight">
                                             {member.name}
                                         </h4>
-                                        <p className="mt-2 text-base sm:text-lg text-white/70 line-clamp-3">
+                                        <p className="mt-1 xs:mt-1.5 sm:mt-2 text-xs xs:text-sm sm:text-sm md:text-base lg:text-base xl:text-lg text-white/70 line-clamp-3 leading-relaxed">
                                             {member.position}
                                         </p>
                                     </div>
@@ -430,19 +430,19 @@ export default function FacultyScrollSection() {
                         </div>
                     </div>
 
-                    {/* -------------------- FACULTY SLIDER -------------------- */}
-                    <div className="w-full max-w-6xl mb-16 md:mb-20">
-                        <h3 className="text-center text-3xl md:text-4xl font-bold mb-12">
+                    {/* -------------------- FACULTY SLIDER - Enhanced Responsive -------------------- */}
+                    <div className="w-full max-w-6xl mb-10 xs:mb-12 sm:mb-14 md:mb-16 lg:mb-18 xl:mb-20">
+                        <h3 className="text-center text-xl xs:text-2xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6 xs:mb-7 sm:mb-8 md:mb-10 lg:mb-12 px-2">
                             Course Instructors
                         </h3>
 
                         {/* Card Stack Container with Navigation */}
-                        <div className="relative w-full">
+                        <div className="relative w-full px-2 sm:px-4 lg:px-0">
 
-                            {/* Previous Button */}
+                            {/* Desktop Navigation - Previous Button (hidden on mobile/tablet) */}
                             <button
                                 onClick={goToPrev}
-                                className="absolute left-0 top-1/2 -translate-y-1/2 z-40 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full p-3 transition-all duration-300 hover:scale-110 cursor-pointer"
+                                className="hidden lg:block absolute left-0 top-1/2 -translate-y-1/2 z-40 bg-white/10 hover:bg-white/20 active:bg-white/30 backdrop-blur-sm rounded-full p-3 transition-all duration-300 hover:scale-110 active:scale-95 cursor-pointer touch-manipulation"
                                 aria-label="Previous faculty"
                             >
                                 <svg
@@ -455,8 +455,8 @@ export default function FacultyScrollSection() {
                                 </svg>
                             </button>
 
-                            {/* Card Stack - FIXED HEIGHT CONTAINER */}
-                            <div className="relative h-[550px] w-[300px] sm:w-[420px] mx-auto">
+                            {/* Card Stack - RESPONSIVE HEIGHT CONTAINER */}
+                            <div className="relative h-[380px] xs:h-[400px] sm:h-[420px] md:h-[450px] lg:h-[540px] xl:h-[550px] w-[200px] xs:w-[220px] sm:w-[240px] md:w-[260px] lg:w-[380px] xl:w-[420px] mx-auto lg:mb-0 mb-8">
                                 {facultySlider.map((card, index) => {
                                     const total = facultySlider.length;
 
@@ -468,6 +468,19 @@ export default function FacultyScrollSection() {
 
                                     const isActive = offset === 0;
 
+                                    // Responsive offset calculation
+                                    const getOffsetDistance = () => {
+                                        if (typeof window !== 'undefined') {
+                                            if (window.innerWidth < 375) return 85; // Very small mobile
+                                            if (window.innerWidth < 480) return 95; // Small mobile
+                                            if (window.innerWidth < 640) return 100; // Mobile
+                                            if (window.innerWidth < 768) return 110; // Large mobile
+                                            if (window.innerWidth < 1024) return 120; // Tablet
+                                            return 200; // Desktop - UNCHANGED
+                                        }
+                                        return 100; // Default
+                                    };
+
                                     return (
                                         <div
                                             key={index}
@@ -477,7 +490,7 @@ export default function FacultyScrollSection() {
                                                 opacity: isActive ? 1 : 0.4,
                                                 transform: `
                                                     translate(-50%, -50%)
-                                                    translateX(${offset * 200}px)
+                                                    translateX(${offset * getOffsetDistance()}px)
                                                     scale(${isActive ? 1.05 : 0.88})
                                                     rotateY(${offset * -8}deg)
                                                 `,
@@ -492,10 +505,10 @@ export default function FacultyScrollSection() {
                                                 }
                                             }}
                                         >
-                                            {/* FIXED HEIGHT CARD WRAPPER */}
+                                            {/* RESPONSIVE HEIGHT CARD WRAPPER */}
                                             <div className="flex flex-col items-center h-full">
-                                                {/* FIXED HEIGHT IMAGE - NEVER CHANGES */}
-                                                <div className="relative h-[350px] sm:h-[380px] w-full overflow-hidden rounded-2xl shadow-2xl flex-shrink-0 transition-transform duration-700">
+                                                {/* RESPONSIVE HEIGHT IMAGE - Smaller on mobile, same on desktop */}
+                                                <div className="relative h-[220px] xs:h-[240px] sm:h-[260px] md:h-[280px] lg:h-[370px] xl:h-[380px] w-full overflow-hidden rounded-xl sm:rounded-2xl shadow-2xl flex-shrink-0 transition-transform duration-700">
                                                     <Image
                                                         src={card.image}
                                                         alt={card.name}
@@ -515,14 +528,14 @@ export default function FacultyScrollSection() {
                                                     />
                                                 </div>
 
-                                                {/* FIXED HEIGHT TEXT AREA - ALWAYS RESERVED */}
-                                                <div className="mt-6 text-center w-full h-[120px] flex flex-col items-center justify-start flex-shrink-0">
+                                                {/* RESPONSIVE TEXT AREA */}
+                                                <div className="mt-3 xs:mt-3 sm:mt-4 md:mt-4 lg:mt-5 xl:mt-6 text-center w-full h-[100px] xs:h-[100px] sm:h-[100px] md:h-[105px] lg:h-[115px] xl:h-[120px] flex flex-col items-center justify-start flex-shrink-0 px-2 sm:px-3">
                                                     {isActive && (
                                                         <div className="animate-fade-in-up">
-                                                            <h4 className="text-2xl sm:text-3xl font-semibold text-white line-clamp-2">
+                                                            <h4 className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-semibold text-white line-clamp-2 leading-tight">
                                                                 {card.name}
                                                             </h4>
-                                                            <p className="mt-2 text-base sm:text-lg text-white/70 line-clamp-3">
+                                                            <p className="mt-1 xs:mt-1 sm:mt-1 md:mt-1.5 lg:mt-2 text-xs xs:text-xs sm:text-xs md:text-sm lg:text-base xl:text-lg text-white/70 line-clamp-3 leading-relaxed">
                                                                 {card.position}
                                                             </p>
                                                         </div>
@@ -534,10 +547,10 @@ export default function FacultyScrollSection() {
                                 })}
                             </div>
 
-                            {/* Next Button */}
+                            {/* Desktop Navigation - Next Button (hidden on mobile/tablet) */}
                             <button
                                 onClick={goToNext}
-                                className="absolute right-0 top-1/2 -translate-y-1/2 z-40 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full p-3 transition-all duration-300 hover:scale-110 cursor-pointer"
+                                className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 z-40 bg-white/10 hover:bg-white/20 active:bg-white/30 backdrop-blur-sm rounded-full p-3 transition-all duration-300 hover:scale-110 active:scale-95 cursor-pointer touch-manipulation"
                                 aria-label="Next faculty"
                             >
                                 <svg
@@ -549,12 +562,47 @@ export default function FacultyScrollSection() {
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                                 </svg>
                             </button>
+
+                            {/* Mobile/Tablet Navigation - Below Cards (hidden on desktop) */}
+                            <div className="flex lg:hidden items-center justify-center gap-4 sm:gap-6">
+                                {/* Previous Button */}
+                                <button
+                                    onClick={goToPrev}
+                                    className="bg-white/10 hover:bg-white/20 active:bg-white/30 backdrop-blur-sm rounded-full p-3 sm:p-3.5 transition-all duration-300 hover:scale-110 active:scale-95 cursor-pointer touch-manipulation"
+                                    aria-label="Previous faculty"
+                                >
+                                    <svg
+                                        className="w-5 h-5 sm:w-6 sm:h-6 text-white"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                                    </svg>
+                                </button>
+
+                                {/* Next Button */}
+                                <button
+                                    onClick={goToNext}
+                                    className="bg-white/10 hover:bg-white/20 active:bg-white/30 backdrop-blur-sm rounded-full p-3 sm:p-3.5 transition-all duration-300 hover:scale-110 active:scale-95 cursor-pointer touch-manipulation"
+                                    aria-label="Next faculty"
+                                >
+                                    <svg
+                                        className="w-5 h-5 sm:w-6 sm:h-6 text-white"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                    </svg>
+                                </button>
+                            </div>
                         </div>
                     </div>
 
-                    {/* Description */}
-                    <div className="max-w-2xl px-4">
-                        <p className="text-center text-[15px] sm:text-base leading-relaxed text-white/80 font-[var(--font-merri)]">
+                    {/* Description - Enhanced Responsive */}
+                    <div className="max-w-2xl px-4 xs:px-5 sm:px-6 md:px-8">
+                        <p className="text-center text-xs xs:text-sm sm:text-sm md:text-[15px] lg:text-base leading-relaxed text-white/80 font-[var(--font-merri)]">
                             All courses are taught by experienced academicians, clinicians,
                             and subject-matter experts across Ayurveda, Nutrition & Dietetics,
                             and Integrative Health Science.
