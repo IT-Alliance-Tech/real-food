@@ -95,11 +95,7 @@ export default function HeroSection() {
           <span className="word" style={{ animationDelay: "0.2s" }}>more</span>{" "}
           <span className="word" style={{ animationDelay: "0.25s" }}>than</span>{" "}
           <span className="word highlight-word" style={{ animationDelay: "0.3s" }}>calories.</span>
-          <br />
-          <span className="word" style={{ animationDelay: "0.4s" }}>It</span>{" "}
-          <span className="word" style={{ animationDelay: "0.45s" }}>is</span>{" "}
-          <span className="word" style={{ animationDelay: "0.5s" }}>personalised</span>{" "}
-          <span className="word" style={{ animationDelay: "0.55s" }}>dietetics.</span>
+
         </h1>
 
         {/* Enhanced leaf separator with larger icon and pulse effect */}
