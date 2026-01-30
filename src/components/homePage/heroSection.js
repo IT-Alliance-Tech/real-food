@@ -116,13 +116,7 @@ export default function HeroSection() {
                   className="text-xs sm:text-sm md:text-base lg:text-lg font-bold tracking-wide bg-gradient-to-r from-[#2D6933] to-[#1a4020] bg-clip-text text-transparent"
                   style={{ fontFamily: "var(--font-merriweather-sans)" }}
                 >
-                  Ayurveda Dietetics Program @
-                </span>
-                <span
-                  className="text-xs sm:text-sm md:text-base lg:text-lg font-semibold text-[#2D6933]/70"
-                  style={{ fontFamily: "var(--font-merriweather-sans)" }}
-                >
-                  TDU
+                  Ayurveda Dietetics Program
                 </span>
               </div>
             </div>
