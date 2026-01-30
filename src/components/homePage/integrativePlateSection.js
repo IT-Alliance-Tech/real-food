@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
@@ -19,6 +19,13 @@ export default function IntegrativePlateScrollSection() {
   const questionRef = useRef(null);
   const yesRef = useRef(null);
   const contentRef = useRef(null);
+
+  // Shared state for mobile tooltip exclusivity
+  const [activeTooltip, setActiveTooltip] = useState(null);
+
+  const toggleTooltip = (id) => {
+    setActiveTooltip((prev) => (prev === id ? null : id));
+  };
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -122,6 +129,8 @@ export default function IntegrativePlateScrollSection() {
                 chapathi: "Complex Carbs",
                 curd: "Dairy – Calcium",
               }}
+              activeTooltip={activeTooltip}
+              toggleTooltip={toggleTooltip}
             />
 
             <PlateCard
@@ -138,6 +147,8 @@ export default function IntegrativePlateScrollSection() {
                 chapathi: "Sweet, Heavy to digest",
                 curd: "Sweet, Sour, Astringent, light to digest",
               }}
+              activeTooltip={activeTooltip}
+              toggleTooltip={toggleTooltip}
             />
           </div>
         </div>
@@ -155,9 +166,14 @@ function PlateCard({
   gradientTo,
   tooltips,
   borderColor,
+  activeTooltip,
+  toggleTooltip,
 }) {
   const activeColor = borderColor || accentColor;
   const cardRef = useRef(null);
+
+  // Create a safe unique ID base for this card's items
+  const cardId = title.replace(/\s+/g, "-").toLowerCase();
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -232,6 +248,7 @@ function PlateCard({
         {/* FOOD ITEMS ARRANGED ON PLATE */}
         <div className="relative w-full h-full z-10">
           <HoverImage
+            id={`${cardId}-fiber`}
             src={Fiber}
             alt="Fiber"
             tooltip={tooltips.fiber}
@@ -239,9 +256,12 @@ function PlateCard({
             gradientFrom={gradientFrom}
             gradientTo={gradientTo}
             className="absolute top-[3%] sm:top-[5%] left-[20%] sm:left-[12%] lg:left-[15%] w-[200px] sm:w-[180px] md:w-[220px] lg:w-[300px]"
+            activeTooltip={activeTooltip}
+            toggleTooltip={toggleTooltip}
           />
 
           <HoverImage
+            id={`${cardId}-dal`}
             src={Dal}
             alt="Dal"
             tooltip={tooltips.dal}
@@ -249,9 +269,12 @@ function PlateCard({
             gradientFrom={gradientFrom}
             gradientTo={gradientTo}
             className="absolute top-[32%] sm:top-[35%] left-[2%] sm:left-[0%] w-[190px] sm:w-[140px] md:w-[180px] lg:w-[250px]"
+            activeTooltip={activeTooltip}
+            toggleTooltip={toggleTooltip}
           />
 
           <HoverImage
+            id={`${cardId}-rice`}
             src={Rice}
             alt="Rice"
             tooltip={tooltips.rice}
@@ -259,9 +282,12 @@ function PlateCard({
             gradientFrom={gradientFrom}
             gradientTo={gradientTo}
             className="absolute top-[56%] sm:top-[60%] left-[15%] sm:left-[18%] lg:left-[20%] z-20 w-[190px] sm:w-[160px] md:w-[200px] lg:w-[250px]"
+            activeTooltip={activeTooltip}
+            toggleTooltip={toggleTooltip}
           />
 
           <HoverImage
+            id={`${cardId}-chapathi`}
             src={Chapathi}
             alt="Chapathi"
             tooltip={tooltips.chapathi}
@@ -269,9 +295,12 @@ function PlateCard({
             gradientFrom={gradientFrom}
             gradientTo={gradientTo}
             className="absolute top-[32%] sm:top-[25%] right-[2%] sm:right-[0%] w-[190px] sm:w-[140px] md:w-[180px] lg:w-[250px]"
+            activeTooltip={activeTooltip}
+            toggleTooltip={toggleTooltip}
           />
 
           <HoverImage
+            id={`${cardId}-curd`}
             src={Curd}
             alt="Curd"
             tooltip={tooltips.curd}
@@ -279,6 +308,8 @@ function PlateCard({
             gradientFrom={gradientFrom}
             gradientTo={gradientTo}
             className="absolute bottom-[15%] sm:bottom-[20%] right-[5%] sm:right-[8%] lg:right-[10%] w-[140px] sm:w-[120px] md:w-[160px] lg:w-[200px]"
+            activeTooltip={activeTooltip}
+            toggleTooltip={toggleTooltip}
           />
         </div>
       </div>
@@ -288,6 +319,7 @@ function PlateCard({
 
 /* ---------- HOVER IMAGE ---------- */
 function HoverImage({
+  id,
   src,
   alt,
   className,
@@ -295,15 +327,25 @@ function HoverImage({
   accentColor,
   gradientFrom,
   gradientTo,
+  activeTooltip,
+  toggleTooltip,
 }) {
+  const isOpen = activeTooltip === id;
+
   return (
     <div
-      className={`group/item absolute ${className} cursor-pointer z-10 hover:z-[60] transition-transform duration-500`}
+      onClick={(e) => {
+        e.stopPropagation();
+        toggleTooltip(id);
+      }}
+      className={`group/item absolute ${className} cursor-pointer z-10 transition-transform duration-500 ${isOpen ? "z-[60]" : "hover:z-[60]"
+        }`}
     >
       {/* Softer glow */}
       <div
-        className="absolute inset-0 rounded-full blur-2xl opacity-0 
-                   group-hover/item:opacity-30 transition-all duration-700 -z-10"
+        className={`absolute inset-0 rounded-full blur-2xl opacity-0 
+                   group-hover/item:opacity-30 transition-all duration-700 -z-10
+                   ${isOpen ? "opacity-30" : ""}`}
         style={{
           background: `radial-gradient(circle, ${accentColor}40 0%, transparent 70%)`,
           transform: "scale(1.2)",
@@ -312,23 +354,33 @@ function HoverImage({
 
       {/* Image */}
       <div
-        className="relative transition-all duration-700 ease-out
+        className={`relative transition-all duration-700 ease-out
                    group-hover/item:scale-110 group-hover/item:-translate-y-3
-                   filter group-hover/item:brightness-105 group-hover/item:drop-shadow-2xl"
+                   filter group-hover/item:brightness-105 group-hover/item:drop-shadow-2xl
+                   ${isOpen
+            ? "scale-110 -translate-y-3 brightness-105 drop-shadow-2xl"
+            : ""
+          }`}
       >
         <Image src={src} alt={alt} className="relative z-10 w-full h-auto" />
       </div>
 
       {/* Tooltip */}
       <div
-        className="pointer-events-none absolute left-1/2 bottom-[90%] mb-2 sm:mb-4
-                   -translate-x-1/2
-                   opacity-0 scale-90 translate-y-4
-                   group-hover/item:opacity-100
-                   group-hover/item:scale-100
-                   group-hover/item:translate-y-0
-                   transition-all duration-500 ease-out
-                   z-50"
+        className={`
+    pointer-events-none absolute left-1/2
+    bottom-[100%] md:bottom-[90%] mb-2
+    -translate-x-1/2
+    scale-90 translate-y-4 opacity-0
+    transition-all duration-500 ease-out
+    z-50
+
+    group-hover/item:opacity-100
+    group-hover/item:scale-100
+    group-hover/item:translate-y-0
+
+    ${isOpen ? "opacity-100 scale-100 translate-y-0" : ""}
+  `}
       >
         <div className="relative">
           {/* Arrow */}
