@@ -80,10 +80,10 @@ export default function ContactConnectSection() {
                             </div>
                             <div>
                                 <h3 className="text-xl font-bold">
-                                    Sonia Velarsan
+                                    Ms. Sonia Velarsan, RD
                                 </h3>
                                 <p className="text-white/80 text-sm">
-                                    Program Asst., Registered Dietitian
+                                    Program Asst. Ayurveda Dietetics, TDU
                                 </p>
                             </div>
                         </div>
