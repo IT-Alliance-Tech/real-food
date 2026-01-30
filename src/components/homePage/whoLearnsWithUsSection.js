@@ -133,12 +133,11 @@ export default function WhoLearnsWithUsSection() {
                     </p>
                 </div>
 
-                {/* Main Counter Card with 3D tilt effect */}
+                {/* Main Counter Card - STRAIGHT (no tilt) */}
                 <div
                     className={`bg-gradient-to-br from-[#2D6933] to-[#1a4020] rounded-3xl p-10 md:p-14 mb-10 shadow-2xl relative overflow-hidden transition-all duration-700 ${isVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"
                         }`}
                     style={{
-                        transform: `perspective(1000px) rotateX(${scrollProgress * -5}deg) translateY(${scrollProgress * 10}px)`,
                         boxShadow: `0 ${20 + scrollProgress * 30}px ${60 + scrollProgress * 40}px rgba(45, 105, 51, ${0.2 + scrollProgress * 0.3})`
                     }}
                 >

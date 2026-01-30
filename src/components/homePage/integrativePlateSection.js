@@ -132,7 +132,7 @@ export default function IntegrativePlateScrollSection() {
               gradientFrom="#2D6933"
               gradientTo="#3d8f47"
               tooltips={{
-                fiber: "Sweet, cooling to potency",
+                fiber: "Sweet, cooling in potency",
                 dal: "Sweet, Astringent, light to digest",
                 rice: "Sweet, Heavy to digest",
                 chapathi: "Sweet, Heavy to digest",
