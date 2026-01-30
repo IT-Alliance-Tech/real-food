@@ -70,9 +70,9 @@ export default function IntegrativePlateScrollSection() {
       {/* QUESTION */}
       <div
         ref={questionRef}
-        className="absolute inset-0 flex justify-center text-center pt-[40vh] bg-black"
+        className="absolute inset-0 flex justify-center text-center pt-[40vh] sm:pt-[38vh] md:pt-[40vh] bg-black px-4"
       >
-        <h2 className="text-[48px] md:text-[72px] font-black tracking-tight text-white drop-shadow-2xl">
+        <h2 className="text-[36px] sm:text-[48px] md:text-[64px] lg:text-[72px] font-black tracking-tight text-white drop-shadow-2xl max-w-[90vw]">
           Can they be combined?
         </h2>
       </div>
@@ -80,10 +80,10 @@ export default function IntegrativePlateScrollSection() {
       {/* YES */}
       <div
         ref={yesRef}
-        className="absolute inset-0 flex justify-center text-center pt-[26vh]"
+        className="absolute inset-0 flex justify-center text-center pt-[28vh] sm:pt-[26vh] md:pt-[26vh] px-4"
       >
         <h1
-          className="text-[120px] md:text-[200px] font-black tracking-tighter"
+          className="text-[80px] sm:text-[120px] md:text-[160px] lg:text-[200px] font-black tracking-tighter"
           style={{
             background: "linear-gradient(135deg, #2D6933 0%, #3d8f47 100%)",
             WebkitBackgroundClip: "text",
@@ -98,16 +98,16 @@ export default function IntegrativePlateScrollSection() {
 
       {/* CONTENT */}
       <div ref={contentRef} className="relative opacity-0">
-        <div className="max-w-7xl mx-auto px-6 py-16 md:py-20">
-          <h2 className="text-center text-[40px] md:text-[64px] lg:text-[72px] font-extrabold leading-[1.1] text-[#10295F] mb-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16 md:py-20">
+          <h2 className="text-center text-[32px] sm:text-[40px] md:text-[56px] lg:text-[72px] font-extrabold leading-[1.1] text-[#10295F] mb-3 sm:mb-4 px-4">
             The Integrative Plate
           </h2>
 
-          <p className="text-center max-w-2xl mx-auto text-lg md:text-xl mb-12 text-[#10295F]/60 font-medium">
+          <p className="text-center max-w-2xl mx-auto text-base sm:text-lg md:text-xl mb-8 sm:mb-12 text-[#10295F]/60 font-medium px-4">
             Same plate. Two ways of understanding food.
           </p>
 
-          <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:gap-12">
             <PlateCard
               title="Nutrient View"
               titleColor="#10295F"
@@ -177,7 +177,7 @@ function PlateCard({
   return (
     <div
       ref={cardRef}
-      className="rounded-[40px] bg-white relative group/card transition-all duration-500 border-2 max-w-[500px] w-full mx-auto overflow-hidden"
+      className="rounded-[24px] sm:rounded-[32px] lg:rounded-[40px] bg-white relative group/card transition-all duration-500 border-2 max-w-[500px] w-full mx-auto overflow-hidden"
       style={{
         borderColor: `${activeColor}20`,
         boxShadow: `0 20px 60px -15px ${activeColor}30`,
@@ -192,9 +192,9 @@ function PlateCard({
       />
 
       {/* Title Section */}
-      <div className="flex justify-center w-full pt-8 pb-4 relative z-10">
+      <div className="flex justify-center w-full pt-6 sm:pt-8 pb-3 sm:pb-4 relative z-10">
         <h3
-          className="text-3xl md:text-4xl font-black tracking-tight text-center"
+          className="text-2xl sm:text-3xl md:text-4xl font-black tracking-tight text-center px-4"
           style={{
             background: `linear-gradient(135deg, ${gradientFrom} 0%, ${gradientTo} 100%)`,
             WebkitBackgroundClip: "text",
@@ -206,17 +206,17 @@ function PlateCard({
         </h3>
       </div>
 
-      <div className="relative h-[440px] w-full flex items-center justify-center">
+      <div className="relative h-[340px] sm:h-[400px] lg:h-[440px] w-full flex items-center justify-center">
         {/* THE PLATE - Styled Background */}
-        <div className="absolute w-[380px] h-[380px] rounded-full flex items-center justify-center z-0">
+        <div className="absolute w-[280px] sm:w-[340px] lg:w-[380px] h-[280px] sm:h-[340px] lg:h-[380px] rounded-full flex items-center justify-center z-0">
           {/* Outer Rim */}
           <div
-            className="absolute inset-0 rounded-full border-[12px] opacity-10"
+            className="absolute inset-0 rounded-full border-[8px] sm:border-[10px] lg:border-[12px] opacity-10"
             style={{ borderColor: accentColor }}
           />
           {/* Inner Plate Surface */}
           <div
-            className="absolute inset-[12px] rounded-full bg-white shadow-inner"
+            className="absolute inset-[8px] sm:inset-[10px] lg:inset-[12px] rounded-full bg-white shadow-inner"
             style={{
               boxShadow: `inset 0 0 40px ${accentColor}10`,
               border: `1px solid ${accentColor}15`,
@@ -224,7 +224,7 @@ function PlateCard({
           />
           {/* Subtle Dotted Guide */}
           <div
-            className="absolute inset-[40px] rounded-full border border-dashed opacity-20"
+            className="absolute inset-[30px] sm:inset-[36px] lg:inset-[40px] rounded-full border border-dashed opacity-20"
             style={{ borderColor: accentColor }}
           />
         </div>
@@ -238,7 +238,7 @@ function PlateCard({
             accentColor={accentColor}
             gradientFrom={gradientFrom}
             gradientTo={gradientTo}
-            className="absolute top-[5%] left-[15%] w-[180px] md:w-[300px]"
+            className="absolute top-[3%] sm:top-[5%] left-[20%] sm:left-[12%] lg:left-[15%] w-[200px] sm:w-[180px] md:w-[220px] lg:w-[300px]"
           />
 
           <HoverImage
@@ -248,7 +248,7 @@ function PlateCard({
             accentColor={accentColor}
             gradientFrom={gradientFrom}
             gradientTo={gradientTo}
-            className="absolute top-[35%] left-[0%] w-[160px] md:w-[250px]"
+            className="absolute top-[32%] sm:top-[35%] left-[2%] sm:left-[0%] w-[190px] sm:w-[140px] md:w-[180px] lg:w-[250px]"
           />
 
           <HoverImage
@@ -258,7 +258,7 @@ function PlateCard({
             accentColor={accentColor}
             gradientFrom={gradientFrom}
             gradientTo={gradientTo}
-            className="absolute top-[60%] left-[20%] z-20 w-[180px] md:w-[250px]"
+            className="absolute top-[56%] sm:top-[60%] left-[15%] sm:left-[18%] lg:left-[20%] z-20 w-[190px] sm:w-[160px] md:w-[200px] lg:w-[250px]"
           />
 
           <HoverImage
@@ -268,7 +268,7 @@ function PlateCard({
             accentColor={accentColor}
             gradientFrom={gradientFrom}
             gradientTo={gradientTo}
-            className="absolute top-[25%] right-[0%] w-[160px] md:w-[250px]"
+            className="absolute top-[32%] sm:top-[25%] right-[2%] sm:right-[0%] w-[190px] sm:w-[140px] md:w-[180px] lg:w-[250px]"
           />
 
           <HoverImage
@@ -278,7 +278,7 @@ function PlateCard({
             accentColor={accentColor}
             gradientFrom={gradientFrom}
             gradientTo={gradientTo}
-            className="absolute bottom-[20%] right-[10%] w-[140px] md:w-[200px]"
+            className="absolute bottom-[15%] sm:bottom-[20%] right-[5%] sm:right-[8%] lg:right-[10%] w-[140px] sm:w-[120px] md:w-[160px] lg:w-[200px]"
           />
         </div>
       </div>
@@ -321,7 +321,7 @@ function HoverImage({
 
       {/* Tooltip */}
       <div
-        className="pointer-events-none absolute left-1/2 bottom-[90%] mb-4
+        className="pointer-events-none absolute left-1/2 bottom-[90%] mb-2 sm:mb-4
                    -translate-x-1/2
                    opacity-0 scale-90 translate-y-4
                    group-hover/item:opacity-100
@@ -333,8 +333,8 @@ function HoverImage({
         <div className="relative">
           {/* Arrow */}
           <div
-            className="absolute -bottom-2 left-1/2 -translate-x-1/2
-                       w-4 h-4 rotate-45"
+            className="absolute -bottom-1.5 sm:-bottom-2 left-1/2 -translate-x-1/2
+                       w-3 h-3 sm:w-4 sm:h-4 rotate-45"
             style={{
               background: `linear-gradient(135deg, ${gradientFrom} 0%, ${gradientTo} 100%)`,
             }}
@@ -343,10 +343,10 @@ function HoverImage({
           {/* Tooltip box */}
           <div
             className="relative text-white
-                       text-[14px] md:text-[15px] leading-snug font-bold
-                       px-6 py-3 rounded-2xl
+                       text-[12px] sm:text-[14px] md:text-[15px] leading-snug font-bold
+                       px-4 py-2 sm:px-6 sm:py-3 rounded-xl sm:rounded-2xl
                        backdrop-blur-lg border border-white/20
-                       min-w-[180px] max-w-[260px]"
+                       min-w-[140px] sm:min-w-[180px] max-w-[220px] sm:max-w-[260px]"
             style={{
               background: `linear-gradient(135deg, ${gradientFrom} 0%, ${gradientTo} 100%)`,
               boxShadow: `0 10px 30px ${accentColor}40`,
