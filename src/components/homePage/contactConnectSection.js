@@ -169,7 +169,7 @@ export default function ContactConnectSection() {
                         {/* Social Links */}
                         <div className="pt-4 mt-6 border-t border-white/20 text-sm flex gap-6">
                             <a
-                                href="https://instagram.com/TDUPGConnect"
+                                href="https://www.instagram.com/tdupostgradconnect/"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="inline-flex items-center gap-2 hover:text-white transition"

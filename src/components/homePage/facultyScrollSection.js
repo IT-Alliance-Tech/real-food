@@ -31,7 +31,7 @@ import faculty21 from "../../../public/staff/staff21.png";
 const programTeam = [
     { name: "Dr. Megha", position: "Associate Professor, TDU", image: faculty1 },
     { name: "Dr. Madhumitha Krishnan", position: "MD (Ayurveda)Consultant, TDU", image: faculty3 },
-    { name: "Dr. Ms. Sonia Velarsan, RD,", position: "Program Asst. Ayurveda Dietetics, TDU", image: faculty2 },
+    { name: "Ms. Sonia Velarsan, RD", position: "Program Asst. Ayurveda Dietetics, TDU", image: faculty2 },
 ];
 
 // Faculty Slider - Remaining members (sliding display)

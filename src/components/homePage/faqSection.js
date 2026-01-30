@@ -23,7 +23,7 @@ const faqs = [
         ),
     },
     {
-        q: "How are we different from other nutrition courses?",
+        q: "How are we different?",
         a: "This course conciously waves between Nutritional Science, Ayurveda and latest research.",
     },
     {

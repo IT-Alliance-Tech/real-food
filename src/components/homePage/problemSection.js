@@ -66,7 +66,7 @@ export default function ProblemSection() {
                 className="text-2xl font-bold mb-4"
                 style={{ color: "#F9A620" }}
               >
-                Modern Nutrition
+                Modern Nutrients
               </h3>
               <p className="text-white/90 text-lg leading-relaxed">
                 Modern nutrition is based on recommendations for population and

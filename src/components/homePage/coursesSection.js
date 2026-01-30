@@ -220,7 +220,7 @@ export default function CoursesSection() {
             Ready to begin your journey in Ayurveda Dietetics?
           </p>
           <a
-            href="https://www.tdu.edu.in"
+            href="https://www.tdu.edu.in/education-programs#learnforlife"
             target="_blank"
             rel="noopener noreferrer"
             className="group relative inline-flex items-center gap-2 px-8 py-4 text-base font-semibold tracking-wide text-white transition-all duration-300 hover:shadow-xl rounded-lg overflow-hidden"

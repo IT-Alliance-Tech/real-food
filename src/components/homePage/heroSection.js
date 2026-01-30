@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import { FaLeaf, FaSeedling } from "react-icons/fa";
 import { Bitter, Merriweather_Sans } from "next/font/google";
+import Image from "next/image";
+import heroImage from "../../../public/logotdu.png"; // Update this path to your image location
 
 const bitter = Bitter({
   subsets: ["latin"],
@@ -41,6 +43,26 @@ export default function HeroSection() {
       ref={sectionRef}
       className={`relative min-h-[90vh] bg-white flex items-center overflow-hidden py-12 md:py-20 ${bitter.variable} ${merriweatherSans.variable}`}
     >
+      {/* TDU Logo - Centered at top */}
+      <div className="absolute top-6 md:top-8 lg:top-10 left-0 right-0 z-10 flex justify-center image-fade">
+        <div className="relative 
+    w-56 h-24 
+    md:w-72 md:h-28 
+    lg:w-80 lg:h-42 
+    overflow-visible 
+    transition-transform duration-300"
+        >
+          <Image
+            src={heroImage}
+            alt="TDU University Logo"
+            fill
+            className="object-contain"
+            priority
+          />
+        </div>
+      </div>
+
+
       {/* Enhanced decorative background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 right-[10%] w-64 h-64 md:w-96 md:h-96 rounded-full blur-3xl opacity-20 bg-orb-1" />
@@ -67,24 +89,43 @@ export default function HeroSection() {
 
       <div
         key={animateKey}
-        className="relative max-w-6xl mx-auto px-4 sm:px-6 text-center"
+        className="relative max-w-6xl mx-auto px-4 sm:px-6 text-center pt-32 md:pt-36"
       >
-        {/* Premium Badge with enhanced animation */}
+        {/* Enhanced Premium Badge with elegant design */}
         <div className="badge-fade mb-6 md:mb-10">
-          <div
-            className="inline-flex items-center px-4 sm:px-6 md:px-8 py-2 sm:py-2.5 md:py-3 rounded-full shadow-lg backdrop-blur-md hover:shadow-xl transition-all duration-500 hover:scale-105"
-            style={{
-              background:
-                "linear-gradient(135deg, rgba(45,105,51,0.12), rgba(158,209,158,0.18))",
-              border: "1px solid rgba(45,105,51,0.35)",
-            }}
-          >
-            <span
-              className="text-sm sm:text-base md:text-xl lg:text-5xl font-semibold tracking-wide"
-              style={{ color: "#2D6933", fontFamily: "var(--font-merriweather-sans)" }}
+          <div className="relative inline-flex items-center group">
+            {/* Animated border gradient */}
+            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-[#2D6933] via-[#9ED19E] to-[#2D6933] opacity-60 blur-sm group-hover:opacity-80 transition-opacity duration-500 animate-gradient-rotate"></div>
+
+            {/* Main badge */}
+            <div
+              className="relative flex items-center gap-2 sm:gap-3 px-4 sm:px-6 md:px-8 py-2 sm:py-2.5 md:py-3 rounded-full shadow-lg backdrop-blur-md hover:shadow-2xl transition-all duration-500 hover:scale-105"
+              style={{
+                background: "linear-gradient(135deg, rgba(255,255,255,0.95), rgba(255,255,255,0.85))",
+                border: "1px solid rgba(45,105,51,0.25)",
+              }}
             >
-              Ayurveda Dietetics Program @ TDU
-            </span>
+              {/* Decorative leaf icon */}
+              <div className="flex items-center justify-center w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 rounded-full bg-gradient-to-br from-[#2D6933] to-[#1a4020] animate-pulse-slow">
+                <FaLeaf className="text-white text-xs sm:text-sm md:text-base" />
+              </div>
+
+              {/* Text content */}
+              <div className="flex flex-col sm:flex-row items-center gap-1 sm:gap-2">
+                <span
+                  className="text-xs sm:text-sm md:text-base lg:text-lg font-bold tracking-wide bg-gradient-to-r from-[#2D6933] to-[#1a4020] bg-clip-text text-transparent"
+                  style={{ fontFamily: "var(--font-merriweather-sans)" }}
+                >
+                  Ayurveda Dietetics Program @
+                </span>
+                <span
+                  className="text-xs sm:text-sm md:text-base lg:text-lg font-semibold text-[#2D6933]/70"
+                  style={{ fontFamily: "var(--font-merriweather-sans)" }}
+                >
+                  TDU
+                </span>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -95,7 +136,6 @@ export default function HeroSection() {
           <span className="word" style={{ animationDelay: "0.2s" }}>more</span>{" "}
           <span className="word" style={{ animationDelay: "0.25s" }}>than</span>{" "}
           <span className="word highlight-word" style={{ animationDelay: "0.3s" }}>calories.</span>
-
         </h1>
 
         {/* Enhanced leaf separator with larger icon and pulse effect */}
@@ -117,7 +157,7 @@ export default function HeroSection() {
         {/* Enhanced CTA with shimmer effect */}
         <div className="mt-10 md:mt-14 fade-line delay-3">
           <a
-            href="https://www.tdu.edu.in/"
+            href="https://www.tdu.edu.in/education-programs#learnforlife"
             target="_blank"
             rel="noopener noreferrer"
             className="group relative inline-block px-6 sm:px-7 md:px-8 py-3 sm:py-3.5 md:py-4 text-sm sm:text-base font-semibold tracking-wide text-white transition-all duration-300 hover:shadow-xl rounded-lg overflow-hidden cta-button"
@@ -130,6 +170,20 @@ export default function HeroSection() {
 
         {/* Enhanced styles */}
         <style>{`
+          .image-fade {
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: imageFadeIn 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            animation-delay: 0.3s;
+          }
+
+          @keyframes imageFadeIn {
+            to { 
+              opacity: 1; 
+              transform: translateY(0); 
+            }
+          }
+
           .bg-orb-1 {
             background: radial-gradient(circle, rgba(45,105,51,0.3) 0%, rgba(45,105,51,0) 70%);
             animation: float 8s ease-in-out infinite;
@@ -158,6 +212,43 @@ export default function HeroSection() {
             25% { transform: translateY(-10px) rotate(3deg); }
             50% { transform: translateY(-20px) rotate(0); }
             75% { transform: translateY(-10px) rotate(-3deg); }
+          }
+
+          @keyframes gradient-rotate {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+          }
+
+          .animate-gradient-rotate {
+            background-size: 200% 200%;
+            animation: gradient-rotate 3s ease infinite;
+          }
+
+          @keyframes pulse-slow {
+            0%, 100% { 
+              transform: scale(1);
+              opacity: 1;
+            }
+            50% { 
+              transform: scale(1.05);
+              opacity: 0.9;
+            }
+          }
+
+          .animate-pulse-slow {
+            animation: pulse-slow 3s ease-in-out infinite;
+          }
+
+          @keyframes ping-slow {
+            75%, 100% {
+              transform: scale(2);
+              opacity: 0;
+            }
+          }
+
+          .animate-ping-slow {
+            animation: ping-slow 2s cubic-bezier(0, 0, 0.2, 1) infinite;
           }
 
           .badge-fade {
