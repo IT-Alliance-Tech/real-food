@@ -101,7 +101,7 @@ export default function ProblemSection() {
           style={{ animationDelay: "0.3s" }}
         >
           <p className="text-xl md:text-2xl italic text-white/80">
-            {` "Two perspectives on food, one shared goal : health and well-being."`}
+            {` "Two perspectives on food, one shared goal: health and well-being."`}
           </p>
         </div>
       </div>
