@@ -14,6 +14,7 @@ import ContactConnectSection from "@/components/homePage/contactConnectSection";
 import FacultyScrollSection from "@/components/homePage/facultyScrollSection";
 import KnowledgeLevelSection from "@/components/homePage/knowledgeLevelSection";
 import ImpactRecommendationSection from "@/components/homePage/impactRecommendationSection";
+import DownloadReportSection from "@/components/homePage/downloadReportSection";
 
 export default function Home() {
   const [showIntro, setShowIntro] = useState(true);
@@ -35,6 +36,7 @@ export default function Home() {
           <AcademicSupportSection />
           <FacultyScrollSection />
           <FaqSection />
+          <DownloadReportSection />
           <ContactConnectSection />
         </>
       )}

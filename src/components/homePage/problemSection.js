@@ -89,7 +89,7 @@ export default function ProblemSection() {
               </h3>
               <p className="text-white/90 text-lg leading-relaxed">
                 Focuses on digestion and individual constitution rather than
-                nutrient.
+                nutrients.
               </p>
             </div>
           </div>
